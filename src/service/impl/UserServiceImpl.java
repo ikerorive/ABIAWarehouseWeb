@@ -1,4 +1,14 @@
-package service.impl;
+/** @file UserServiceImpl.java
+ *  @brief UserService implementation
+ *  @authors
+ *  Name          | Surname         | Email                                |
+ *  ------------- | -------------- | ------------------------------------ |
+ *  Iker	      | Orive          | iker.orive@alumni.mondragon.edu     |
+ *  @date 12/12/2018
+ */
+
+/** @brief package service.impl
+ */package service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

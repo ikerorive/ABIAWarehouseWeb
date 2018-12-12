@@ -1,4 +1,14 @@
-package dao.impl;
+/** @file UserDAOImpl.java
+ *  @brief User DAO implementation
+ *  @authors
+ *  Name          | Surname         | Email                                |
+ *  ------------- | -------------- | ------------------------------------ |
+ *  Iker	      | Orive          | iker.orive@alumni.mondragon.edu     |
+ *  @date 12/12/2018
+ */
+
+/** @brief package dao.impl
+ */package dao.impl;
 
 import java.util.List;
 

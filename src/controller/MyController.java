@@ -1,4 +1,14 @@
-package controller;
+/** @file MyController.java
+ *  @brief Controller
+ *  @authors
+ *  Name          | Surname         | Email                                |
+ *  ------------- | -------------- | ------------------------------------ |
+ *  Iker	      | Orive          | iker.orive@alumni.mondragon.edu     |
+ *  @date 12/12/2018
+ */
+
+/** @brief package controller
+ */package controller;
 
 import java.util.ArrayList;
 import java.util.List;
