@@ -33,13 +33,14 @@ public class UserDAOImpl implements UserDAO {
 	public HibernateTemplate getHibernateTemplate() {
 		return hibernateTemplate;
 	}
-	@Override
+/*	@Override
 	public boolean saveUser(User user) {
 		int id = (Integer)hibernateTemplate.save(user);
 		if(id>0)
 			return true;
 		return false;
 	}
+	*/
 	@SuppressWarnings("unchecked")
 	@Override
 	public User getUserDetailsByUsernameAndPassword(String username,String password){

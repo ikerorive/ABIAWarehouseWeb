@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 		return userDAO;
 	}
 	
-	@Override
+	/*@Override
 	public boolean registerUser(User user) {
 		boolean isRegister=false;
 		boolean saveUser = getUserDAO().saveUser(user);
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 			isRegister=true;
 		return isRegister;
 	}
-
+*/
 	@Override
 	public User validateUserCredential(String username, String password) {
 		User user = getUserDAO().getUserDetailsByUsernameAndPassword(username, password);
