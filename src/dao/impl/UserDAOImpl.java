@@ -40,6 +40,8 @@ public class UserDAOImpl implements UserDAO {
 		DetachedCriteria detachedCriteria =  DetachedCriteria.forClass(User.class);
 		detachedCriteria.add(Restrictions.eq("username", username));
 		detachedCriteria.add(Restrictions.eq("password", password));
+		System.out.println("PASSWORD "+password);
+		System.out.println("username "+username);
 		List<User> findByCriteria = (List<User>) hibernateTemplate.findByCriteria(detachedCriteria);
 		if(findByCriteria !=null && findByCriteria.size()>0)
 		return findByCriteria.get(0);
