@@ -8,7 +8,8 @@
  */
 
 /** @brief package model
- */package model;
+ */
+package model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,6 +32,18 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "idUser")
 	private int idUser;
+
+	@NotEmpty
+	@Column(name = "idRole")
+	private int idRole;
+
+	@NotEmpty
+	@Column(name = "username")
+	private String username;
+
+	@NotEmpty
+	@Column(name = "password")
+	private String password;
 
 	public int getIdUser() {
 		return idUser;
@@ -63,17 +76,5 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	@NotEmpty
-	@Column(name = "idRole")
-	private int idRole;
-
-	@NotEmpty
-	@Column(name = "username")
-	private String username;
-
-	@NotEmpty
-	@Column(name = "password")
-	private String password;
 
 }
