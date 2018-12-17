@@ -5,6 +5,7 @@
  *  Name          | Surname         | Email                                |
  *  ------------- | -------------- | ------------------------------------ |
  *  Iker	      | Orive          | iker.orive@alumni.mondragon.edu     |
+ *  Ander	      | Lanas          | ander.lanas@alumni.mondragon.edu     |
  *  @date 12/12/2018
  */
 
@@ -15,4 +16,6 @@ import model.User;
 
 public interface UserDAO {
 	public User getUserDetailsByUsernameAndPassword(String username,String password);
+	
+	public boolean addUser(User user);
 }

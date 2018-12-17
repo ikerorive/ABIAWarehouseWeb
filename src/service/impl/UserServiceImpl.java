@@ -4,6 +4,7 @@
  *  Name          | Surname         | Email                                |
  *  ------------- | -------------- | ------------------------------------ |
  *  Iker	      | Orive          | iker.orive@alumni.mondragon.edu     |
+ *  Ander	      | Lanas          | ander.lanas@alumni.mondragon.edu     |
  *  @date 12/12/2018
  */
 
@@ -35,5 +36,15 @@ public class UserServiceImpl implements UserService {
 	public User validateUserCredential(String username, String password) {
 		User user = getUserDAO().getUserDetailsByUsernameAndPassword(username, password);
 		return user;
+	}
+	
+	
+	@Override
+	public boolean registerUser(User user) {
+		boolean isRegister=false;
+		boolean saveStudent = getUserDAO().addUser(user);
+		if(saveStudent)
+			isRegister=true;
+		return isRegister;
 	}
 }

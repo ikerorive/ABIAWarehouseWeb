@@ -4,6 +4,7 @@
  *  Name          | Surname         | Email                                |
  *  ------------- | -------------- | ------------------------------------ |
  *  Iker	      | Orive          | iker.orive@alumni.mondragon.edu     |
+ *  Ander	      | Lanas          | ander.lanas@alumni.mondragon.edu     |
  *  @date 12/12/2018
  */
 
@@ -48,4 +49,19 @@ public class UserDAOImpl implements UserDAO {
 		else
 			return null;
 	}
-}
+	
+	
+
+	@Override
+	public boolean addUser(User user){
+		int id = (Integer)hibernateTemplate.save(user);
+		
+		System.out.println(""+id);
+		
+		if(id>0)
+			return true;
+		return false;
+		
+	}
+	
+}	

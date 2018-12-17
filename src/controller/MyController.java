@@ -4,6 +4,7 @@
  *  Name          | Surname         | Email                                |
  *  ------------- | -------------- | ------------------------------------ |
  *  Iker	      | Orive          | iker.orive@alumni.mondragon.edu     |
+ *  Ander	      | Lanas          | ander.lanas@alumni.mondragon.edu     |
  *  @date 12/12/2018
  */
 
@@ -65,6 +66,7 @@ public class MyController {
 		User user = getUserService().validateUserCredential(userCredential.getUsername(), userCredential.getPassword());
 		if (user != null) {
 			int role = user.getIdRole();
+			System.out.println("AAAAAAAAAAAAAAAAAAAAA  "+role);
 			if (role == 3) {
 				modelAndView = new ModelAndView("welcomeManager");
 			} else if (role == 2) {
@@ -78,7 +80,26 @@ public class MyController {
 		}
 		return modelAndView;
 	}
+	
+	
+	@RequestMapping(value ="/registerSuccess" ,method=RequestMethod.POST)
+	public ModelAndView registerSuccess(@Valid @ModelAttribute("user") User user,BindingResult bindingResult){
+		if(bindingResult.hasErrors()){
+			return new ModelAndView("register");
+		}
+		
+		getUserService().registerUser(user);
+		ModelAndView modelAndView = new ModelAndView("home");
+		//modelAndView.addObject("user", user);
+		return modelAndView;
+	}
 
+	@RequestMapping(value ="/register" ,method=RequestMethod.GET)
+	public String registerPage(Model model){
+		model.addAttribute("user", new User());
+		return "register";
+	}
+	
 	@ModelAttribute
 	public void headerMessage(Model model) {
 		model.addAttribute("headerMessage", "Welcome");

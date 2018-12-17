@@ -4,6 +4,7 @@
  *  Name          | Surname         | Email                                |
  *  ------------- | -------------- | ------------------------------------ |
  *  Iker	      | Orive          | iker.orive@alumni.mondragon.edu     |
+ *  Ander	      | Lanas          | ander.lanas@alumni.mondragon.edu     |
  *  @date 12/12/2018
  */
 
@@ -33,7 +34,7 @@ public class User {
 	@Column(name = "idUser")
 	private int idUser;
 
-	@NotEmpty
+	@NotNull
 	@Column(name = "idRole")
 	private int idRole;
 

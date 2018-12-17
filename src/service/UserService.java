@@ -4,6 +4,7 @@
  *  Name          | Surname         | Email                                |
  *  ------------- | -------------- | ------------------------------------ |
  *  Iker	      | Orive          | iker.orive@alumni.mondragon.edu     |
+ *  Ander	      | Lanas          | ander.lanas@alumni.mondragon.edu     |
  *  @date 12/12/2018
  */
 
@@ -15,4 +16,6 @@ import model.User;
 public interface UserService {
 	public abstract User validateUserCredential(String username,	String password);
 
+	public abstract boolean registerUser(User user);
+	
 }
