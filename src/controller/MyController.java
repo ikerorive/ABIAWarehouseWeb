@@ -69,7 +69,26 @@ public class MyController {
 		}
 		return modelAndView;
 	}
+
+	@RequestMapping(value ="/register" ,method=RequestMethod.GET)
+	public String registerPage(Model model){
+		model.addAttribute("user", new User());
+		return "register";
+	}
+
 	
+	@RequestMapping(value ="/registerSuccess" ,method=RequestMethod.POST)
+	public ModelAndView registerSuccess(@Valid @ModelAttribute("user") User user,BindingResult bindingResult){
+		if(bindingResult.hasErrors()){
+			return new ModelAndView("register");
+		}
+		
+		getUserService().registerUser(user);
+		ModelAndView modelAndView = new ModelAndView("home");
+		//modelAndView.addObject("user", user);
+		return modelAndView;
+	}
+
 	@ModelAttribute
 	public void headerMessage(Model model){
 		model.addAttribute("headerMessage", "Welcome");

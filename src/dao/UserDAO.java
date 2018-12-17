@@ -15,4 +15,6 @@ import model.User;
 
 public interface UserDAO {
 	public User getUserDetailsByUsernameAndPassword(String username,String password);
+	
+	public boolean addUser(User user);
 }

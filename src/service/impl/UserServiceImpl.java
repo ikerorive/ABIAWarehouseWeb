@@ -36,4 +36,13 @@ public class UserServiceImpl implements UserService {
 		User user = getUserDAO().getUserDetailsByUsernameAndPassword(username, password);
 		return user;
 	}
+	
+	@Override
+	public boolean registerUser(User user) {
+		boolean isRegister=false;
+		boolean saveStudent = getUserDAO().addUser(user);
+		if(saveStudent)
+			isRegister=true;
+		return isRegister;
+	}
 }
