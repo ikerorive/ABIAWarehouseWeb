@@ -46,14 +46,17 @@ public class User {
 	private String password;
 
 	public int getIdUser() {
+		System.out.println("GetIdUser "+idUser);
 		return idUser;
 	}
 
 	public void setIdUser(int idUser) {
+		System.out.println("SetIdUser "+idUser);
 		this.idUser = idUser;
 	}
 
 	public int getIdRole() {
+		System.out.println("idrole "+idRole);
 		return idRole;
 	}
 
@@ -62,6 +65,7 @@ public class User {
 	}
 
 	public String getUsername() {
+		System.out.println("getusername "+username);
 		return username;
 	}
 
@@ -70,6 +74,7 @@ public class User {
 	}
 
 	public String getPassword() {
+		System.out.println("password "+password);
 		return password;
 	}
 

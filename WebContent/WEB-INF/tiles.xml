@@ -11,7 +11,7 @@
 		<put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
 	</definition>
 	<definition name="login" extends="base.definition">
-		<put-attribute name="title" value="LOGIN" />
+		<put-attribute name="title" value="CUSTOMER LOGIN" />
 		<put-attribute name="body" value="/WEB-INF/view/login.jsp" />
 	</definition>
 
@@ -20,9 +20,19 @@
 		<put-attribute name="body" value="/WEB-INF/view/notFound.jsp" />
 	</definition>
 	
-	<definition name="welcome" extends="base.definition">
+	<definition name="welcomeCustomer" extends="base.definition">
 		<put-attribute name="title" value="WELCOME" />
-		<put-attribute name="body" value="/WEB-INF/view/welcome.jsp" />	
+		<put-attribute name="body" value="/WEB-INF/view/welcomeCustomer.jsp" />	
+	</definition>
+	
+	<definition name="welcomeOperator" extends="base.definition">
+		<put-attribute name="title" value="WELCOME" />
+		<put-attribute name="body" value="/WEB-INF/view/welcomeOperator.jsp" />	
+	</definition>
+	
+	<definition name="welcomeManager" extends="base.definition">
+		<put-attribute name="title" value="WELCOME" />
+		<put-attribute name="body" value="/WEB-INF/view/welcomeManager.jsp" />	
 	</definition>
 	
 	<definition name="home" extends="base.definition">
