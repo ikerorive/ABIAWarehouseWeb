@@ -46,18 +46,4 @@ public class UserDAOImpl implements UserDAO {
 		else
 			return null;
 	}
-	
-
-	@Override
-	public boolean addUser(User user){
-		int id = (Integer)hibernateTemplate.save(user);
-		
-		System.out.println(""+id);
-		
-		if(id>0)
-			return true;
-		return false;
-		
-	}
-	
 }

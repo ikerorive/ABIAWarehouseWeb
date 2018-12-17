@@ -33,7 +33,7 @@ public class User {
 	@Column(name = "idUser")
 	private int idUser;
 
-	@NotNull
+	@NotEmpty
 	@Column(name = "idRole")
 	private int idRole;
 
