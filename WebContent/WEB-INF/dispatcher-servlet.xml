@@ -54,6 +54,7 @@
 		<property name="annotatedClasses">
 			<array>
 				<value>model.User</value>
+				<value>model.Role</value>
 			</array>
 		</property>
 

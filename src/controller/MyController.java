@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.User;
 import model.UserCredential;
+import service.RoleService;
 import service.UserService;
 
 @Controller
@@ -42,6 +43,17 @@ public class MyController {
 
 	public UserService getUserService() {
 		return userService;
+	}
+
+	@Autowired
+	private RoleService roleService;
+
+	public RoleService getRoleService() {
+		return roleService;
+	}
+
+	public void setRoleService(RoleService roleService) {
+		this.roleService = roleService;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -66,7 +78,8 @@ public class MyController {
 		User user = getUserService().validateUserCredential(userCredential.getUsername(), userCredential.getPassword());
 		if (user != null) {
 			int role = user.getIdRole();
-			System.out.println("AAAAAAAAAAAAAAAAAAAAA  "+role);
+			System.out.println("\n"+getRoleService().validateRole(3).getRoledesc()+"\n");
+			System.out.println("AAAAAAAAAAAAAAAAAAAAA  " + role);
 			if (role == 3) {
 				modelAndView = new ModelAndView("welcomeManager");
 			} else if (role == 2) {
@@ -80,26 +93,25 @@ public class MyController {
 		}
 		return modelAndView;
 	}
-	
-	
-	@RequestMapping(value ="/registerSuccess" ,method=RequestMethod.POST)
-	public ModelAndView registerSuccess(@Valid @ModelAttribute("user") User user,BindingResult bindingResult){
-		if(bindingResult.hasErrors()){
+
+	@RequestMapping(value = "/registerSuccess", method = RequestMethod.POST)
+	public ModelAndView registerSuccess(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
 			return new ModelAndView("register");
 		}
-		
+
 		getUserService().registerUser(user);
 		ModelAndView modelAndView = new ModelAndView("home");
-		//modelAndView.addObject("user", user);
+		// modelAndView.addObject("user", user);
 		return modelAndView;
 	}
 
-	@RequestMapping(value ="/register" ,method=RequestMethod.GET)
-	public String registerPage(Model model){
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String registerPage(Model model) {
 		model.addAttribute("user", new User());
 		return "register";
 	}
-	
+
 	@ModelAttribute
 	public void headerMessage(Model model) {
 		model.addAttribute("headerMessage", "Welcome");
