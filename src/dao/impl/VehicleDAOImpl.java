@@ -1,5 +1,5 @@
-/** @file UserDAOImpl.java
- *  @brief User DAO implementation
+/** @file VehicleDAOImpl.java
+ *  @brief VehicleDAOImpl dao implementation
  *  @authors
  *  Name          | Surname         | Email                                |
  *  ------------- | -------------- | ------------------------------------ |
@@ -19,49 +19,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
-import dao.UserDAO;
-import model.User;
+import dao.VehicleDAO;
+import model.Vehicle;
 
-@Repository("userDAO")
-public class UserDAOImpl implements UserDAO {
+@Repository
+public class VehicleDAOImpl implements VehicleDAO {
 
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
-	
+
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
+
 	public HibernateTemplate getHibernateTemplate() {
 		return hibernateTemplate;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public User getUserDetailsByUsernameAndPassword(String username,String password){
-		DetachedCriteria detachedCriteria =  DetachedCriteria.forClass(User.class);
-		detachedCriteria.add(Restrictions.eq("username", username));
-		detachedCriteria.add(Restrictions.eq("password", password));
-		//System.out.println("PASSWORD "+password);
-		//System.out.println("username "+username);
-		List<User> findByCriteria = (List<User>) hibernateTemplate.findByCriteria(detachedCriteria);
-		if(findByCriteria !=null && findByCriteria.size()>0)
-		return findByCriteria.get(0);
+	public Vehicle getVehicleDetailsById(int id) {
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Vehicle.class);
+		detachedCriteria.add(Restrictions.eq("idVehicle", id));
+		List<Vehicle> findByCriteria = (List<Vehicle>) hibernateTemplate.findByCriteria(detachedCriteria);
+		System.out.println("FIND BY CRITERIA  "+ findByCriteria);
+		if (findByCriteria != null && findByCriteria.size() > 0)
+			return findByCriteria.get(0);
 		else
 			return null;
 	}
 	
-	
 
-	@Override
-	public boolean addUser(User user){
-		int id = (Integer)hibernateTemplate.save(user);
-		
-		//System.out.println(""+id);
-		
-		if(id>0)
-			return true;
-		return false;
-		
-	}
-	
-}	
+}

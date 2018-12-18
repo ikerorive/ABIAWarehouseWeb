@@ -26,10 +26,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import model.Vehicle;
 import model.User;
 import model.UserCredential;
 import service.RoleService;
 import service.UserService;
+import service.VehicleService;
+
 
 @Controller
 public class MyController {
@@ -54,6 +57,17 @@ public class MyController {
 
 	public void setRoleService(RoleService roleService) {
 		this.roleService = roleService;
+	}
+	
+	@Autowired
+	private VehicleService vehicleService;
+
+	public VehicleService getVehicleService() {
+		return vehicleService;
+	}
+
+	public void setVehicleService(VehicleService vehicleService) {
+		this.vehicleService = vehicleService;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -80,6 +94,9 @@ public class MyController {
 			int role = user.getIdRole();
 			System.out.println("\n"+getRoleService().validateRole(3).getRoledesc()+"\n");
 			System.out.println("AAAAAAAAAAAAAAAAAAAAA  " + role);
+			System.out.println("\n"+getVehicleService().validateVehicle(7).getIdPosition()+"\n");
+			System.out.println("AAAAAAAAAAAAAAAAAAAAA  " + role);
+			
 			if (role == 3) {
 				modelAndView = new ModelAndView("welcomeManager");
 			} else if (role == 2) {

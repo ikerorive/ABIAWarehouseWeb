@@ -44,7 +44,7 @@ public class roleDAOImpl implements RoleDAO {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Role.class);
 		detachedCriteria.add(Restrictions.eq("idRole", id));
 		List<Role> findByCriteria = (List<Role>) hibernateTemplate.findByCriteria(detachedCriteria);
-		System.out.println("FIND BY CRITERIA  "+ findByCriteria);
+		//System.out.println("FIND BY CRITERIA  "+ findByCriteria);
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria.get(0);
 		else
