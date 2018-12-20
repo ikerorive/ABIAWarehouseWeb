@@ -56,6 +56,10 @@
 				<value>model.User</value>
 				<value>model.Role</value>
 				<value>model.Vehicle</value>
+				<value>model.Order</value>
+				<value>model.OrderStatus</value>
+				<value>model.Task</value>
+				<value>model.TaskStatus</value>
 			</array>
 		</property>
 
