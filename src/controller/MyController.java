@@ -29,9 +29,16 @@ import org.springframework.web.servlet.ModelAndView;
 import model.Vehicle;
 import model.User;
 import model.UserCredential;
+import model.VehicleStatus;
+import service.PosTypeService;
+import service.PositionRelationService;
+import service.PositionService;
+import service.ProductService;
+import service.ProductTypeService;
 import service.RoleService;
 import service.UserService;
 import service.VehicleService;
+import service.VehicleStatusService;
 
 
 @Controller
@@ -70,6 +77,74 @@ public class MyController {
 		this.vehicleService = vehicleService;
 	}
 
+	
+	@Autowired
+	private VehicleStatusService vehicleStatusService;
+
+	public VehicleStatusService getVehicleStatusService() {
+		return vehicleStatusService;
+	}
+
+	public void setVehicleStatusService(VehicleStatusService vehicleStatusService) {
+		this.vehicleStatusService = vehicleStatusService;
+	}
+	
+	@Autowired
+	private ProductService productService;
+
+	public ProductService getProductService() {
+		return productService;
+	}
+
+	public void setProductService(ProductService productService) {
+		this.productService = productService;
+	}
+	
+	@Autowired
+	private ProductTypeService productTypeService;
+
+	public ProductTypeService getProductTypeService() {
+		return productTypeService;
+	}
+
+	public void setProductTypeService(ProductTypeService productTypeService) {
+		this.productTypeService = productTypeService;
+	}
+	
+	@Autowired
+	private PositionService positionService;
+
+	public PositionService getPositionService() {
+		return positionService;
+	}
+
+	public void setPositionService(PositionService positionService) {
+		this.positionService = positionService;
+	}
+	
+	@Autowired
+	private PosTypeService posTypeService;
+
+	public PosTypeService getPosTypeService() {
+		return posTypeService;
+	}
+
+	public void setPosTypeService(PosTypeService posTypeService) {
+		this.posTypeService = posTypeService;
+	}
+	
+	@Autowired
+	private PositionRelationService positionRelationService;
+
+	public PositionRelationService getPositionRelationService() {
+		return positionRelationService;
+	}
+
+	public void setPositionRelationService(PositionRelationService positionRelationService) {
+		this.positionRelationService = positionRelationService;
+	}
+	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homePage() {
 		return "home";
@@ -95,7 +170,19 @@ public class MyController {
 			System.out.println("\n"+getRoleService().validateRole(3).getRoledesc()+"\n");
 			System.out.println("AAAAAAAAAAAAAAAAAAAAA  " + role);
 			System.out.println("\n"+getVehicleService().validateVehicle(7).getIdPosition()+"\n");
-			System.out.println("AAAAAAAAAAAAAAAAAAAAA  " + role);
+			System.out.println("BBBBBBBBBBBBBBBBBBBBB " + role);
+			System.out.println("\n"+getVehicleStatusService().validateVehicleStatus(1).getStatusName()+"\n");
+			System.out.println("CCCCCCCCCCCCCCCCCCCCC  " + role);
+			System.out.println("\n"+getProductService().validateProduct(8).getProductType()+"\n");
+			System.out.println("DDDDDDDDDDDDDDDDDDDDD  " + role);
+			System.out.println("\n"+getProductTypeService().validateProductType(1).getName()+"\n");
+			System.out.println("EEEEEEEEEEEEEEEEEEEEE  " + role);
+			System.out.println("\n"+getPositionService().validatePosition(1).getPosName()+"\n");
+			System.out.println("FFFFFFFFFFFFFFFFFFFFF  " + role);
+			System.out.println("\n"+getPosTypeService().validatePosType(1).getName()+"\n");
+			System.out.println("GGGGGGGGGGGGGGGGGGGGG  " + role);
+			System.out.println("\n"+getPositionRelationService().validatePositionRelation(205).getIdDestino()+"\n");
+			System.out.println("HHHHHHHHHHHHHHHHHHHHH  " + role);
 			
 			if (role == 3) {
 				modelAndView = new ModelAndView("welcomeManager");

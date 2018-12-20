@@ -56,6 +56,12 @@
 				<value>model.User</value>
 				<value>model.Role</value>
 				<value>model.Vehicle</value>
+				<value>model.VehicleStatus</value>
+				<value>model.Product</value>
+				<value>model.ProductType</value>
+				<value>model.Position</value>
+				<value>model.PosType</value>
+				<value>model.PositionRelation</value>
 			</array>
 		</property>
 
