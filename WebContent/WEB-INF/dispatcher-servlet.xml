@@ -62,6 +62,10 @@
 				<value>model.Position</value>
 				<value>model.PosType</value>
 				<value>model.PositionRelation</value>
+				<value>model.Order</value>
+				<value>model.OrderStatus</value>
+				<value>model.Task</value>
+				<value>model.TaskStatus</value>
 			</array>
 		</property>
 

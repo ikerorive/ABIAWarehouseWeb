@@ -29,17 +29,23 @@ import org.springframework.web.servlet.ModelAndView;
 import model.Vehicle;
 import model.User;
 import model.UserCredential;
+
 import model.VehicleStatus;
 import service.PosTypeService;
 import service.PositionRelationService;
 import service.PositionService;
 import service.ProductService;
 import service.ProductTypeService;
+
+import service.OrderService;
+import service.OrderStatusService;
+
 import service.RoleService;
+import service.TaskService;
+import service.TaskStatusService;
 import service.UserService;
 import service.VehicleService;
 import service.VehicleStatusService;
-
 
 @Controller
 public class MyController {
@@ -65,7 +71,7 @@ public class MyController {
 	public void setRoleService(RoleService roleService) {
 		this.roleService = roleService;
 	}
-	
+
 	@Autowired
 	private VehicleService vehicleService;
 
@@ -144,7 +150,53 @@ public class MyController {
 		this.positionRelationService = positionRelationService;
 	}
 	
+
+	@Autowired
+	private OrderService orderService;
+
+	public OrderService getOrderService() {
+		return orderService;
+	}
+
+	public void setOrderService(OrderService orderService) {
+		this.orderService = orderService;
+	}
 	
+	@Autowired
+	private OrderStatusService orderStatusService;
+
+	public OrderStatusService getOrderStatusService() {
+		return orderStatusService;
+	}
+
+	public void setOrderStatusService(OrderStatusService orderStatusService) {
+		this.orderStatusService = orderStatusService;
+	}
+
+
+	@Autowired
+	private TaskService taskService;
+	
+	public TaskService getTaskService() {
+		return taskService;
+	}
+
+	public void setTaskService(TaskService taskService) {
+		this.taskService = taskService;
+	}
+	
+	@Autowired
+	private TaskStatusService taskStatusService;
+
+	public TaskStatusService getTaskStatusService() {
+		return taskStatusService;
+	}
+
+	public void setTaskStatusService(TaskStatusService taskStatusService) {
+		this.taskStatusService = taskStatusService;
+	}
+
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homePage() {
 		return "home";
@@ -167,23 +219,6 @@ public class MyController {
 		User user = getUserService().validateUserCredential(userCredential.getUsername(), userCredential.getPassword());
 		if (user != null) {
 			int role = user.getIdRole();
-			System.out.println("\n"+getRoleService().validateRole(3).getRoledesc()+"\n");
-			System.out.println("AAAAAAAAAAAAAAAAAAAAA  " + role);
-			System.out.println("\n"+getVehicleService().validateVehicle(7).getIdPosition()+"\n");
-			System.out.println("BBBBBBBBBBBBBBBBBBBBB " + role);
-			System.out.println("\n"+getVehicleStatusService().validateVehicleStatus(1).getStatusName()+"\n");
-			System.out.println("CCCCCCCCCCCCCCCCCCCCC  " + role);
-			System.out.println("\n"+getProductService().validateProduct(8).getProductType()+"\n");
-			System.out.println("DDDDDDDDDDDDDDDDDDDDD  " + role);
-			System.out.println("\n"+getProductTypeService().validateProductType(1).getName()+"\n");
-			System.out.println("EEEEEEEEEEEEEEEEEEEEE  " + role);
-			System.out.println("\n"+getPositionService().validatePosition(1).getPosName()+"\n");
-			System.out.println("FFFFFFFFFFFFFFFFFFFFF  " + role);
-			System.out.println("\n"+getPosTypeService().validatePosType(1).getName()+"\n");
-			System.out.println("GGGGGGGGGGGGGGGGGGGGG  " + role);
-			System.out.println("\n"+getPositionRelationService().validatePositionRelation(205).getIdDestino()+"\n");
-			System.out.println("HHHHHHHHHHHHHHHHHHHHH  " + role);
-			
 			if (role == 3) {
 				modelAndView = new ModelAndView("welcomeManager");
 			} else if (role == 2) {
