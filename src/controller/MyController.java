@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.Vehicle;
+import model.Order;
 import model.User;
 import model.UserCredential;
 
@@ -256,4 +257,22 @@ public class MyController {
 		model.addAttribute("headerMessage", "Welcome");
 
 	}
+	
+	@RequestMapping(value = "/order", method = RequestMethod.GET)
+	public String orderPage(Model model) {
+		model.addAttribute("order", new Order());
+		return "order";
+	}
+		
+	@RequestMapping(value = "/orderSuccess", method = RequestMethod.POST)
+	public ModelAndView orderSuccess(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return new ModelAndView("order");
+		}
+
+		getOrderService().createOrder(order);
+		ModelAndView modelAndView = new ModelAndView("home");
+		return modelAndView;
+	}
+
 }

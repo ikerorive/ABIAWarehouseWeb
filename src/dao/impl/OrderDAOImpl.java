@@ -21,6 +21,7 @@ import org.springframework.stereotype.Repository;
 
 import dao.OrderDAO;
 import model.Order;
+import model.User;
 
 @Repository
 public class OrderDAOImpl implements OrderDAO {
@@ -47,6 +48,18 @@ public class OrderDAOImpl implements OrderDAO {
 			return findByCriteria.get(0);
 		else
 			return null;
+	}
+	
+	@Override
+	public boolean addOrder(Order order){
+		int id = (Integer)hibernateTemplate.save(order);
+		
+		System.out.println(""+id);
+		
+		if(id>0)
+			return true;
+		return false;
+		
 	}
 	
 

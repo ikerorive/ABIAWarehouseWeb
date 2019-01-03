@@ -2,10 +2,13 @@ package dao.impl;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
 import dao.ProductTypeDAO;
@@ -37,6 +40,5 @@ public class ProductTypeDAOImpl implements ProductTypeDAO {
 		else
 			return null;
 	}
-	
 
 }

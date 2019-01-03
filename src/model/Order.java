@@ -20,8 +20,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -42,12 +45,17 @@ public class Order {
 	private int idOrderStatus;
 
 	@NotEmpty
-	@Column(name = "orderdesc")
+	@Column(name = "orderDesc")
 	private String orderDesc;
 
-	@NotEmpty
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date")
 	private Date date;
+	
+	@NotNull
+	@Column(name = "destino")
+	private int destino;
 
 	public int getIdOrder() {
 		return idOrder;
@@ -87,6 +95,14 @@ public class Order {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public int getDestino() {
+		return destino;
+	}
+
+	public void setDestino(int destino) {
+		this.destino = destino;
 	}
 
 }
