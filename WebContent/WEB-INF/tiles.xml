@@ -50,4 +50,9 @@
 		<put-attribute name="body" value="/WEB-INF/view/knowmore.jsp" />
 	</definition>
 
+	<definition name="order" extends="base.definition">
+		<put-attribute name="title" value="ORDER" />
+		<put-attribute name="body" value="/WEB-INF/view/order.jsp" />
+	</definition>
+
 </tiles-definitions>

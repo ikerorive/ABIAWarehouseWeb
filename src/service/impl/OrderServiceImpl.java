@@ -41,5 +41,12 @@ public class OrderServiceImpl implements OrderService {
 		return order;
 	}
 
+	public boolean createOrder (Order order) {
+		boolean orderCreated=false;
+		boolean saveOrder = getOrderDAO().addOrder(order);
+		if(saveOrder)
+			orderCreated=true;
+		return orderCreated;
+	}
 
 }

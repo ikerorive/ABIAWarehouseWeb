@@ -11,10 +11,12 @@
 /** @brief package dao
  */package dao;
 
+import java.util.List;
+
 import model.ProductType;
 
 public interface ProductTypeDAO {
 
 	public ProductType getNameById(int id);
-	
+
 }
