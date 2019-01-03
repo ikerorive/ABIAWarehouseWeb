@@ -10,6 +10,8 @@
    http://www.springframework.org/schema/mvc
    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+
+<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:annotation-driven />
 
 	<context:component-scan base-package="controller"></context:component-scan>

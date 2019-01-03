@@ -256,4 +256,11 @@ public class MyController {
 		model.addAttribute("headerMessage", "Welcome");
 
 	}
+	
+	@RequestMapping(value = "/knowmore", method = RequestMethod.GET)
+	public String knowmorePage(Model model) {
+		model.addAttribute("userCredential", new UserCredential());
+		return "knowmore";
+	}
+	
 }

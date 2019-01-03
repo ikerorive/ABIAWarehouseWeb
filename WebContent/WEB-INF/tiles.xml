@@ -44,5 +44,10 @@
 		<put-attribute name="title" value="REGISTER" />
 		<put-attribute name="body" value="/WEB-INF/view/register.jsp" />
 	</definition>
+	
+	<definition name="knowmore" extends="base.definition">
+		<put-attribute name="title" value="KNOW MORE" />
+		<put-attribute name="body" value="/WEB-INF/view/knowmore.jsp" />
+	</definition>
 
 </tiles-definitions>
