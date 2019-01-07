@@ -3,33 +3,7 @@
 <form:form action="/SpringMVCFormValidationPruebas/registerSuccess"
 	method="post" modelAttribute="user"
 	class="text-center p-5">
-	<!-- 
-	<table>
-		<tr>
-			<td>Enter Role (number):</td>
-			<td><form:input path="idRole" /></td>
-			<td><form:errors path="idRole" cssClass="error" /></td>
-		</tr>
-
-		<tr>
-			<td>Enter Username:</td>
-			<td><form:input path="username" /></td>
-			<td><form:errors path="username" cssClass="error" /></td>
-		</tr>
-		<tr>
-			<td>Enter Password:</td>
-			<td><form:input path="password" /></td>
-			<td><form:errors path="password" cssClass="error" /></td>
-		</tr>
-
-		<tr>
-			<td><input type="submit" class="btn btn-primary" value="Confirm"></td>
-		</tr>
-	</table>
-
-
- -->
-
+	
 	<!-- Role -->
 	<!--<form:input path="idRole" type="text" id="defaultRegisterFormName"
 		class="form-control mb-4" placeholder="Role" />-->

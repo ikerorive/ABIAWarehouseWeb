@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.Vehicle;
 import model.Order;
+import model.Task;
 import model.User;
 import model.UserCredential;
 
@@ -279,6 +280,23 @@ public class MyController {
 		}
 
 		getOrderService().createOrder(order);
+		ModelAndView modelAndView = new ModelAndView("home");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/task", method = RequestMethod.GET)
+	public String taskPage(Model model) {
+		model.addAttribute("task", new Task());
+		return "task";
+	}
+		
+	@RequestMapping(value = "/taskSuccess", method = RequestMethod.POST)
+	public ModelAndView taskSuccess(@Valid @ModelAttribute("task") Task task, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return new ModelAndView("task");
+		}
+
+		getTaskService().createTask(task);
 		ModelAndView modelAndView = new ModelAndView("home");
 		return modelAndView;
 	}

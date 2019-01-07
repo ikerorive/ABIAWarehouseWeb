@@ -16,4 +16,6 @@ import model.Task;
 
 public interface TaskService {
 	public abstract Task validateOrder(int idOrder, int idProduct);
+
+	public abstract boolean createTask(Task task);
 }

@@ -41,4 +41,11 @@ public class TaskServiceImpl implements TaskService {
 		return task;
 	}
 
+	public boolean createTask (Task task) {
+		boolean taskCreated=false;
+		boolean saveTask = getTaskDAO().addTask(task);
+		if(saveTask)
+			taskCreated=true;
+		return taskCreated;
+	}
 }

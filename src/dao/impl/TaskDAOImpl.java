@@ -12,6 +12,7 @@
  */
 package dao.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -22,6 +23,7 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import dao.TaskDAO;
+import model.Order;
 import model.Task;
 
 @Repository
@@ -53,4 +55,16 @@ public class TaskDAOImpl implements TaskDAO {
 			return null;
 	}
 
+	@Override
+	public boolean addTask(Task task){
+		
+		hibernateTemplate.save(task);
+		
+		/*
+		
+		if(id!=null)
+			return true;
+		return false;
+		*/return true;
+	}
 }

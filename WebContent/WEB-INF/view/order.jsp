@@ -1,10 +1,9 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<h3 align="center">${headerMessage}</h3>
 <form:form action="/SpringMVCFormValidationPruebas/orderSuccess"
 	method="post" modelAttribute="order">
 
-	<table>
+	<!--  <table>
 		<tr>
 			<td>Id user (number):</td>
 			<td><form:input path="idUser" /></td>
@@ -30,5 +29,28 @@
 		<tr>
 			<td><input  type="submit" value="Confirm"></td>
 		</tr>
-	</table>
+	</table> -->
+
+	<p class="h4 mb-4">Order</p>
+	<!-- Id user -->
+	<form:input path="idUser" type="number" class="form-control  mb-4"
+		placeholder="User id" />
+		
+	<!-- Id order status (hidden) -->
+	<form:input path="idOrderStatus" type="hidden"
+		class="form-control  mb-4" value="1" />
+
+	<!-- Username -->
+	<form:input path="orderDesc" type="text" class="form-control  mb-4"
+		placeholder="Order description" />
+
+	<!-- Username -->
+	<form:input path="destino" type="number" class="form-control  mb-4"
+		placeholder="Destiny of the order" />
+
+	<!-- Sign up button -->
+	<button class="btn btn-info my-4 btn-block peach-gradient"
+		type="submit" value="Confirm">Confirm</button>
+
+
 </form:form>

@@ -16,4 +16,6 @@ import model.Task;
 
 public interface TaskDAO {
 	public Task getOrderDetailsByIdOrderAndIdProduct(int idOrder, int idProduct);
+
+	public boolean addTask(Task task);
 }

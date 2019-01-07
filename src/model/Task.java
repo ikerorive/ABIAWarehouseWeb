@@ -40,13 +40,13 @@ public class Task implements Serializable {
 	@Column(name = "idProduct")
 	private int idProduct;
 
-	@Column(name = "idVehicle", nullable = true)
+	@Column(name = "idVehicle")
 	private int idVehicle;
 
-	@Column(name = "idStatus", nullable = true)
+	@Column(name = "idStatus")
 	private int idStatus;
 
-	@Column(name = "finishdate", nullable = true)
+	@Column(name = "finishdate")
 	private Date finishDate;
 
 	public int getIdOrder() {
