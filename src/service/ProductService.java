@@ -11,8 +11,12 @@
 /** @brief package service
  */package service;
 
+import java.util.ArrayList;
+
 import model.Product;
 
 public interface ProductService {
 	public abstract Product validateProduct(int id);
+	
+	public abstract ArrayList<Product> getProducts();
 }

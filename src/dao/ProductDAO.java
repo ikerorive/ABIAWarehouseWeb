@@ -11,8 +11,12 @@
 /** @brief package dao
  */package dao;
 
+import java.util.ArrayList;
+
 import model.Product;
 
 public interface ProductDAO {
 	public Product getProductTypeById(int id);
+	
+	public ArrayList<Product> getAllProducts();
 }

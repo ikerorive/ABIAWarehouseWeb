@@ -19,6 +19,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.Vehicle;
 import model.Order;
+import model.Product;
 import model.Task;
 import model.User;
 import model.UserCredential;
@@ -263,6 +265,12 @@ public class MyController {
 	@RequestMapping(value = "/knowmore", method = RequestMethod.GET)
 	public String knowmorePage(Model model) {
 		model.addAttribute("userCredential", new UserCredential());
+		
+		ArrayList<Product> pr = getProductService().getProducts();
+		for (Product o : pr){
+		   System.out.println("Id Product "+o.getIdProduct());
+			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos en el arreglo
+		}
 		return "knowmore";
 	}
 	

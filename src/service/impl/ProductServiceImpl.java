@@ -11,6 +11,8 @@
 /** @brief package service.impl
  */package service.impl;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +37,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product validateProduct(int id) {
 		Product product = getProductDAO().getProductTypeById(id);
+		return product;
+	}
+
+	@Override
+	public ArrayList<Product> getProducts() {
+		ArrayList<Product> product = getProductDAO().getAllProducts();
 		return product;
 	}
 }

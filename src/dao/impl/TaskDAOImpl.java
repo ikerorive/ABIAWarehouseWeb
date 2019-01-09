@@ -13,8 +13,10 @@
 package dao.impl;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
@@ -24,6 +26,7 @@ import org.springframework.stereotype.Repository;
 
 import dao.TaskDAO;
 import model.Order;
+import model.Product;
 import model.Task;
 
 @Repository
@@ -56,15 +59,17 @@ public class TaskDAOImpl implements TaskDAO {
 	}
 
 	@Override
-	public boolean addTask(Task task){
-		
-		hibernateTemplate.save(task);
-		
+	public boolean addTask(Task task) {
+		Query query = hibernateTemplate.getSessionFactory().openSession().createSQLQuery(
+				"INSERT INTO `warehouse`.`task` (`idORDER`, `idPRODUCT`, `idVEHICLE`, `idSTATUS`, `FINISHDATE`) VALUES ('"
+						+ task.getIdOrder() + "', '" + task.getIdProduct() + "', '" + task.getIdVehicle() + "', '"
+						+ task.getIdStatus() + "', '1970-01-01 00:00:00');");
+		query.executeUpdate();
+		// hibernateTemplate.save(task);
+
 		/*
-		
-		if(id!=null)
-			return true;
-		return false;
-		*/return true;
+		 * 
+		 * if(id!=null) return true; return false;
+		 */return true;
 	}
 }

@@ -9,8 +9,10 @@
  */
 
 /** @brief package dao.impl
- */package dao.impl;
+ */
+package dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -43,12 +45,22 @@ public class ProductDAOImpl implements ProductDAO {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Product.class);
 		detachedCriteria.add(Restrictions.eq("idProduct", id));
 		List<Product> findByCriteria = (List<Product>) hibernateTemplate.findByCriteria(detachedCriteria);
-		System.out.println("FIND BY CRITERIA  "+ findByCriteria);
+		System.out.println("FIND BY CRITERIA  " + findByCriteria);
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria.get(0);
 		else
 			return null;
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<Product> getAllProducts() {
+		// TODO Auto-generated method stub
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Product.class);
+
+		ArrayList<Product> findByCriteria = (ArrayList<Product>) hibernateTemplate.findByCriteria(detachedCriteria);
+
+		return findByCriteria;
+	}
 
 }

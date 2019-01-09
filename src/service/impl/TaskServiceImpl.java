@@ -12,6 +12,9 @@
  */
 package service.impl;
 
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,11 +44,17 @@ public class TaskServiceImpl implements TaskService {
 		return task;
 	}
 
-	public boolean createTask (Task task) {
-		boolean taskCreated=false;
+	public boolean createTask(Task task) {
+		System.out.println("getIdOrder " + task.getIdOrder());
+		System.out.println("getIdProduct " + task.getIdProduct());
+		System.out.println("getIdVehicle " + task.getIdVehicle());
+		System.out.println("getIdStatus " + task.getIdStatus());
+
+		boolean taskCreated = false;
 		boolean saveTask = getTaskDAO().addTask(task);
-		if(saveTask)
-			taskCreated=true;
+		if (saveTask)
+			taskCreated = true;
 		return taskCreated;
+
 	}
 }

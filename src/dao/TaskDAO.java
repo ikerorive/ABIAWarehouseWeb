@@ -11,6 +11,8 @@
 /** @brief package dao
  */package dao;
 
+import org.hibernate.mapping.List;
+
 import model.Order;
 import model.Task;
 
@@ -18,4 +20,5 @@ public interface TaskDAO {
 	public Task getOrderDetailsByIdOrderAndIdProduct(int idOrder, int idProduct);
 
 	public boolean addTask(Task task);
+	
 }
