@@ -11,9 +11,12 @@
 /** @brief package service
  */package service;
 
+import java.util.HashMap;
+
 import model.ProductType;
 
 public interface ProductTypeService {
 
 	public abstract ProductType validateProductType(int id);
+	public abstract HashMap<Integer, ProductType> getProductTypeMap();
 }

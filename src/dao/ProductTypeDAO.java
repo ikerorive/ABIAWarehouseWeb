@@ -11,6 +11,7 @@
 /** @brief package dao
  */package dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import model.ProductType;
@@ -18,5 +19,6 @@ import model.ProductType;
 public interface ProductTypeDAO {
 
 	public ProductType getNameById(int id);
+	public HashMap<Integer, ProductType> getProductTypeMap();
 
 }

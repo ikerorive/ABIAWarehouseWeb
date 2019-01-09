@@ -1,5 +1,7 @@
 package dao.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -12,6 +14,7 @@ import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
 import dao.ProductTypeDAO;
+import model.Product;
 import model.ProductType;
 
 @Repository
@@ -39,6 +42,19 @@ public class ProductTypeDAOImpl implements ProductTypeDAO {
 			return findByCriteria.get(0);
 		else
 			return null;
+	}
+
+	@Override
+	public HashMap<Integer, ProductType> getProductTypeMap() {
+		// TODO Auto-generated method stub
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ProductType.class);
+
+		ArrayList<ProductType> findByCriteria = (ArrayList<ProductType>) hibernateTemplate.findByCriteria(detachedCriteria);
+		HashMap<Integer, ProductType> productMap = new HashMap<Integer, ProductType>();
+		for (ProductType pt : findByCriteria) {
+		   productMap.put(pt.getIdProductType(), pt);
+		}
+		return productMap;
 	}
 
 }

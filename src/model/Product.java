@@ -9,7 +9,8 @@
  */
 
 /** @brief package model
- */package model;
+ */
+package model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,10 +32,30 @@ public class Product {
 	@NotNull
 	@Column(name = "productType")
 	private int productType;
-	
+
 	@NotNull
 	@Column(name = "position")
 	private int position;
+
+	private String name;
+
+	private String description;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public int getIdProduct() {
 		return idProduct;
@@ -60,5 +81,4 @@ public class Product {
 		this.position = position;
 	}
 
-	
 }

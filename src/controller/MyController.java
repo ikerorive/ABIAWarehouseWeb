@@ -13,6 +13,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -30,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 import model.Vehicle;
 import model.Order;
 import model.Product;
+import model.ProductType;
 import model.Task;
 import model.User;
 import model.UserCredential;
@@ -87,7 +89,6 @@ public class MyController {
 		this.vehicleService = vehicleService;
 	}
 
-	
 	@Autowired
 	private VehicleStatusService vehicleStatusService;
 
@@ -98,7 +99,7 @@ public class MyController {
 	public void setVehicleStatusService(VehicleStatusService vehicleStatusService) {
 		this.vehicleStatusService = vehicleStatusService;
 	}
-	
+
 	@Autowired
 	private ProductService productService;
 
@@ -109,7 +110,7 @@ public class MyController {
 	public void setProductService(ProductService productService) {
 		this.productService = productService;
 	}
-	
+
 	@Autowired
 	private ProductTypeService productTypeService;
 
@@ -120,7 +121,7 @@ public class MyController {
 	public void setProductTypeService(ProductTypeService productTypeService) {
 		this.productTypeService = productTypeService;
 	}
-	
+
 	@Autowired
 	private PositionService positionService;
 
@@ -131,7 +132,7 @@ public class MyController {
 	public void setPositionService(PositionService positionService) {
 		this.positionService = positionService;
 	}
-	
+
 	@Autowired
 	private PosTypeService posTypeService;
 
@@ -142,7 +143,7 @@ public class MyController {
 	public void setPosTypeService(PosTypeService posTypeService) {
 		this.posTypeService = posTypeService;
 	}
-	
+
 	@Autowired
 	private PositionRelationService positionRelationService;
 
@@ -153,7 +154,6 @@ public class MyController {
 	public void setPositionRelationService(PositionRelationService positionRelationService) {
 		this.positionRelationService = positionRelationService;
 	}
-	
 
 	@Autowired
 	private OrderService orderService;
@@ -165,7 +165,7 @@ public class MyController {
 	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;
 	}
-	
+
 	@Autowired
 	private OrderStatusService orderStatusService;
 
@@ -177,10 +177,9 @@ public class MyController {
 		this.orderStatusService = orderStatusService;
 	}
 
-
 	@Autowired
 	private TaskService taskService;
-	
+
 	public TaskService getTaskService() {
 		return taskService;
 	}
@@ -188,7 +187,7 @@ public class MyController {
 	public void setTaskService(TaskService taskService) {
 		this.taskService = taskService;
 	}
-	
+
 	@Autowired
 	private TaskStatusService taskStatusService;
 
@@ -199,7 +198,6 @@ public class MyController {
 	public void setTaskStatusService(TaskStatusService taskStatusService) {
 		this.taskStatusService = taskStatusService;
 	}
-
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homePage() {
@@ -260,27 +258,32 @@ public class MyController {
 		model.addAttribute("headerMessage", "Welcome");
 
 	}
-	
 
 	@RequestMapping(value = "/knowmore", method = RequestMethod.GET)
 	public String knowmorePage(Model model) {
 		model.addAttribute("userCredential", new UserCredential());
-		
+		HashMap<Integer, ProductType> hmap = getProductTypeService().getProductTypeMap();
 		ArrayList<Product> pr = getProductService().getProducts();
-		for (Product o : pr){
-		   System.out.println("Id Product "+o.getIdProduct());
-			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos en el arreglo
+		for (Product o : pr) {
+
+			o.setName(hmap.get(o.getProductType()).getName());
+			o.setDescription(hmap.get(o.getProductType()).getDescription());
+			System.out.println("Id Product " + o.getIdProduct());
+			System.out.println(" Product " + o.getName());
+			System.out.println(" Product " + o.getDescription());
+			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos
+			// en el arreglo
 		}
+		model.addAttribute("products", pr);
 		return "knowmore";
 	}
-	
 
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
 	public String orderPage(Model model) {
 		model.addAttribute("order", new Order());
 		return "order";
 	}
-		
+
 	@RequestMapping(value = "/orderSuccess", method = RequestMethod.POST)
 	public ModelAndView orderSuccess(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
@@ -297,7 +300,7 @@ public class MyController {
 		model.addAttribute("task", new Task());
 		return "task";
 	}
-		
+
 	@RequestMapping(value = "/taskSuccess", method = RequestMethod.POST)
 	public ModelAndView taskSuccess(@Valid @ModelAttribute("task") Task task, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
