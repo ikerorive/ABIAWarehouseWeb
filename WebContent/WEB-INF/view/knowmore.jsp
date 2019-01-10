@@ -6,16 +6,34 @@
 
 	request.setAttribute("alist", list);
 %>
+<script>
+	function selectProducts() {
+		console.log("selected products")
+		var checkedBoxes = document
+				.querySelectorAll('input[type=checkbox]:checked');
+		console.log(checkedBoxes);
 
-<c:forEach items="${alist}" var="listItem">
+	}
+</script>
 
-	<div class="custom-control custom-checkbox">
-		<input type="checkbox" class="custom-control-input"
-			id="${listItem.idProduct}"> <label class="custom-control-label"
-			for="${listItem.idProduct}">${listItem.name}</label>
-	</div>
+<form id="products" action="selectProducts">
+	<c:forEach items="${alist}" var="listItem">
+		<div id="productList">
+			<div class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input"
+					id="${listItem.idProduct}"> <label
+					class="custom-control-label" for="${listItem.idProduct}">${listItem.name}</label>
 
-</c:forEach>
 
-<a class="btn peach-gradient" href="#">Add to cart</a>
+			</div>
 
+			&nbsp; &nbsp; &nbsp; &nbsp; <i class="fas fa-info-circle"
+				data-toggle="popover" data-content="${listItem.description}"
+				data-trigger="hover"></i>
+		</div>
+	</c:forEach>
+
+	<a class="btn peach-gradient" onclick="selectProducts();">Add to
+		cart</a>
+
+</form>

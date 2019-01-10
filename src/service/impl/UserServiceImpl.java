@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User validateUserCredential(String username, String password) {
 		User user = getUserDAO().getUserDetailsByUsernameAndPassword(username, password);
+		
 		return user;
 	}
 	

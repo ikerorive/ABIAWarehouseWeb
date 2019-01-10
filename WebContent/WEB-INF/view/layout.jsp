@@ -50,6 +50,11 @@
 	<!-- MDB core JavaScript -->
 	<script type="text/javascript"
 		src="resources/MDB-Free_4.6.0/js/mdb.min.js"></script>
-
+	<script>
+		$(function() {
+			$('[data-toggle="popover"]').popover()
+		})
+		console.log("popover enabled")
+	</script>
 </body>
 </html>

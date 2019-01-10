@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -57,7 +58,6 @@ public class ProductDAOImpl implements ProductDAO {
 	public ArrayList<Product> getAllProducts() {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Product.class);
-
 		ArrayList<Product> findByCriteria = (ArrayList<Product>) hibernateTemplate.findByCriteria(detachedCriteria);
 
 		return findByCriteria;

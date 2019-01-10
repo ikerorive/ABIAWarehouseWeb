@@ -13,6 +13,8 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -227,7 +229,7 @@ public class MyController {
 				modelAndView = new ModelAndView("welcomeOperator");
 			}
 			modelAndView.addObject("user", user);
-			return modelAndView;
+			//return modelAndView;
 		} else {
 			System.out.println();
 			modelAndView = new ModelAndView("notFound");
@@ -274,6 +276,9 @@ public class MyController {
 			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos
 			// en el arreglo
 		}
+		//Collections.sort(pr);
+		pr.sort(Comparator.comparing(Product::getProductType));
+		System.out.println("sorted");
 		model.addAttribute("products", pr);
 		return "knowmore";
 	}
@@ -311,5 +316,7 @@ public class MyController {
 		ModelAndView modelAndView = new ModelAndView("home");
 		return modelAndView;
 	}
+	
+
 
 }

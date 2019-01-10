@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -48,7 +49,7 @@ public class ProductTypeDAOImpl implements ProductTypeDAO {
 	public HashMap<Integer, ProductType> getProductTypeMap() {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ProductType.class);
-
+		
 		ArrayList<ProductType> findByCriteria = (ArrayList<ProductType>) hibernateTemplate.findByCriteria(detachedCriteria);
 		HashMap<Integer, ProductType> productMap = new HashMap<Integer, ProductType>();
 		for (ProductType pt : findByCriteria) {

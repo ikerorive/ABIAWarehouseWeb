@@ -18,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -37,22 +38,28 @@ public class Product {
 	@Column(name = "position")
 	private int position;
 
+	@Transient
 	private String name;
 
+	@Transient
 	private String description;
 
+	@Transient
 	public String getDescription() {
 		return description;
 	}
 
+	@Transient
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	@Transient
 	public String getName() {
 		return name;
 	}
 
+	@Transient
 	public void setName(String name) {
 		this.name = name;
 	}
