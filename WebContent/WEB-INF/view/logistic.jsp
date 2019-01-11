@@ -1,0 +1,1 @@
+<p>LOGISTIC PAGE</p>

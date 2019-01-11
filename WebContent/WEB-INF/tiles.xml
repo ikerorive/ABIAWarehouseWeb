@@ -63,5 +63,28 @@
 		<put-attribute name="title" value="TASK" />
 		<put-attribute name="body" value="/WEB-INF/view/productSelection.jsp" />
 	</definition>
-
+	<definition name="currentOrders" extends="base.definition">
+		<put-attribute name="title" value="TASK" />
+		<put-attribute name="body" value="/WEB-INF/view/currentOrders.jsp" />
+	</definition>
+	<definition name="logistic" extends="base.definition">
+		<put-attribute name="title" value="TASK" />
+		<put-attribute name="body" value="/WEB-INF/view/logistic.jsp" />
+	</definition>
+	<definition name="currentOrdersAll" extends="base.definition">
+		<put-attribute name="title" value="TASK" />
+		<put-attribute name="body" value="/WEB-INF/view/currentOrdersAll.jsp" />
+	</definition>
+	<definition name="orderHistoryAll" extends="base.definition">
+		<put-attribute name="title" value="TASK" />
+		<put-attribute name="body" value="/WEB-INF/view/orderHistoryAll.jsp" />
+	</definition>
+	<definition name="vehicleInfo" extends="base.definition">
+		<put-attribute name="title" value="TASK" />
+		<put-attribute name="body" value="/WEB-INF/view/vehicleInfo.jsp" />
+	</definition>
+	<definition name="workstationInfo" extends="base.definition">
+		<put-attribute name="title" value="TASK" />
+		<put-attribute name="body" value="/WEB-INF/view/workstationInfo.jsp" />
+	</definition>
 </tiles-definitions>
