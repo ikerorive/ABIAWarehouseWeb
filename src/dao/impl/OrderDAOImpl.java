@@ -9,7 +9,8 @@
  */
 
 /** @brief package dao.impl
- */package dao.impl;
+ */
+package dao.impl;
 
 import java.util.List;
 
@@ -43,24 +44,33 @@ public class OrderDAOImpl implements OrderDAO {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Order.class);
 		detachedCriteria.add(Restrictions.eq("idOrder", id));
 		List<Order> findByCriteria = (List<Order>) hibernateTemplate.findByCriteria(detachedCriteria);
-		System.out.println("FIND BY CRITERIA  "+ findByCriteria);
+		System.out.println("FIND BY CRITERIA  " + findByCriteria);
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria.get(0);
 		else
 			return null;
 	}
-	
+
 	@Override
-	public boolean addOrder(Order order){
-		int id = (Integer)hibernateTemplate.save(order);
-		
-		System.out.println(""+id);
-		
-		if(id>0)
+	public boolean addOrder(Order order) {
+		int id = (Integer) hibernateTemplate.save(order);
+
+		System.out.println("" + id);
+
+		if (id > 0)
 			return true;
 		return false;
-		
+
 	}
-	
+
+	@Override
+	public int getLastOrderId() {
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Order.class);
+		List<Order> findByCriteria = (List<Order>) hibernateTemplate.findByCriteria(detachedCriteria);
+		System.out.println("LAST ID" + findByCriteria.get(findByCriteria.size()-1).getIdOrder());
+		return findByCriteria.get(findByCriteria.size()-1).getIdOrder();
+		
+
+	}
 
 }

@@ -18,9 +18,13 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -28,6 +32,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.Vehicle;
@@ -56,6 +63,7 @@ import service.VehicleService;
 import service.VehicleStatusService;
 
 @Controller
+@Scope("session")
 public class MyController {
 
 	@Autowired
@@ -214,7 +222,7 @@ public class MyController {
 
 	@RequestMapping(value = "/loginSuccess", method = RequestMethod.POST)
 	public ModelAndView loginSuccess(@Valid @ModelAttribute("userCredential") UserCredential userCredential,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, HttpSession session) {
 		if (bindingResult.hasErrors()) {
 			return new ModelAndView("login");
 		}
@@ -222,6 +230,12 @@ public class MyController {
 		ModelAndView modelAndView = new ModelAndView("welcomeCustomer");
 		User user = getUserService().validateUserCredential(userCredential.getUsername(), userCredential.getPassword());
 		if (user != null) {
+			session.setAttribute("user", user);
+
+			if (session.getAttribute("user") != null) {
+				User user2 = (User) session.getAttribute("user");
+				System.out.println("username " + user2.getUsername());
+			}
 			int role = user.getIdRole();
 			if (role == 3) {
 				modelAndView = new ModelAndView("welcomeManager");
@@ -229,11 +243,31 @@ public class MyController {
 				modelAndView = new ModelAndView("welcomeOperator");
 			}
 			modelAndView.addObject("user", user);
-			//return modelAndView;
+			// return modelAndView;
 		} else {
 			System.out.println();
 			modelAndView = new ModelAndView("notFound");
 		}
+
+		//// DESDE AQUI PARA CARGAR DATOS DE PRODUCTOS
+		HashMap<Integer, ProductType> hmap = getProductTypeService().getProductTypeMap();
+		ArrayList<Product> pr = getProductService().getProducts();
+		for (Product o : pr) {
+
+			o.setName(hmap.get(o.getProductType()).getName());
+			o.setDescription(hmap.get(o.getProductType()).getDescription());
+			System.out.println("Id Product " + o.getIdProduct());
+			System.out.println(" Product " + o.getName());
+			System.out.println(" Product " + o.getDescription());
+			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos
+			// en el arreglo
+		}
+		// Collections.sort(pr);
+		pr.sort(Comparator.comparing(Product::getProductType));
+		System.out.println("sorted");
+		modelAndView.addObject("products", pr);
+		///// HASTA AQUI
+
 		return modelAndView;
 	}
 
@@ -276,7 +310,7 @@ public class MyController {
 			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos
 			// en el arreglo
 		}
-		//Collections.sort(pr);
+		// Collections.sort(pr);
 		pr.sort(Comparator.comparing(Product::getProductType));
 		System.out.println("sorted");
 		model.addAttribute("products", pr);
@@ -316,7 +350,58 @@ public class MyController {
 		ModelAndView modelAndView = new ModelAndView("home");
 		return modelAndView;
 	}
-	
 
+	@RequestMapping(value = "/selectProducts", method = RequestMethod.POST)
+	@ResponseBody
+	public void validateSymbol(WebRequest webRequest, Model model, HttpServletRequest request,
+			HttpServletResponse response, @RequestParam String[] data, HttpSession session) {
+		Order order = new Order();
+		if (session.getAttribute("user") != null) {
+			User user2 = (User) session.getAttribute("user");
+			System.out.println("username " + user2.getUsername());
+			order.setIdUser(user2.getIdUser());
+		} else {
+			order.setIdUser(4);
+		}
+		order.setIdOrderStatus(1);
+		order.setDestino(Integer.parseInt(data[0]));
+		order.setOrderDesc(data[1]);
+		getOrderService().createOrder(order);
+		int id = getOrderService().getLastId();
+		System.out.println("LAST ID " + id);
+		// Order order= getOrderService().
+		System.out.println("PRUEBA   " + data[0]);
+		// response.encodeRedirectURL("/SpringMVCFormValidationPruebas/selectProducts");
+		for (int i = 2; i < data.length; i++) {
+			Task task = new Task();
+			task.setIdOrder(id);
+			task.setIdProduct(Integer.parseInt(data[i]));
+			task.setIdStatus(1);
+			task.setIdVehicle(0);
+			getTaskService().createTask(task);
+		}
+	}
+
+	@RequestMapping(value = "/productSelection", method = RequestMethod.GET)
+	public String productSelection(Model model) {
+		// model.addAttribute("userCredential", new UserCredential());
+		HashMap<Integer, ProductType> hmap = getProductTypeService().getProductTypeMap();
+		ArrayList<Product> pr = getProductService().getProducts();
+		for (Product o : pr) {
+
+			o.setName(hmap.get(o.getProductType()).getName());
+			o.setDescription(hmap.get(o.getProductType()).getDescription());
+			System.out.println("Id Product " + o.getIdProduct());
+			System.out.println(" Product " + o.getName());
+			System.out.println(" Product " + o.getDescription());
+			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos
+			// en el arreglo
+		}
+		// Collections.sort(pr);
+		pr.sort(Comparator.comparing(Product::getProductType));
+		System.out.println("sorted");
+		model.addAttribute("products", pr);
+		return "productSelection";
+	}
 
 }

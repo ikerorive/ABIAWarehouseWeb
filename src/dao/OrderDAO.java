@@ -15,6 +15,6 @@ import model.Order;
 
 public interface OrderDAO {
 	public Order getOrderDetailsById(int id);
-	
+	public int getLastOrderId();
 	public boolean addOrder(Order order);
 }

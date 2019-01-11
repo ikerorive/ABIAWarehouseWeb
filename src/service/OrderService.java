@@ -15,6 +15,6 @@ import model.Order;
 
 public interface OrderService {
 	public abstract Order validateOrder(int id);
-	
+	public abstract int getLastId();
 	public abstract boolean createOrder(Order order);
 }

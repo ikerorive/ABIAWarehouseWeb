@@ -59,5 +59,9 @@
 		<put-attribute name="title" value="TASK" />
 		<put-attribute name="body" value="/WEB-INF/view/task.jsp" />
 	</definition>
+	<definition name="productSelection" extends="base.definition">
+		<put-attribute name="title" value="TASK" />
+		<put-attribute name="body" value="/WEB-INF/view/productSelection.jsp" />
+	</definition>
 
 </tiles-definitions>

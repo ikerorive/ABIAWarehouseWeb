@@ -49,4 +49,10 @@ public class OrderServiceImpl implements OrderService {
 		return orderCreated;
 	}
 
+	@Override
+	public int getLastId() {
+		int order = getOrderDAO().getLastOrderId();
+		return order;
+	}
+
 }
