@@ -20,15 +20,23 @@
 				<c:choose>
 					<c:when test="${user.idRole==1}">
 						<li class="nav-item"><a class="nav-link"
-							href="/SpringMVCFormValidationPruebas/productSelection">Customer</a></li>
+							href="/SpringMVCFormValidationPruebas/productSelection">Create an order</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/SpringMVCFormValidationPruebas/currentOrders">See current orders and history</a></li>
 					</c:when>
 					<c:when test="${user.idRole==2}">
 						<li class="nav-item"><a class="nav-link"
-							href="/SpringMVCFormValidationPruebas/register">Operator</a></li>
+							href="/SpringMVCFormValidationPruebas/logistic">Logistic</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/SpringMVCFormValidationPruebas/currentOrdersAll">See current orders of all users</a></li>
 					</c:when>
 					<c:when test="${user.idRole==3}">
 						<li class="nav-item"><a class="nav-link"
-							href="/SpringMVCFormValidationPruebas/register">Manager</a></li>
+							href="/SpringMVCFormValidationPruebas/orderHistoryAll">Order history of all users</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/SpringMVCFormValidationPruebas/vehicleInfo">Vehicle information</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/SpringMVCFormValidationPruebas/workstationInfo">Workstation information</a></li>
 					</c:when>
 				</c:choose>
 

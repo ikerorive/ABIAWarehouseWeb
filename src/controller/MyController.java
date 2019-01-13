@@ -403,5 +403,40 @@ public class MyController {
 		model.addAttribute("products", pr);
 		return "productSelection";
 	}
+	
+	@RequestMapping(value = "/currentOrders", method = RequestMethod.GET)
+	public String currentOrders(Model model) {
+		
+		return "currentOrders";
+	}
 
+	@RequestMapping(value = "/currentOrdersAll", method = RequestMethod.GET)
+	public String currenOrdersAll(Model model) {
+		
+		return "currentOrdersAll";
+	}
+
+	@RequestMapping(value = "/logistic", method = RequestMethod.GET)
+	public String logistic(Model model) {
+		
+		return "logistic";
+	}
+
+	@RequestMapping(value = "/orderHistoryAll", method = RequestMethod.GET)
+	public String orderHistoryAll(Model model) {
+		
+		return "orderHistoryAll";
+	}
+
+	@RequestMapping(value = "/vehicleInfo", method = RequestMethod.GET)
+	public String vehicleInfo(Model model) {
+		
+		return "vehicleInfo";
+	}
+
+	@RequestMapping(value = "/workstationInfo", method = RequestMethod.GET)
+	public String workstationInfo(Model model) {
+		
+		return "workstationInfo";
+	}
 }
