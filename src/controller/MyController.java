@@ -437,7 +437,7 @@ public class MyController {
 	public String orderHistoryAll(Model model) {
 		GetJSON getJson = new GetJSON();
 		JSONArray json = getJson.getJSONFromQuery("SELECT\r\n" + "  user.USERNAME,\r\n" + "  `order`.ORDERDESC,\r\n"
-				+ "  taskstatus.STATUSDESC,\r\n" + "  producttype.NAME,\r\n" + "  `order`.DATE\r\n" + "FROM task\r\n"
+				+ "  taskstatus.STATUSNAME,\r\n" + "  producttype.NAME,\r\n" + "  `order`.DATE\r\n" + "FROM task\r\n"
 				+ "  INNER JOIN `order`\r\n" + "    ON task.idORDER = `order`.idORDER\r\n" + "  INNER JOIN user\r\n"
 				+ "    ON `order`.idUSER = user.idUSER\r\n" + "  INNER JOIN taskstatus\r\n"
 				+ "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n" + "  INNER JOIN product\r\n"

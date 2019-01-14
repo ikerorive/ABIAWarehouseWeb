@@ -22,7 +22,8 @@
 <!-- Your custom styles (optional) -->
 <link rel="stylesheet" href="resources/css/stylesheet.css" />
 
-
+ <link rel="stylesheet" type="text/css" href="resources/css/dc.css"/>
+ 
 <script src="resources/js/topnav.js"></script>
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
