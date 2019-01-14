@@ -266,7 +266,7 @@ public class MyController {
 			System.out.println("Id Product " + o.getIdProduct());
 			System.out.println(" Product " + o.getName());
 			System.out.println(" Product " + o.getDescription());
-			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos
+			// en cada iteraciï¿½n "o" se refiere a un objeto del arreglo para todos objetos
 			// en el arreglo
 		}
 		// Collections.sort(pr);
@@ -314,7 +314,7 @@ public class MyController {
 			System.out.println("Id Product " + o.getIdProduct());
 			System.out.println(" Product " + o.getName());
 			System.out.println(" Product " + o.getDescription());
-			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos
+			// en cada iteraciï¿½n "o" se refiere a un objeto del arreglo para todos objetos
 			// en el arreglo
 		}
 		// Collections.sort(pr);
@@ -401,7 +401,7 @@ public class MyController {
 			System.out.println("Id Product " + o.getIdProduct());
 			System.out.println(" Product " + o.getName());
 			System.out.println(" Product " + o.getDescription());
-			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos
+			// en cada iteraciï¿½n "o" se refiere a un objeto del arreglo para todos objetos
 			// en el arreglo
 		}
 		// Collections.sort(pr);
@@ -464,6 +464,7 @@ public class MyController {
 	@RequestMapping(value = "/orderHistoryAll", method = RequestMethod.GET)
 	public String orderHistoryAll(Model model) {
 		GetJSON getJson = new GetJSON();
+
 		JSONArray json = getJson.getJSONFromQuery(
 				"SELECT\r\n" + "  user.USERNAME,\r\n" + "  `order`.ORDERDESC,\r\n" + "  taskstatus.STATUSDESC,\r\n"
 						+ "  producttype.NAME,\r\n" + "  YEAR(`order`.DATE) AS YEAR,\r\n" + "  `order`.DATE\r\n"
@@ -472,6 +473,7 @@ public class MyController {
 						+ "  INNER JOIN taskstatus\r\n" + "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n"
 						+ "  INNER JOIN product\r\n" + "    ON task.idPRODUCT = product.idPRODUCT\r\n"
 						+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE;");
+
 		System.out.println("JSON  " + json);
 		return "orderHistoryAll";
 	}
