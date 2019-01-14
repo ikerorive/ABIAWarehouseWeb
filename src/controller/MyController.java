@@ -28,6 +28,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -412,33 +413,46 @@ public class MyController {
 
 	@RequestMapping(value = "/currentOrders", method = RequestMethod.GET)
 	public String currentOrders(Model model) {
-		GetJSON getJson = new GetJSON();
-		JSONArray json = getJson.getJSONFromQuery("SELECT * FROM warehouse.`order`;");
-		System.out.println("JSON  "+json);
+
 		return "currentOrders";
 	}
 
 	@RequestMapping(value = "/currentOrdersAll", method = RequestMethod.GET)
 	public String currenOrdersAll(Model model) {
-
+		// OPERATOR
+		GetJSON getJson = new GetJSON();
+		JSONArray json = getJson.getJSONFromQuery("SELECT * FROM warehouse.`order`;");
+		System.out.println("JSON  " + json);
 		return "currentOrdersAll";
 	}
 
 	@RequestMapping(value = "/logistic", method = RequestMethod.GET)
 	public String logistic(Model model) {
+		// OPERATOR
 
 		return "logistic";
 	}
 
 	@RequestMapping(value = "/orderHistoryAll", method = RequestMethod.GET)
 	public String orderHistoryAll(Model model) {
-
+		GetJSON getJson = new GetJSON();
+		JSONArray json = getJson.getJSONFromQuery("SELECT\r\n" + "  user.USERNAME,\r\n" + "  `order`.ORDERDESC,\r\n"
+				+ "  taskstatus.STATUSDESC,\r\n" + "  producttype.NAME,\r\n" + "  `order`.DATE\r\n" + "FROM task\r\n"
+				+ "  INNER JOIN `order`\r\n" + "    ON task.idORDER = `order`.idORDER\r\n" + "  INNER JOIN user\r\n"
+				+ "    ON `order`.idUSER = user.idUSER\r\n" + "  INNER JOIN taskstatus\r\n"
+				+ "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n" + "  INNER JOIN product\r\n"
+				+ "    ON task.idPRODUCT = product.idPRODUCT\r\n" + "  INNER JOIN producttype\r\n"
+				+ "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE;");
+		System.out.println("JSON  " + json);
 		return "orderHistoryAll";
 	}
 
 	@RequestMapping(value = "/vehicleInfo", method = RequestMethod.GET)
 	public String vehicleInfo(Model model) {
-
+		// SELECT * FROM warehouse.vehicle;
+		GetJSON getJson = new GetJSON();
+		JSONArray json = getJson.getJSONFromQuery("SELECT * FROM warehouse.vehicle");
+		System.out.println("JSON  " + json);
 		return "vehicleInfo";
 	}
 
