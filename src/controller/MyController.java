@@ -12,6 +12,10 @@
  */
 package controller;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -37,6 +42,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.impl.GetJSON;
 import model.Vehicle;
 import model.Order;
 import model.Product;
@@ -403,40 +409,42 @@ public class MyController {
 		model.addAttribute("products", pr);
 		return "productSelection";
 	}
-	
+
 	@RequestMapping(value = "/currentOrders", method = RequestMethod.GET)
 	public String currentOrders(Model model) {
-		
+		GetJSON getJson = new GetJSON();
+		JSONArray json = getJson.getJSONFromQuery("SELECT * FROM warehouse.`order`;");
+		System.out.println("JSON  "+json);
 		return "currentOrders";
 	}
 
 	@RequestMapping(value = "/currentOrdersAll", method = RequestMethod.GET)
 	public String currenOrdersAll(Model model) {
-		
+
 		return "currentOrdersAll";
 	}
 
 	@RequestMapping(value = "/logistic", method = RequestMethod.GET)
 	public String logistic(Model model) {
-		
+
 		return "logistic";
 	}
 
 	@RequestMapping(value = "/orderHistoryAll", method = RequestMethod.GET)
 	public String orderHistoryAll(Model model) {
-		
+
 		return "orderHistoryAll";
 	}
 
 	@RequestMapping(value = "/vehicleInfo", method = RequestMethod.GET)
 	public String vehicleInfo(Model model) {
-		
+
 		return "vehicleInfo";
 	}
 
 	@RequestMapping(value = "/workstationInfo", method = RequestMethod.GET)
 	public String workstationInfo(Model model) {
-		
+
 		return "workstationInfo";
 	}
 }
