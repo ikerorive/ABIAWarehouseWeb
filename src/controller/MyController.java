@@ -30,6 +30,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
@@ -378,7 +379,7 @@ public class MyController {
 			System.out.println("Id Product " + o.getIdProduct());
 			System.out.println(" Product " + o.getName());
 			System.out.println(" Product " + o.getDescription());
-			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos
+			// en cada iteraciï¿½n "o" se refiere a un objeto del arreglo para todos objetos
 			// en el arreglo
 		}
 		// Collections.sort(pr);
@@ -426,7 +427,7 @@ public class MyController {
 			System.out.println("Id Product " + o.getIdProduct());
 			System.out.println(" Product " + o.getName());
 			System.out.println(" Product " + o.getDescription());
-			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos
+			// en cada iteraciï¿½n "o" se refiere a un objeto del arreglo para todos objetos
 			// en el arreglo
 		}
 		// Collections.sort(pr);
@@ -513,7 +514,7 @@ public class MyController {
 			System.out.println("Id Product " + o.getIdProduct());
 			System.out.println(" Product " + o.getName());
 			System.out.println(" Product " + o.getDescription());
-			// en cada iteración "o" se refiere a un objeto del arreglo para todos objetos
+			// en cada iteraciï¿½n "o" se refiere a un objeto del arreglo para todos objetos
 			// en el arreglo
 		}
 		// Collections.sort(pr);
@@ -524,40 +525,97 @@ public class MyController {
 	}
 
 	@RequestMapping(value = "/currentOrders", method = RequestMethod.GET)
-	public String currentOrders(Model model) {
+	public String currentOrders(Model model, HttpSession session) {
+		User user2 = (User) session.getAttribute("user");
 		GetJSON getJson = new GetJSON();
-		JSONArray json = getJson.getJSONFromQuery("SELECT * FROM warehouse.`order`;");
-		System.out.println("JSON  "+json);
+		JSONArray json = getJson.getJSONFromQuery(
+				"SELECT\r\n" + "  user.USERNAME,\r\n" + "  `order`.ORDERDESC,\r\n" + "  taskstatus.STATUSNAME,\r\n"
+						+ "  producttype.NAME,\r\n" + "  `order`.DATE,\r\n" + "YEAR(`order`.DATE) AS YEAR\r\n"
+						+ "FROM task\r\n" + "  INNER JOIN `order`\r\n" + "    ON task.idORDER = `order`.idORDER\r\n"
+						+ "  INNER JOIN user\r\n" + "    ON `order`.idUSER = user.idUSER\r\n"
+						+ "  INNER JOIN taskstatus\r\n" + "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n"
+						+ "  INNER JOIN product\r\n" + "    ON task.idPRODUCT = product.idPRODUCT\r\n"
+						+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE\r\n"
+						+ " WHERE user.idUSER='" + user2.getIdUser() + "';");
+		System.out.println("JSON  " + json);
+
 		return "currentOrders";
 	}
 
 	@RequestMapping(value = "/currentOrdersAll", method = RequestMethod.GET)
 	public String currenOrdersAll(Model model) {
-
+		// OPERATOR
+		GetJSON getJson = new GetJSON();
+		JSONArray jsonTask = getJson.getJSONFromQuery("SELECT\r\n" + "  user.USERNAME,\r\n" + "  `order`.ORDERDESC,\r\n"
+				+ "  taskstatus.STATUSDESC,\r\n" + "  producttype.NAME,\r\n" + "  YEAR(`order`.DATE) AS YEAR,\r\n"
+				+ "  `order`.DATE\r\n" + "FROM task\r\n" + "  INNER JOIN `order`\r\n"
+				+ "    ON task.idORDER = `order`.idORDER\r\n" + "  INNER JOIN user\r\n"
+				+ "    ON `order`.idUSER = user.idUSER\r\n" + "  INNER JOIN taskstatus\r\n"
+				+ "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n" + "  INNER JOIN product\r\n"
+				+ "    ON task.idPRODUCT = product.idPRODUCT\r\n" + "  INNER JOIN producttype\r\n"
+				+ "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE\r\n" + "WHERE task.idSTATUS!='3';");
+		JSONArray jsonVehicle = getJson
+				.getJSONFromQuery("SELECT\r\n" + "  `position`.POSNAME,\r\n" + "  vehiclestatus.STATUSNAME,\r\n"
+						+ "  vehicle.idVEHICLE\r\n" + "FROM vehicle\r\n" + "  INNER JOIN vehiclestatus\r\n"
+						+ "    ON vehicle.idVEHICLESTATUS = vehiclestatus.idVEHICLESTATUS\r\n"
+						+ "  INNER JOIN `position`\r\n" + "    ON vehicle.idPOSITION = `position`.idPOSITION;");
+		JSONArray jsonProduct = getJson.getJSONFromQuery("SELECT\r\n" + "  product.idPRODUCT,\r\n"
+				+ "  `position`.POSNAME,\r\n" + "  producttype.NAME\r\n" + "FROM product\r\n"
+				+ "  INNER JOIN `position`\r\n" + "    ON product.`POSITION` = `position`.idPOSITION\r\n"
+				+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE;");
+		System.out.println("JSON  " + jsonVehicle);
 		return "currentOrdersAll";
 	}
 
 	@RequestMapping(value = "/logistic", method = RequestMethod.GET)
 	public String logistic(Model model) {
+		// OPERATOR
 
 		return "logistic";
 	}
 
 	@RequestMapping(value = "/orderHistoryAll", method = RequestMethod.GET)
 	public String orderHistoryAll(Model model) {
+		GetJSON getJson = new GetJSON();
 
+		JSONArray json = getJson.getJSONFromQuery(
+				"SELECT\r\n" + "  user.USERNAME,\r\n" + "  `order`.ORDERDESC,\r\n" + "  taskstatus.STATUSDESC,\r\n"
+						+ "  producttype.NAME,\r\n" + "  YEAR(`order`.DATE) AS YEAR,\r\n" + "  `order`.DATE\r\n"
+						+ "FROM task\r\n" + "  INNER JOIN `order`\r\n" + "    ON task.idORDER = `order`.idORDER\r\n"
+						+ "  INNER JOIN user\r\n" + "    ON `order`.idUSER = user.idUSER\r\n"
+						+ "  INNER JOIN taskstatus\r\n" + "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n"
+						+ "  INNER JOIN product\r\n" + "    ON task.idPRODUCT = product.idPRODUCT\r\n"
+						+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE;");
+
+		System.out.println("JSON  " + json);
 		return "orderHistoryAll";
 	}
 
 	@RequestMapping(value = "/vehicleInfo", method = RequestMethod.GET)
 	public String vehicleInfo(Model model) {
-
+		// SELECT * FROM warehouse.vehicle;
+		GetJSON getJson = new GetJSON();
+		JSONArray jsonVehicle = getJson
+				.getJSONFromQuery("SELECT\r\n" + "  `position`.POSNAME,\r\n" + "  vehiclestatus.STATUSNAME,\r\n"
+						+ "  vehicle.idVEHICLE\r\n" + "FROM vehicle\r\n" + "  INNER JOIN vehiclestatus\r\n"
+						+ "    ON vehicle.idVEHICLESTATUS = vehiclestatus.idVEHICLESTATUS\r\n"
+						+ "  INNER JOIN `position`\r\n" + "    ON vehicle.idPOSITION = `position`.idPOSITION;");
+		JSONArray jsonVehicleTask = getJson.getJSONFromQuery("SELECT\r\n" + "  task.idVEHICLE,\r\n"
+				+ "  `order`.ORDERDESC,\r\n" +"  YEAR(`task`.FINISHDATE) AS YEAR,\r\n" + "  task.FINISHDATE,\r\n" + "  `position`.POSNAME\r\n" + "FROM task\r\n"
+				+ "  INNER JOIN `order`\r\n" + "    ON task.idORDER = `order`.idORDER\r\n"
+				+ "  INNER JOIN `position`\r\n" + "    ON `order`.DESTINO = `position`.idPOSITION;");
 		return "vehicleInfo";
 	}
 
 	@RequestMapping(value = "/workstationInfo", method = RequestMethod.GET)
 	public String workstationInfo(Model model) {
-
+		GetJSON getJson = new GetJSON();
+		JSONArray json = getJson
+				.getJSONFromQuery("SELECT\r\n" + "  product.idPRODUCT,\r\n" + "  product.`POSITION`,\r\n"
+						+ "  `position`.POSNAME,\r\n" + "  producttype.NAME\r\n" + "FROM product\r\n"
+						+ "  INNER JOIN `position`\r\n" + "    ON product.`POSITION` = `position`.idPOSITION\r\n"
+						+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE;");
+		System.out.println("JSON  " + json);
 		return "workstationInfo";
 	}
 }
