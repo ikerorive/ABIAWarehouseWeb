@@ -10,9 +10,19 @@
 
 /** @brief package dao
  */package dao;
-
+ 
+ /** @brief Libraries
+  */
 import model.PositionRelation;
 
+/**
+ * @brief Interface PositionRelationDAO
+ */
 public interface PositionRelationDAO {
+	/**
+	 * @brief Method for getting all the PositionRelations with the specified Origen
+	 * @param id idOrigen
+	 * @return PositionRelation	
+	 */
 	public PositionRelation getDestinoByOrigen(int id);
 }

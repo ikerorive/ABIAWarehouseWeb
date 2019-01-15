@@ -11,6 +11,8 @@
 /** @brief package service.impl
  */package service.impl;
 
+/** @brief Libraries
+ */
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,15 @@ import dao.ProductTypeDAO;
 import model.ProductType;
 import service.ProductTypeService;
 
+/**
+ * @brief Class ProductTypeServiceImpl
+ */
 @Service("productType")
 public class ProductTypeServiceImpl implements ProductTypeService{
-	
+
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private ProductTypeDAO productTypeDAO;
 

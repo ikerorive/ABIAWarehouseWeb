@@ -11,7 +11,18 @@
 /** @brief package dao
  */package dao;
 
+ /** @brief Libraries
+  */
 import model.Position;
+
+/**
+ * @brief Interface PositionDAO
+ */
 public interface PositionDAO {
+	/**
+	 * @brief Method for getting the Position having the id
+	 * @param id idPosition
+	 * @return Position
+	 */
 	public Position getPosNameById(int id);
 }

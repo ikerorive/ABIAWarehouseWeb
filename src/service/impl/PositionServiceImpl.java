@@ -11,6 +11,8 @@
 /** @brief package service.impl
  */package service.impl;
 
+/** @brief Libraries
+ */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +20,15 @@ import dao.PositionDAO;
 import model.Position;
 import service.PositionService;
 
+/**
+ * @brief Class PositionServiceImpl
+ */
 @Service("position")
 public class PositionServiceImpl implements PositionService {
 
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private PositionDAO positionDAO;
 

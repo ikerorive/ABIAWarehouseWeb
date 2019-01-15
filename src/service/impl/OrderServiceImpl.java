@@ -12,6 +12,8 @@
  */
 package service.impl;
 
+/** @brief Libraries
+ */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +23,15 @@ import model.Order;
 import service.OrderService;
 
 
+/**
+ * @brief Class OrderServiceImpl
+ */
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
 
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private OrderDAO orderDAO;
 

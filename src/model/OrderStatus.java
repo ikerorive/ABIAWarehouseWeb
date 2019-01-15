@@ -12,6 +12,8 @@
  */
 package model;
 
+/** @brief Libraries
+ */
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -24,10 +26,16 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/**
+ * @brief Class OrderStatus
+ */
 @Entity
 @Table(name = "\"order status\"")
 public class OrderStatus {
 
+	/**
+	 * @brief Attributes
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "\"idORDER STATUS\"")
@@ -41,26 +49,45 @@ public class OrderStatus {
 	@Column(name = "statusdesc")
 	private String statusDesc;
 
+	/**
+	 * @brief Method for get the value of the idOrderStatus variable
+	 * @return int
+	 */
 	public int getIdOrderStatus() {
 		return idOrderStatus;
 	}
-
+	/**
+	 * @brief Method for determine the id of the OrderStatus
+	 * @param idOrderStatus if of the orderStatus
+	 */
 	public void setIdOrderStatus(int idOrderStatus) {
 		this.idOrderStatus = idOrderStatus;
 	}
-
+	/**
+	 * @brief Method for get the value of the statusName variable
+	 * @return String
+	 */
 	public String getStatusName() {
 		return statusName;
 	}
-
+	/**
+	 * @brief Method for determine the name of the OrderStatus 
+	 * @param statusName name of the OrderStatus
+	 */
 	public void setStatusName(String statusName) {
 		this.statusName = statusName;
 	}
-
+	/**
+	 * @brief Method for get the value of the statusDesc variable
+	 * @return String
+	 */
 	public String getStatusDesc() {
 		return statusDesc;
 	}
-
+	/**
+	 * @brief Method for determine the description of the OrderStatus 
+	 * @param statusDesc description of the orderStatus
+	 */
 	public void setStatusDesc(String statusDesc) {
 		this.statusDesc = statusDesc;
 	}

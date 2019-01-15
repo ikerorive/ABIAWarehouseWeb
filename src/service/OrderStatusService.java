@@ -11,9 +11,19 @@
 /** @brief package service
  */package service;
 
+/** @brief Libraries
+ */
 import model.Order;
 import model.OrderStatus;
 
+/**
+ * @brief Class OrderStatusService
+ */
 public interface OrderStatusService {
+	/**
+	 * @brief Method that returns the orderStatus with the given id 
+	 * @param id idOrderStatus	
+	 * @return OrderStatus
+	 */
 	public abstract OrderStatus validateOrderStatus(int id);
 }

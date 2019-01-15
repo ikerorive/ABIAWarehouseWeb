@@ -11,8 +11,18 @@
 /** @brief package service
  */package service;
 
+/** @brief Libraries
+ */
 import model.PositionRelation;
 
+/**
+ * @brief Class PositionRelationService
+ */
 public interface PositionRelationService {
+	/**
+	 * @brief Method that returns the positionRelation with the given id 	
+	 * @param id idPositionRelation
+	 * @return PositionRelation
+	 */
 	public abstract PositionRelation validatePositionRelation(int id);
 }

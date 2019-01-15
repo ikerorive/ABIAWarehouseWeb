@@ -10,7 +10,9 @@
 
 /** @brief package dao.impl
  */package dao.impl;
-
+ 
+ /** @brief Libraries
+  */
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -22,10 +24,16 @@ import org.springframework.stereotype.Repository;
 import dao.PositionDAO;
 import model.Position;
 
+/**
+ * @brief Class PositionDAOImpl
+ */
 @Repository
 public class PositionDAOImpl implements PositionDAO {
 	
-	
+
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 

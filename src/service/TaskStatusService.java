@@ -11,9 +11,19 @@
 /** @brief package service
  */package service;
 
+/** @brief Libraries
+ */
 import model.Task;
 import model.TaskStatus;
 
+/**
+ * @brief Class TaskStatusService
+ */
 public interface TaskStatusService {
+	/**
+	 * @brief Method that returns the taskStatus with the given id 
+	 * @param id idTaskStatus	
+	 * @return TaskStatus
+	 */
 	public abstract TaskStatus validateTaskStatus(int id);
 }

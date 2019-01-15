@@ -1,5 +1,19 @@
+/** @file GetJSON.java
+ *  @brief GetJSON dao implementation
+ *  @authors
+ *  Name          | Surname         | Email                                |
+ *  ------------- | -------------- | ------------------------------------ |
+ *  Iker	      | Orive          | iker.orive@alumni.mondragon.edu     |
+ *  Ander	      | Lanas          | ander.lanas@alumni.mondragon.edu     |
+ *  @date 14/01/2019
+ */
+
+/** @brief package dao.impl
+ */
 package dao.impl;
 
+/** @brief Libraries
+ */
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -11,7 +25,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 
+/**
+ * @brief Class GetJSON
+ */
 public class GetJSON {
+	
 	public static JSONArray convert(ResultSet rs) throws SQLException, JSONException {
 		JSONArray json = new JSONArray();
 		ResultSetMetaData rsmd = rs.getMetaData();

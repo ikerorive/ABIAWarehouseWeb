@@ -1,5 +1,5 @@
-/** @file OrderDAO.java
- *  @brief OrderDAO dao
+/** @file TaskStatusDAO.java
+ *  @brief TaskStatusDAO dao
  *  @authors
  *  Name          | Surname         | Email                                |
  *  ------------- | -------------- | ------------------------------------ |
@@ -10,10 +10,20 @@
 
 /** @brief package dao
  */package dao;
-
+ 
+ /** @brief Libraries
+  */
 import model.Order;
 import model.TaskStatus;
 
+/**
+ * @brief Interface TaskStatusDAO
+ */
 public interface TaskStatusDAO {
+	/**
+	 * @brief Method for getting the taskStatus with the id
+	 * @param id idTaskStatus
+	 * @return TaskStatus
+	 */
 	public TaskStatus getTaskStatusDetailsById(int id);
 }

@@ -12,6 +12,8 @@
  */
 package controller;
 
+/** @brief Libraries
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -30,6 +32,7 @@ import javax.validation.Valid;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -68,155 +71,265 @@ import service.UserService;
 import service.VehicleService;
 import service.VehicleStatusService;
 
+/**
+ * @brief Class MyController
+ */
 @Controller
 @Scope("session")
 public class MyController {
 
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private UserService userService;
-
+	/**
+	 * @brief Method for determine the userService
+	 * @param userService userService
+	 */
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-
+	/**
+	 * @brief Method for get the value of the userService variable
+	 * @return UserService
+	 */
 	public UserService getUserService() {
 		return userService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private RoleService roleService;
-
+	/**
+	 * @brief Method for get the value of the roleService variable
+	 * @return RoleService
+	 */
 	public RoleService getRoleService() {
 		return roleService;
 	}
-
+	/**
+	 * @brief Method for determine the roleService
+	 * @param roleService roleService
+	 */
 	public void setRoleService(RoleService roleService) {
 		this.roleService = roleService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private VehicleService vehicleService;
-
+	/**
+	 * @brief Method for get the value of the vehicleService variable
+	 * @return VehicleService
+	 */
 	public VehicleService getVehicleService() {
 		return vehicleService;
 	}
-
+	/**
+	 * @brief Method for determine the vehicleService
+	 * @param vehicleService vehicleService
+	 */
 	public void setVehicleService(VehicleService vehicleService) {
 		this.vehicleService = vehicleService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private VehicleStatusService vehicleStatusService;
-
+	/**
+	 * @brief Method for get the value of the vehicleStatusService variable
+	 * @return VehicleStatusService
+	 */
 	public VehicleStatusService getVehicleStatusService() {
 		return vehicleStatusService;
 	}
-
+	/**
+	 * @brief Method for determine the vehicleStatusService
+	 * @param vehicleStatusService vehicleStatusService
+	 */
 	public void setVehicleStatusService(VehicleStatusService vehicleStatusService) {
 		this.vehicleStatusService = vehicleStatusService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private ProductService productService;
-
+	/**
+	 * @brief Method for get the value of the productService variable
+	 * @return ProductService
+	 */
 	public ProductService getProductService() {
 		return productService;
 	}
-
+	/**
+	 * @brief Method for determine the productService
+	 * @param productService productService
+	 */
 	public void setProductService(ProductService productService) {
 		this.productService = productService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private ProductTypeService productTypeService;
-
+	/**
+	 * @brief Method for get the value of the productTypeService variable
+	 * @return ProductTypeService
+	 */
 	public ProductTypeService getProductTypeService() {
 		return productTypeService;
 	}
-
+	/**
+	 * @brief Method for determine the productTypeService
+	 * @param productTypeService productTypeService
+	 */
 	public void setProductTypeService(ProductTypeService productTypeService) {
 		this.productTypeService = productTypeService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private PositionService positionService;
-
+	/**
+	 * @brief Method for get the value of the positionService variable
+	 * @return PositionService
+	 */
 	public PositionService getPositionService() {
 		return positionService;
 	}
-
+	/**
+	 * @brief Method for determine the positionService
+	 * @param positionService positionService
+	 */
 	public void setPositionService(PositionService positionService) {
 		this.positionService = positionService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private PosTypeService posTypeService;
-
+	/**
+	 * @brief Method for get the value of the postTypeService variable
+	 * @return PosTypeService
+	 */
 	public PosTypeService getPosTypeService() {
 		return posTypeService;
 	}
-
+	/**
+	 * @brief Method for determine the posTypeService
+	 * @param posTypeService posTypeService
+	 */
 	public void setPosTypeService(PosTypeService posTypeService) {
 		this.posTypeService = posTypeService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private PositionRelationService positionRelationService;
-
+	/**
+	 * @brief Method for get the value of the positionRelationService variable
+	 * @return PositionRelationService
+	 */
 	public PositionRelationService getPositionRelationService() {
 		return positionRelationService;
 	}
-
+	/**
+	 * @brief Method for determine the positionRelationService
+	 * @param positionRelationService positionRelationService
+	 */
 	public void setPositionRelationService(PositionRelationService positionRelationService) {
 		this.positionRelationService = positionRelationService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private OrderService orderService;
-
+	/**
+	 * @brief Method for get the value of the orderService variable
+	 * @return OrderService
+	 */
 	public OrderService getOrderService() {
 		return orderService;
 	}
-
+	/**
+	 * @brief Method for determine the orderService
+	 * @param orderService orderService
+	 */
 	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private OrderStatusService orderStatusService;
-
+	/**
+	 * @brief Method for get the value of the orderStatusService variable
+	 * @return OrderStatusService
+	 */
 	public OrderStatusService getOrderStatusService() {
 		return orderStatusService;
 	}
-
+	/**
+	 * @brief Method for determine the OrderStatusService
+	 * @param orderStatusService orderStatusService
+	 */
 	public void setOrderStatusService(OrderStatusService orderStatusService) {
 		this.orderStatusService = orderStatusService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private TaskService taskService;
-
+	/**
+	 * @brief Method for get the value of the taskService variable
+	 * @return TaskService
+	 */
 	public TaskService getTaskService() {
 		return taskService;
 	}
-
+	/**
+	 * @brief Method for determine the taskService
+	 * @param taskService taskService
+	 */
 	public void setTaskService(TaskService taskService) {
 		this.taskService = taskService;
 	}
-
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private TaskStatusService taskStatusService;
-
+	/**
+	 * @brief Method for get the value of the taskStatusService variable
+	 * @return TaskStatusService
+	 */
 	public TaskStatusService getTaskStatusService() {
 		return taskStatusService;
 	}
-
+	/**
+	 * @brief Method for determine the taskStatusService
+	 * @param taskStatusService taskStatusService
+	 */
 	public void setTaskStatusService(TaskStatusService taskStatusService) {
 		this.taskStatusService = taskStatusService;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homePage() {
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		System.out.println(""+System.getProperty("user.dir"));
 		return "home";
 	}
 
