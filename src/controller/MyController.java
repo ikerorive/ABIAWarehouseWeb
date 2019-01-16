@@ -12,6 +12,17 @@
  */
 package controller;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -21,12 +32,21 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.json.Json;
+import javax.json.JsonWriter;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +66,7 @@ import org.springframework.web.servlet.ModelAndView;
 import dao.impl.GetJSON;
 import model.Vehicle;
 import model.Order;
+import model.Position;
 import model.Product;
 import model.ProductType;
 import model.Task;
@@ -359,9 +380,8 @@ public class MyController {
 	}
 
 	@RequestMapping(value = "/selectProducts", method = RequestMethod.POST)
-	@ResponseBody
 	public void validateSymbol(WebRequest webRequest, Model model, HttpServletRequest request,
-			HttpServletResponse response, @RequestParam String[] data, HttpSession session) {
+			HttpServletResponse response, @RequestParam String[] data, HttpSession session) throws IOException {
 		Order order = new Order();
 		if (session.getAttribute("user") != null) {
 			User user2 = (User) session.getAttribute("user");
@@ -387,6 +407,7 @@ public class MyController {
 			task.setIdVehicle(0);
 			getTaskService().createTask(task);
 		}
+		
 	}
 
 	@RequestMapping(value = "/productSelection", method = RequestMethod.GET)
@@ -394,6 +415,8 @@ public class MyController {
 		// model.addAttribute("userCredential", new UserCredential());
 		HashMap<Integer, ProductType> hmap = getProductTypeService().getProductTypeMap();
 		ArrayList<Product> pr = getProductService().getProducts();
+		ArrayList<Position> pos = getPositionService().getPositionByPositionId(3);
+		System.out.println("------------------------------------------------POSITION LIST " + pos);
 		for (Product o : pr) {
 
 			o.setName(hmap.get(o.getProductType()).getName());
@@ -408,11 +431,13 @@ public class MyController {
 		pr.sort(Comparator.comparing(Product::getProductType));
 		System.out.println("sorted");
 		model.addAttribute("products", pr);
+		model.addAttribute("positions", pos);
 		return "productSelection";
 	}
 
 	@RequestMapping(value = "/currentOrders", method = RequestMethod.GET)
-	public String currentOrders(Model model, HttpSession session) {
+	public String currentOrders(Model model, HttpServletRequest request, HttpSession session,
+			HttpServletResponse response) throws IOException {
 		User user2 = (User) session.getAttribute("user");
 		GetJSON getJson = new GetJSON();
 		JSONArray json = getJson.getJSONFromQuery(
@@ -425,7 +450,23 @@ public class MyController {
 						+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE\r\n"
 						+ " WHERE user.idUSER='" + user2.getIdUser() + "';");
 		System.out.println("JSON  " + json);
+		/*
+		 * ServletContext context =request.getServletContext(); String path =
+		 * context.getRealPath("/");
+		 * System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa " + path); try
+		 * (FileWriter file = new FileWriter(path+"resources\\jeje.json")) {
+		 * 
+		 * file.write(json.toString()); file.flush();
+		 * 
+		 * } catch (IOException e) { e.printStackTrace(); }
+		 */
 
+		// response.sendRedirect("currentOrders");
+
+		// return "{ \"data\" : " + json.toString() + "}";
+		session.setAttribute("jsonPrueba", json.toString());
+			
+		
 		return "currentOrders";
 	}
 
@@ -488,9 +529,10 @@ public class MyController {
 						+ "    ON vehicle.idVEHICLESTATUS = vehiclestatus.idVEHICLESTATUS\r\n"
 						+ "  INNER JOIN `position`\r\n" + "    ON vehicle.idPOSITION = `position`.idPOSITION;");
 		JSONArray jsonVehicleTask = getJson.getJSONFromQuery("SELECT\r\n" + "  task.idVEHICLE,\r\n"
-				+ "  `order`.ORDERDESC,\r\n" +"  YEAR(`task`.FINISHDATE) AS YEAR,\r\n" + "  task.FINISHDATE,\r\n" + "  `position`.POSNAME\r\n" + "FROM task\r\n"
-				+ "  INNER JOIN `order`\r\n" + "    ON task.idORDER = `order`.idORDER\r\n"
-				+ "  INNER JOIN `position`\r\n" + "    ON `order`.DESTINO = `position`.idPOSITION;");
+				+ "  `order`.ORDERDESC,\r\n" + "  YEAR(`task`.FINISHDATE) AS YEAR,\r\n" + "  task.FINISHDATE,\r\n"
+				+ "  `position`.POSNAME\r\n" + "FROM task\r\n" + "  INNER JOIN `order`\r\n"
+				+ "    ON task.idORDER = `order`.idORDER\r\n" + "  INNER JOIN `position`\r\n"
+				+ "    ON `order`.DESTINO = `position`.idPOSITION;");
 		return "vehicleInfo";
 	}
 
@@ -505,4 +547,7 @@ public class MyController {
 		System.out.println("JSON  " + json);
 		return "workstationInfo";
 	}
+	
+	
+	
 }

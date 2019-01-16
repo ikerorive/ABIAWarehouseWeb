@@ -19,11 +19,14 @@
 	crossorigin="anonymous">
 <!-- Material Design Bootstrap -->
 <link href="resources/MDB-Free_4.6.0/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+<script type="text/javascript"
+	src="resources/MDB-Free_4.6.0/js/jquery-3.3.1.min.js"></script>
 <!-- Your custom styles (optional) -->
 <link rel="stylesheet" href="resources/css/stylesheet.css" />
 
- <link rel="stylesheet" type="text/css" href="resources/css/dc.css"/>
- 
+<link rel="stylesheet" type="text/css" href="resources/css/dc.css" />
+
 <script src="resources/js/topnav.js"></script>
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
@@ -39,9 +42,7 @@
 
 
 	<!-- SCRIPTS -->
-	<!-- JQuery -->
-	<script type="text/javascript"
-		src="resources/MDB-Free_4.6.0/js/jquery-3.3.1.min.js"></script>
+
 	<!-- Bootstrap tooltips -->
 	<script type="text/javascript"
 		src="resources/MDB-Free_4.6.0/js/popper.min.js"></script>

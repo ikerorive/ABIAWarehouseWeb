@@ -5,6 +5,10 @@
 	ArrayList<String> list = (ArrayList) request.getAttribute("products");
 
 	request.setAttribute("alist", list);
+
+	ArrayList<String> listPos = (ArrayList) request.getAttribute("positions");
+
+	request.setAttribute("posList", listPos);
 %>
 <script>
 	function selectProducts() {
@@ -19,6 +23,7 @@
 			array[x] = checkedBoxes[x].id;
 		}
 
+		if(data1[0]!="" && data1[1]!=""){
 		var data = data1.concat(array);
 		console.log("DATA " + data);
 		$.ajax({
@@ -26,16 +31,26 @@
 			type : "POST",
 			dataType : 'json',
 			data : "data=" + data,
-			success : function(data) {
-
+			complete : function(data) {
+				alert("Successful order");
 			}
-		});
 
+		});
+		}else{
+			alert("To make an order you need to select a destiny and add a description");
+		}
 	}
 </script>
 <p class="h4 mb-4 p-2">Select products</p>
-<input id="destiny" class="form-control  mb-4" placeholder="Destiny" />
-<input id="description" class="form-control  mb-4"
+<!--  
+<input id="destiny" class="form-control  mb-4" placeholder="Destiny" />-->
+<select id="destiny" class="browser-default custom-select mb-4">
+	<option value="" disabled selected>Select Destiny</option>
+	<c:forEach items="${posList}" var="listItem">
+		<option value="${listItem.idPosition}">${listItem.posName}</option>
+	</c:forEach>
+</select>
+<input id="description" maxlength="45" class="form-control  mb-4"
 	placeholder="Description" />
 
 <div class="input-group md-form form-sm form-2 pl-0">
@@ -43,9 +58,9 @@
 		class="form-control my-0 py-1 amber-border text-white" type="text"
 		placeholder="Search" aria-label="Search">
 	<div class="input-group-append">
-		<span onclick="searchProducts();"
-			class="input-group-text amber" id="basic-text1"><i
-			class="fas fa-search text-gray" aria-hidden="true"></i></span>
+		<span onclick="searchProducts();" class="input-group-text amber"
+			id="basic-text1"><i class="fas fa-search text-gray"
+			aria-hidden="true"></i></span>
 	</div>
 </div>
 

@@ -9,8 +9,10 @@
  */
 
 /** @brief package dao.impl
- */package dao.impl;
+ */
+package dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -24,8 +26,7 @@ import model.Position;
 
 @Repository
 public class PositionDAOImpl implements PositionDAO {
-	
-	
+
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 
@@ -43,12 +44,23 @@ public class PositionDAOImpl implements PositionDAO {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Position.class);
 		detachedCriteria.add(Restrictions.eq("idPosition", id));
 		List<Position> findByCriteria = (List<Position>) hibernateTemplate.findByCriteria(detachedCriteria);
-		System.out.println("FIND BY CRITERIA  "+ findByCriteria);
+		System.out.println("FIND BY CRITERIA  " + findByCriteria);
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria.get(0);
 		else
 			return null;
 	}
-	
+
+	@Override
+	public ArrayList<Position> getPositionByType(int posId) {
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Position.class);
+		detachedCriteria.add(Restrictions.eq("idPostype", posId));
+		ArrayList<Position> findByCriteria = (ArrayList<Position>) hibernateTemplate.findByCriteria(detachedCriteria);
+		System.out.println("FIND BY CRITERIA  " + findByCriteria);
+		if (findByCriteria != null && findByCriteria.size() > 0)
+			return findByCriteria;
+		else
+			return null;
+	}
 
 }

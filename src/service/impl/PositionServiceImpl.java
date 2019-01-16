@@ -11,6 +11,8 @@
 /** @brief package service.impl
  */package service.impl;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +37,12 @@ public class PositionServiceImpl implements PositionService {
 	@Override
 	public Position validatePosition(int id) {
 		Position position = getPositionDAO().getPosNameById(id);
+		return position;
+	}
+
+	@Override
+	public ArrayList<Position> getPositionByPositionId(int pos) {
+		ArrayList<Position> position = getPositionDAO().getPositionByType(pos);
 		return position;
 	}
 }
