@@ -11,6 +11,8 @@
 /** @brief package service.impl
  */package service.impl;
 
+/** @brief Libraries
+ */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +20,15 @@ import dao.UserDAO;
 import model.User;
 import service.UserService;
 
+/**
+ * @brief Class UserServiceImpl
+ */
 @Service("userService")
 public class UserServiceImpl implements UserService {
-	
+
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private UserDAO userDAO;
 	

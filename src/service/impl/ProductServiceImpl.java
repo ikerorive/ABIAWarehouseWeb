@@ -11,6 +11,8 @@
 /** @brief package service.impl
  */package service.impl;
 
+/** @brief Libraries
+ */
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,15 @@ import dao.ProductDAO;
 import model.Product;
 import service.ProductService;
 
+/**
+ * @brief Class ProductServiceImpl
+ */
 @Service("product")
 public class ProductServiceImpl implements ProductService {
-	
+
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private ProductDAO productDAO;
 

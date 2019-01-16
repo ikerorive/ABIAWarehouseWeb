@@ -11,8 +11,18 @@
 /** @brief package service
  */package service;
 
+/** @brief Libraries
+ */
 import model.Vehicle;
 
+/**
+ * @brief Class VehicleService
+ */
 public interface VehicleService {
+	/**
+	 * @brief Method that returns the vehicle with the given id 	
+	 * @param id idVehicle
+	 * @return Vehicle
+	 */
 	public abstract Vehicle validateVehicle(int id);
 }

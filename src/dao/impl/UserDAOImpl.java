@@ -10,7 +10,9 @@
 
 /** @brief package dao.impl
  */package dao.impl;
-
+ 
+ /** @brief Libraries
+  */
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -22,9 +24,15 @@ import org.springframework.stereotype.Repository;
 import dao.UserDAO;
 import model.User;
 
+/**
+ * @brief Class UserDAOImpl
+ */
 @Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
 
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 	

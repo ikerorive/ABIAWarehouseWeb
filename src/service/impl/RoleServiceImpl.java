@@ -11,6 +11,8 @@
 /** @brief package service.impl
  */package service.impl;
 
+/** @brief Libraries
+ */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +21,15 @@ import model.Role;
 import service.RoleService;
 
 
+/**
+ * @brief Class RoleServiceImpl
+ */
 @Service("roleService")
 public class RoleServiceImpl implements RoleService {
-	
+
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private RoleDAO roleDAO;
 	

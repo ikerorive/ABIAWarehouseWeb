@@ -11,9 +11,18 @@
 /** @brief package service
  */package service;
 
+/** @brief Libraries
+ */
 import model.PosType;
 
+/**
+ * @brief Class PosTypeService
+ */
 public interface PosTypeService {
-
+	/**
+	 * @brief Method that returns the posType with the given id 
+	 * @param id idPosType	
+	 * @return PosType
+	 */
 	public abstract PosType validatePosType(int id);
 }

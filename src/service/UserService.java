@@ -11,11 +11,26 @@
 /** @brief package service
  */package service;
 
+/** @brief Libraries
+ */
 import model.User;
 
+/**
+ * @brief Class UserService
+ */
 public interface UserService {
-	public abstract User validateUserCredential(String username,	String password);
-
+	/**
+	 * @brief Method that returns the user with the given username and password	
+	 * @param username username
+	 * @param password password
+	 * @return User
+	 */
+	public abstract User validateUserCredential(String username, String password);
+	/**
+	 * @brief Method that save a new user in the database 	
+	 * @param user a User
+	 * @return boolean
+	 */
 	public abstract boolean registerUser(User user);
 	
 }

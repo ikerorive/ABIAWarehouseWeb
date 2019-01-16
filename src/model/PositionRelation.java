@@ -12,6 +12,8 @@
  */
 package model;
 
+/** @brief Libraries
+ */
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -22,11 +24,17 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+/**
+ * @brief Class PositionRelation
+ */
 @Entity
 @Table(name = "positionRelation")
 @IdClass(PositionRelation.class)
 public class PositionRelation implements Serializable {
 
+	/**
+	 * @brief Attributes
+	 */
 	@Id
 	@Column(name = "idOrigen")
 	private int idOrigen;
@@ -34,18 +42,31 @@ public class PositionRelation implements Serializable {
 	@Id
 	@Column(name = "idDestino")
 	private int idDestino;
+	/**
+	 * @brief Method for get the value of the idOrigen variable
+	 * @return int
+	 */
 	public int getIdOrigen() {
 		return idOrigen;
 	}
-
+	/**
+	 * @brief Method for determine the idOrigen
+	 * @param idOrigen id of the Origen
+	 */
 	public void setIdOrigen(int idOrigen) {
 		this.idOrigen = idOrigen;
 	}
-
+	/**
+	 * @brief Method for get the value of the idDestino variable
+	 * @return int
+	 */
 	public int getIdDestino() {
 		return idDestino;
 	}
-
+	/**
+	 * @brief Method for determine the full of the idDestino
+	 * @param idDestino id of the Destino
+	 */
 	public void setIdDestino(int idDestino) {
 		this.idDestino = idDestino;
 	}

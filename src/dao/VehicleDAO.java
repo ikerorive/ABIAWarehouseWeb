@@ -10,9 +10,19 @@
 
 /** @brief package dao
  */package dao;
-
+ 
+ /** @brief Libraries
+  */
 import model.Vehicle;
 
+/**
+ * @brief Interface VehicleDAO
+ */
 public interface VehicleDAO {
+	/**
+	 * @brief Method for getting a vehicle with the id
+	 * @param id idVehicle
+	 * @return Vehicle
+	 */
 	public Vehicle getVehicleDetailsById(int id);
 }

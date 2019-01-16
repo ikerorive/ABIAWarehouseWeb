@@ -1,5 +1,7 @@
 package dao.impl;
 
+/** @brief Libraries
+ */
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,9 +20,15 @@ import dao.ProductTypeDAO;
 import model.Product;
 import model.ProductType;
 
+/**
+ * @brief Class ProductTypeDAOImpl
+ */
 @Repository
 public class ProductTypeDAOImpl implements ProductTypeDAO {
 
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 

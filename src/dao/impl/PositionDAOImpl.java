@@ -12,9 +12,14 @@
  */
 package dao.impl;
 
-import java.util.ArrayList;
-import java.util.List;
 
+
+ 
+ /** @brief Libraries
+  */
+
+import java.util.List;
+import java.util.ArrayList;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +29,15 @@ import org.springframework.stereotype.Repository;
 import dao.PositionDAO;
 import model.Position;
 
+/**
+ * @brief Class PositionDAOImpl
+ */
 @Repository
 public class PositionDAOImpl implements PositionDAO {
+
+	/**
+	 * @brief Attributes
+	 */
 
 	@Autowired
 	private HibernateTemplate hibernateTemplate;

@@ -12,6 +12,8 @@
  */
 package dao.impl;
 
+/** @brief Libraries
+ */
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -24,9 +26,15 @@ import dao.OrderDAO;
 import model.Order;
 import model.User;
 
+/**
+ * @brief Class OrderDAOImpl
+ */
 @Repository
 public class OrderDAOImpl implements OrderDAO {
 
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 

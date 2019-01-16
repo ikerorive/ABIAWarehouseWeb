@@ -12,6 +12,8 @@
  */
 package dao.impl;
 
+/** @brief Libraries
+ */
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -29,9 +31,15 @@ import model.Order;
 import model.Product;
 import model.Task;
 
+/**
+ * @brief Class TaskDAOImpl
+ */
 @Repository
 public class TaskDAOImpl implements TaskDAO {
 
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 

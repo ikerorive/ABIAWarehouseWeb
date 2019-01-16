@@ -12,6 +12,8 @@
  */
 package service.impl;
 
+/** @brief Libraries
+ */
 import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
@@ -24,9 +26,15 @@ import model.Task;
 import service.OrderService;
 import service.TaskService;
 
+/**
+ * @brief Class TaskServiceImpl
+ */
 @Service("taskService")
 public class TaskServiceImpl implements TaskService {
 
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private TaskDAO TaskDAO;
 

@@ -11,12 +11,25 @@
 /** @brief package service
  */package service;
 
+/** @brief Libraries
+ */
 import java.util.HashMap;
 
 import model.ProductType;
 
+/**
+ * @brief Class ProductTypeService
+ */
 public interface ProductTypeService {
-
+	/**
+	 * @brief Method that returns the productType with the given id 	
+	 * @param id idProductType
+	 * @return ProductType
+	 */
 	public abstract ProductType validateProductType(int id);
+	/**
+	 * @brief Method that returns a HashMap of idProduct and ProductType 	
+	 * @return HashMap<Integer, ProductType>
+	 */
 	public abstract HashMap<Integer, ProductType> getProductTypeMap();
 }

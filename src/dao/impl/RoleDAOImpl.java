@@ -12,6 +12,8 @@
  */
 package dao.impl;
 
+/** @brief Libraries
+ */
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -23,10 +25,15 @@ import org.springframework.stereotype.Repository;
 import dao.RoleDAO;
 import model.Role;
 
-
+/**
+ * @brief Class RoleDAOImpl
+ */
 @Repository("roleDAO")
 public class RoleDAOImpl implements RoleDAO {
 
+	/**
+	 * @brief Attributes
+	 */
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 
