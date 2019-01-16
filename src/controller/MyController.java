@@ -351,6 +351,12 @@ public class MyController {
 	public void setTaskStatusService(TaskStatusService taskStatusService) {
 		this.taskStatusService = taskStatusService;
 	}
+	
+	 @RequestMapping(value="/404")
+	    public String error404(){
+	       // DO stuff here 
+	        return "404";
+	    }
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homePage() {
@@ -581,7 +587,7 @@ public class MyController {
 		// response.sendRedirect("currentOrders");
 
 		// return "{ \"data\" : " + json.toString() + "}";
-		session.setAttribute("jsonPrueba", json.toString());
+		session.setAttribute("dataCurrentOrders", json.toString());
 			
 		
 		return "currentOrders";

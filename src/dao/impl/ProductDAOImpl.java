@@ -66,6 +66,7 @@ public class ProductDAOImpl implements ProductDAO {
 	public ArrayList<Product> getAllProducts() {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Product.class);
+		detachedCriteria.add(Restrictions.between("position", 100,999));
 		ArrayList<Product> findByCriteria = (ArrayList<Product>) hibernateTemplate.findByCriteria(detachedCriteria);
 
 		return findByCriteria;
