@@ -1,6 +1,6 @@
 <div class="container" style="width: 100%">
 
-	<!--Años-->
+	<!--Aï¿½os-->
 	<div id="chart-ring-year" style="width: 30%"></div>
 
 	<!--Productos-->
@@ -18,7 +18,7 @@
 			<span id="totalsize"></span>
 		</div>
 		<!--tabla-->
-		<table id="table" class="table table-striped";></table>
+		<table id="table" class="table table-striped"></table>
 
 	</div>
 
@@ -42,7 +42,7 @@
 					Year : data[i].YEAR,
 					Productos : data[i].NAME,
 					Order : data[i].ORDERDESC,
-					date : data[i].DATE,
+					Date : data[i].DATE,
 					Spent : '1'
 				}
 			spendData.push(x);
@@ -73,7 +73,6 @@
 		}),
 		//circulo
 		yearRingChart.width(150)
-		//.height(200)
 		.dimension(yearDim).group(spendPerYear).innerRadius(30)
 				.controlsUseVisibility(true);
 
@@ -90,17 +89,15 @@
 			return d.value;
 		}).size(Infinity).sortBy(function(d) {
 			return +d.Spent;
-		}).showGroups(false).columns([ 'Name', {
-			label : 'Order',
-			format : function(d) {
-				return d.Order;
-			}
-		}, 'Year', {
+		}).showGroups(false).columns([ 'Name','Order',
+			{
 			label : 'Product',
 			format : function(d) {
-				return d.Productos;
+					return d.Productos;
+				}
 			},
-		} ]).order(d3.ascending).on('preRender', update_offset).on('preRedraw',
+			'Date'
+			]).order(d3.ascending).on('preRender', update_offset).on('preRedraw',
 				update_offset).on('pretransition', display);
 		var ofs = 0, pag = 5;
 
