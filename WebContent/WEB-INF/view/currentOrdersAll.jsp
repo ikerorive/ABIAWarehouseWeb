@@ -1,23 +1,24 @@
 <div class="container" style="width: 100%">
 
-	<div id="chart-ring-year" style="width: 30%"></div>
-	<div style="padding: 100px","width: 30%">
-		<table id="tableVehicleStatus" class="table table-striped"></table>
-	</div>
-	<!--<div style="padding: 100px">
-		<div align="left" style="color: #ff8000">
-			<input id="last1" class="btn" type="Button" value="Last"
-				onclick="javascript:last1()" /> <input id="next1" class="btn"
-				type="button" value="Next" onclick="javascript:next()" /> Showing <span
-				id="begin"></span>-<span id="end"></span> of <span id="size"></span>
-			<span id="totalsize"></span>
-		</div>
-		
-		<table id="tableProduct" class="table table-striped"></table>
-
-	</div>
-
-	<div style="padding: 100px">
+	<table style="width: 100%">
+		<tr>
+			<td>
+				<table id="Table2" style="padding: 20px"" border="1"display:"inline-block">
+				</table>
+			</td>
+			<td>
+				<table id="Table3" style="padding: 20px" border="1"display:"inline-block">
+				</table>
+			</td>
+			<td>
+				<!--Productos-->
+				<div style="padding: 20px">
+					<div id="chart-hist-product" style="width: 100%"></div>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div style="width: 100%"; >
 		<div align="left" style="color: #ff8000">
 			<input id="last" class="btn" type="Button" value="Last"
 				onclick="javascript:last()" /> <input id="next" class="btn"
@@ -25,33 +26,69 @@
 				id="begin"></span>-<span id="end"></span> of <span id="size"></span>
 			<span id="totalsize"></span>
 		</div>
-		
+		<!--tabla-->
 		<table id="table" class="table table-striped"></table>
 
-	</div>-->
+		</tr>
+	</div>
+
 
 	<script type="text/javascript" src="resources/js/d3.js"></script>
 	<script type="text/javascript" src="resources/js/crossfilter.js"></script>
 	<script type="text/javascript" src="resources/js/dc.js"></script>
 	<script type="text/javascript">
-		var data =<%=session.getAttribute("dataVehicle")%>;
-		console.log(data);
-
-		var yearRingChart = dc.pieChart("#chart-ring-year");
-		
-		var table = dc.dataTable('#tableVehicleStatus');
-
-		var DataVehicle=[];
-		for (var i = 0; i < data.length; i += 1) {
-			var x= {
-					Name :  data[i].idVEHICLE,
-					State : data[i].STATUSNAME,
-					Position : data[i].POSNAME,
-					Spent : '1'
-				}
-			DataVehicle.push(x);
+		var data2 =
+	<%=session.getAttribute("dataVehicle")%>
+		$("#Table2").append(
+				'<tr><td><b><u>ID</u></b></td>'
+						+ '<td><b><u>Status</u></b></td>'
+						+ '<td><b><u>Position</u></b></td>');
+		for (var o = 0; o < data2.length; o += 1) {
+			$("#Table2").append(
+					'<tr>' + '<td align="center" style="dislay: none;">'
+							+ data2[o].idVEHICLE + '</td>'
+							+ '<td align="center" style="dislay: none;">'
+							+ data2[o].STATUSNAME + '</td>'
+							+ '<td align="center" style="dislay: none;">'
+							+ data2[o].POSNAME + '</td>' + '</tr>');
 		}
-			
+		var data3 =
+	<%=session.getAttribute("dataTask")%>
+		$("#Table3").append(
+				'<tr><td><b><u>Orden</u></b></td>'
+						+ '<td><b><u>Date</u></b></td>'
+						+ '<td><b><u>User</u></b></td>'
+						+ '<td><b><u>Product</u></b></td>');
+		for (var o = 0; o < data3.length; o += 1) {
+			$("#Table3").append(
+					'<tr>' + '<td align="center" style="dislay: none;">'
+							+ data3[o].ORDERDESC + '</td>'
+							+ '<td align="center" style="dislay: none;">'
+							+ data3[o].DATE + '</td>'
+							+ '<td align="center" style="dislay: none;">'
+							+ data3[o].USERNAME + '</td>'
+							+ '<td align="center" style="dislay: none;">'
+							+ data3[o].NAME + '</td>');
+		}
+
+		var data =
+	<%=session.getAttribute("dataProduct")%>
+		;
+
+		var spendHistChart = dc.barChart("#chart-hist-product");//.xAxisLabel('Workstation');
+
+		var table = dc.dataTable('#table');
+
+		var spendData = [];
+		for (var i = 0; i < data.length; i += 1) {
+			var x = {
+				Position : data[i].POSNAME,
+				Productos : data[i].NAME,
+				ID : data[i].idPRODUCT,
+				Spent : '1'
+			}
+			spendData.push(x);
+		}
 
 		// normalize/parse data
 		spendData.forEach(function(d) {
@@ -59,46 +96,33 @@
 		});
 
 		// set crossfilter
-		var ndx = crossfilter(spendData), orderDim = ndx.dimension(function(d) {
-			return d.Order
-		}),spendDim = ndx.dimension(function(d) {//
+		var ndx = crossfilter(spendData), spendDim = ndx.dimension(function(d) {
 			return Math.floor(d.Spent);
-		}), nameDim = ndx.dimension(function(d) {
-			return d.Name;
-		}), spendPerName = nameDim.group().reduceSum(function(d) {
-			return +d.Spent;
+		}), posDim = ndx.dimension(function(d) {
+			return d.Position;
 		}), spendHist = spendDim.group().reduceCount();
-		
-		//circulo
-		yearRingChart.width(150).dimension(nameDim).group(spendPerName).innerRadius(30)
-				.controlsUseVisibility(true);
-		
+		spenPerPos = posDim.group().reduceSum(function(d) {
+			return +d.Spent;
+		}),
+
+		//barra vertical
+		spendHistChart.dimension(posDim).group(spenPerPos).x(d3.scaleBand())
+				.xUnits(dc.units.ordinal).elasticY(true).controlsUseVisibility(
+						true);
+
 		table.dimension(spendDim).group(function(d) {
 			return d.value;
 		}).size(Infinity).sortBy(function(d) {
 			return +d.Spent;
-		}).showGroups(false).columns([ 
-			'Name', 
-			'State', 
-			'Position'
-			/*{
-			label : 'Order',
-				format : function(d) {
-					return d.Order;
-				}
-			},
-			'Year', 
-			{
+		}).showGroups(false).columns([ 'ID', {
 			label : 'Product',
 			format : function(d) {
-					return d.Productos;
-				}
+				return d.Productos;
 			}
-			*/
-			]).order(d3.ascending).on('preRender', update_offset).on('preRedraw',
-				update_offset).on('pretransition', display);
-		var ofs = 0, pag = 5;
+		}, 'Position' ]).order(d3.ascending).on('preRender', update_offset).on(
+				'preRedraw', update_offset).on('pretransition', display);
 
+		var ofs = 0, pag = 5;
 		function update_offset() {
 			var totFilteredRecs = ndx.groupAll().value();
 			var end = ofs + pag > totFilteredRecs ? totFilteredRecs : ofs + pag;
@@ -136,7 +160,7 @@
 			update_offset();
 			table.redraw();
 		}
-		console.log("1111111111111111111111111111111111111111111111");
 		dc.renderAll();
 	</script>
+
 </div>

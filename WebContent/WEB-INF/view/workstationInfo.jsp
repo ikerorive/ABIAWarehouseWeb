@@ -2,7 +2,7 @@
 
 	<!--Productos-->
 	<div style="padding: 20px">
-		<div id="chart-hist-product" style="width: 60%"></div>
+		<div id="chart-hist-product" style="width: 100%"></div>
 	</div>
 
 	<div style="padding: 180px">
