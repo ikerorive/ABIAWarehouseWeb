@@ -38,7 +38,7 @@
 					Year : data[i].YEAR,
 					Productos : data[i].NAME,
 					Order : data[i].ORDERDESC,
-					date : data[i].DATE,
+					Date : data[i].DATE,
 					Spent : '1'
 				}
 			spendData.push(x);
@@ -81,22 +81,15 @@
 			return d.value;
 		}).size(Infinity).sortBy(function(d) {
 			return +d.Spent;
-		}).showGroups(false).columns([ 
-			'Name', 
-			{
-			label : 'Order',
-				format : function(d) {
-					return d.Order;
-				}
-			},
-			'Year', 
+		}).showGroups(false).columns([ 'Name','Order',
+			 
 			{
 			label : 'Product',
 			format : function(d) {
 					return d.Productos;
 				}
 			},
-			'date'
+			'Date'
 			]).order(d3.ascending).on('preRender', update_offset).on('preRedraw',
 				update_offset).on('pretransition', display);
 		var ofs = 0, pag = 5;

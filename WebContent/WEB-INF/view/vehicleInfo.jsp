@@ -1,11 +1,18 @@
 <div class="container" style="width: 100%">
 
-	
-
-	<!--Vehicle-->
-	<div id="chart-ring-vehicle" style="width: 100%"></div>
-
-	<div style="padding: 100px"; >
+	<table style="width: 100%">
+		<tr>
+			<td>
+				<table id="Table2" style="width: 100%" border="1"display:"inline-block">
+				</table>
+			</td>
+			<td>
+				<!--Vehicle-->
+				<div id="chart-ring-vehicle" style="width: 100%"></div>
+			</td>
+		</tr>
+	</table>
+	<div style="width: 100%"; >
 		<div align="left" style="color: #ff8000">
 			<input id="last" class="btn" type="Button" value="Last"
 				onclick="javascript:last()" /> <input id="next" class="btn"
@@ -14,8 +21,9 @@
 			<span id="totalsize"></span>
 		</div>
 		<!--tabla-->
-		<table id="table" class="table table-striped";></table>
+		<table id="table" class="table table-striped"></table>
 
+		</tr>
 	</div>
 
 
@@ -23,72 +31,60 @@
 	<script type="text/javascript" src="resources/js/crossfilter.js"></script>
 	<script type="text/javascript" src="resources/js/dc.js"></script>
 	<script type="text/javascript">
-		var data =<%=session.getAttribute("dataTaskVehicle")%>;
-		console.log(data);
-		
-		var spenderRowChart = dc.rowChart("#chart-ring-vehicle");
+		var data2 =
+	<%=session.getAttribute("dataVehicle")%>
+		$("#Table2").append(
+				'<tr><td><b><u>ID</u></b></td>'
+						+ '<td><b><u>Status</u></b></td>'
+						+ '<td><b><u>Position</u></b></td>');
+		for (var o = 0; o < data2.length; o += 1) {
+			$("#Table2").append(
+					'<tr>' + '<td align="center" style="dislay: none;">'
+							+ data2[o].idVEHICLE + '</td>'
+							+ '<td align="center" style="dislay: none;">'
+							+ data2[o].STATUSNAME + '</td>'
+							+ '<td align="center" style="dislay: none;">'
+							+ data2[o].POSNAME + '</td>' + '</tr>');
+		}
 
+		var data =
+	<%=session.getAttribute("dataTaskVehicle")%>
+		;
+		var VehicleRowChart = dc.pieChart("#chart-ring-vehicle");
 		var table = dc.dataTable('#table');
-
-		var spendData=[];
+		var spendData = [];
 		for (var i = 0; i < data.length; i += 1) {
-			var x= {
-					Name : data[i].idVEHICLE,
-					date : data[i].FINISHDATE,
-					Posicion : data[i].POSNAME,
-					Order : data[i].ORDERDESC,
-					Spent : '1'
-				}
+			var x = {
+				Name : data[i].idVEHICLE,
+				Date : data[i].FINISHDATE,
+				Position : data[i].POSNAME,
+				Order : data[i].ORDERDESC,
+				Spent : '1'
+			}
 			spendData.push(x);
 		}
 
 		// set crossfilter
-		var ndx = crossfilter(spendData), orderDim = ndx.dimension(function(d) {
-			return d.Order
-		}), yearDim = ndx.dimension(function(d) {
-			return +d.Year;
-		}),
-
-		spendDim = ndx.dimension(function(d) {
+		var ndx = crossfilter(spendData), spendDim = ndx.dimension(function(d) {//
 			return Math.floor(d.Spent);
-		}), nameDim = ndx.dimension(function(d) {
+		}), nameDim = ndx.dimension(function(d) {//
 			return d.Name;
-		}), proDim = ndx.dimension(function(d) {
-			return d.Productos;
-		}), spendPerYear = yearDim.group().reduceSum(function(d) {
-			return +d.Spent;
-		}), spendPerName = nameDim.group().reduceSum(function(d) {
+		}), spendPerName = nameDim.group().reduceSum(function(d) {//
 			return +d.Spent;
 		}), spendHist = spendDim.group().reduceCount();
-		spenPerOrder = orderDim.group().reduceSum(function(d) {
-			return +d.Spent;
-		}), spenPerProduc = proDim.group().reduceSum(function(d) {
-			return +d.Spent;
-		}),
 
-		spenderRowChart.dimension(nameDim).group(spendPerName).elasticX(true)
-		.controlsUseVisibility(true);
+		VehicleRowChart.width(150).dimension(nameDim).group(spendPerName)
+				.innerRadius(30).controlsUseVisibility(true);
 
 		table.dimension(spendDim).group(function(d) {
 			return d.value;
 		}).size(Infinity).sortBy(function(d) {
 			return +d.Spent;
-		}).showGroups(false).columns([ 'Name', 
-			{
-			label : 'Order',
-			format : function(d) {
-				return d.Order;
-			}
-		},
-		'date','Posicion'
-		
-		/* 'Year', {
-			label : 'Product',
-			format : function(d) {
-				return d.Productos;
-			}
-		} */]).order(d3.ascending).on('preRender', update_offset).on('preRedraw',
-				update_offset).on('pretransition', display);
+		}).showGroups(false).columns([ 'Name', 'Order', 'Date', 'Position' ])
+				.order(d3.ascending).on('preRender', update_offset).on(
+						'preRedraw', update_offset)
+				.on('pretransition', display);
+
 		var ofs = 0, pag = 5;
 
 		function update_offset() {
