@@ -100,7 +100,6 @@
 			format : function(d) {
 				return d.Productos;
 			},
-			'date'
 		} ]).order(d3.ascending).on('preRender', update_offset).on('preRedraw',
 				update_offset).on('pretransition', display);
 		var ofs = 0, pag = 5;

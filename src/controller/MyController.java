@@ -400,6 +400,12 @@ public class MyController {
 		// System.out.println("" + System.getProperty("user.dir"));
 		return "home";
 	}
+	
+	@RequestMapping(value = "logOff", method = RequestMethod.GET)
+	public String logOff( HttpSession session) {
+		session.setAttribute("user", null);
+		return "home";
+	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage(Model model) {

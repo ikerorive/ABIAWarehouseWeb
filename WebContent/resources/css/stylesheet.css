@@ -22,12 +22,19 @@ body {
 	background-attachment: fixed;
 }
 
+
+
 header {
 	grid-area: header;
 }
 
 #hideSelect {
-	display:none;
+	display: none;
+}
+
+#fullPageJumbo {
+	height: 100%;
+	width: 100%;
 }
 
 #products div {

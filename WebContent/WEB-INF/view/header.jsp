@@ -12,8 +12,10 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item"><a class="nav-link"
-				href="/SpringMVCFormValidationPruebas/login">Login</a></li>
+			<c:if test="${empty user}">
+				<li class="nav-item"><a class="nav-link"
+					href="/SpringMVCFormValidationPruebas/login">Login</a></li>
+			</c:if>
 			<!--<li class="nav-item"><a class="nav-link"
 				href="/SpringMVCFormValidationPruebas/register">Register</a></li>-->
 			<c:if test="${not empty user}">
@@ -47,8 +49,10 @@
 							href="/SpringMVCFormValidationPruebas/register">Register user</a></li>
 					</c:when>
 				</c:choose>
-
+				<li id="logOffItem" class="nav-item"><a class="nav-link"
+					href="/SpringMVCFormValidationPruebas/logOff">Log Off</a></li>
 			</c:if>
+
 		</ul>
 	</div>
 </nav>
