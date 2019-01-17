@@ -38,7 +38,7 @@
 
 	<!-- Register -->
 	<p>
-		Not a member? <a href="/SpringMVCFormValidationPruebas/register">Register</a>
+		Not a member? <a href="/SpringMVCFormValidationPruebas/registerUser">Register</a>
 	</p>
 
 	<!-- Default form login -->

@@ -2,8 +2,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<a href="/SpringMVCFormValidationPruebas/"><img
-		src="resources/img/ABIAiconWHITE.png" height="36" width="36"></a>
-	&emsp;
+		src="resources/img/ABIAiconWHITE.png" height="36" width="36"
+		alt="ABIAWarehouse logo"></a> &emsp;
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarSupportedContent"
 		aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -20,23 +20,31 @@
 				<c:choose>
 					<c:when test="${user.idRole==1}">
 						<li class="nav-item"><a class="nav-link"
-							href="/SpringMVCFormValidationPruebas/productSelection">Create an order</a></li>
+							href="/SpringMVCFormValidationPruebas/productSelection">Create
+								an order</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/SpringMVCFormValidationPruebas/currentOrders">See current orders and history</a></li>
+							href="/SpringMVCFormValidationPruebas/currentOrders">See
+								current orders and history</a></li>
 					</c:when>
 					<c:when test="${user.idRole==2}">
 						<li class="nav-item"><a class="nav-link"
 							href="/SpringMVCFormValidationPruebas/logistic">Logistic</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/SpringMVCFormValidationPruebas/currentOrdersAll">See current orders of all users</a></li>
+							href="/SpringMVCFormValidationPruebas/currentOrdersAll">See
+								current orders of all users</a></li>
 					</c:when>
 					<c:when test="${user.idRole==3}">
 						<li class="nav-item"><a class="nav-link"
-							href="/SpringMVCFormValidationPruebas/orderHistoryAll">Order history of all users</a></li>
+							href="/SpringMVCFormValidationPruebas/orderHistoryAll">Order
+								history of all users</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/SpringMVCFormValidationPruebas/vehicleInfo">Vehicle information</a></li>
+							href="/SpringMVCFormValidationPruebas/vehicleInfo">Vehicle
+								information</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/SpringMVCFormValidationPruebas/workstationInfo">Workstation information</a></li>
+							href="/SpringMVCFormValidationPruebas/workstationInfo">Workstation
+								information</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/SpringMVCFormValidationPruebas/register">Register user</a></li>
 					</c:when>
 				</c:choose>
 

@@ -66,7 +66,7 @@
 
 <form id="products" action="selectProducts">
 	<c:forEach items="${alist}" var="listItem">
-		<div id="productList" class="${listItem.name}">
+		<div  class="${listItem.name}">
 			<div class="custom-control custom-checkbox">
 				<input type="checkbox" class="custom-control-input"
 					id="${listItem.idProduct}"> <label

@@ -14,13 +14,12 @@
 	<!-- Password -->
 	<form:input path="password" type="password"
 		id="defaultRegisterFormPassword" class="form-control  mb-4"
-		placeholder="Password"/>
+		placeholder="Password"
+		aria-describedby="defaultRegisterFormPasswordHelpBlock" />
 
-	<select name="idRole" class="browser-default custom-select mb-4">
-		<option value="" disabled selected>Select Role</option>
-		<option value="1">Customer</option>
-		<option value="2">Operator</option>
-		<option value="3">Manager</option>
+	<select id="hideSelect" name="idRole"
+		class="browser-default custom-select mb-4">
+		<option value="1" selected>Customer</option>
 	</select>
 	<!-- Sign up button -->
 	<button class="btn btn-info my-4 btn-block peach-gradient"

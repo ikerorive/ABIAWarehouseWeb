@@ -12,8 +12,6 @@
  */
 package controller;
 
-
-
 /** @brief Libraries
  */
 
@@ -109,6 +107,7 @@ public class MyController {
 	 */
 	@Autowired
 	private UserService userService;
+
 	/**
 	 * @brief Method for determine the userService
 	 * @param userService userService
@@ -116,6 +115,7 @@ public class MyController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
+
 	/**
 	 * @brief Method for get the value of the userService variable
 	 * @return UserService
@@ -123,11 +123,13 @@ public class MyController {
 	public UserService getUserService() {
 		return userService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private RoleService roleService;
+
 	/**
 	 * @brief Method for get the value of the roleService variable
 	 * @return RoleService
@@ -135,6 +137,7 @@ public class MyController {
 	public RoleService getRoleService() {
 		return roleService;
 	}
+
 	/**
 	 * @brief Method for determine the roleService
 	 * @param roleService roleService
@@ -142,11 +145,13 @@ public class MyController {
 	public void setRoleService(RoleService roleService) {
 		this.roleService = roleService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private VehicleService vehicleService;
+
 	/**
 	 * @brief Method for get the value of the vehicleService variable
 	 * @return VehicleService
@@ -154,6 +159,7 @@ public class MyController {
 	public VehicleService getVehicleService() {
 		return vehicleService;
 	}
+
 	/**
 	 * @brief Method for determine the vehicleService
 	 * @param vehicleService vehicleService
@@ -161,11 +167,13 @@ public class MyController {
 	public void setVehicleService(VehicleService vehicleService) {
 		this.vehicleService = vehicleService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private VehicleStatusService vehicleStatusService;
+
 	/**
 	 * @brief Method for get the value of the vehicleStatusService variable
 	 * @return VehicleStatusService
@@ -173,6 +181,7 @@ public class MyController {
 	public VehicleStatusService getVehicleStatusService() {
 		return vehicleStatusService;
 	}
+
 	/**
 	 * @brief Method for determine the vehicleStatusService
 	 * @param vehicleStatusService vehicleStatusService
@@ -180,11 +189,13 @@ public class MyController {
 	public void setVehicleStatusService(VehicleStatusService vehicleStatusService) {
 		this.vehicleStatusService = vehicleStatusService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private ProductService productService;
+
 	/**
 	 * @brief Method for get the value of the productService variable
 	 * @return ProductService
@@ -192,6 +203,7 @@ public class MyController {
 	public ProductService getProductService() {
 		return productService;
 	}
+
 	/**
 	 * @brief Method for determine the productService
 	 * @param productService productService
@@ -199,11 +211,13 @@ public class MyController {
 	public void setProductService(ProductService productService) {
 		this.productService = productService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private ProductTypeService productTypeService;
+
 	/**
 	 * @brief Method for get the value of the productTypeService variable
 	 * @return ProductTypeService
@@ -211,6 +225,7 @@ public class MyController {
 	public ProductTypeService getProductTypeService() {
 		return productTypeService;
 	}
+
 	/**
 	 * @brief Method for determine the productTypeService
 	 * @param productTypeService productTypeService
@@ -218,11 +233,13 @@ public class MyController {
 	public void setProductTypeService(ProductTypeService productTypeService) {
 		this.productTypeService = productTypeService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private PositionService positionService;
+
 	/**
 	 * @brief Method for get the value of the positionService variable
 	 * @return PositionService
@@ -230,6 +247,7 @@ public class MyController {
 	public PositionService getPositionService() {
 		return positionService;
 	}
+
 	/**
 	 * @brief Method for determine the positionService
 	 * @param positionService positionService
@@ -237,11 +255,13 @@ public class MyController {
 	public void setPositionService(PositionService positionService) {
 		this.positionService = positionService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private PosTypeService posTypeService;
+
 	/**
 	 * @brief Method for get the value of the postTypeService variable
 	 * @return PosTypeService
@@ -249,6 +269,7 @@ public class MyController {
 	public PosTypeService getPosTypeService() {
 		return posTypeService;
 	}
+
 	/**
 	 * @brief Method for determine the posTypeService
 	 * @param posTypeService posTypeService
@@ -256,11 +277,13 @@ public class MyController {
 	public void setPosTypeService(PosTypeService posTypeService) {
 		this.posTypeService = posTypeService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private PositionRelationService positionRelationService;
+
 	/**
 	 * @brief Method for get the value of the positionRelationService variable
 	 * @return PositionRelationService
@@ -268,6 +291,7 @@ public class MyController {
 	public PositionRelationService getPositionRelationService() {
 		return positionRelationService;
 	}
+
 	/**
 	 * @brief Method for determine the positionRelationService
 	 * @param positionRelationService positionRelationService
@@ -275,11 +299,13 @@ public class MyController {
 	public void setPositionRelationService(PositionRelationService positionRelationService) {
 		this.positionRelationService = positionRelationService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private OrderService orderService;
+
 	/**
 	 * @brief Method for get the value of the orderService variable
 	 * @return OrderService
@@ -287,6 +313,7 @@ public class MyController {
 	public OrderService getOrderService() {
 		return orderService;
 	}
+
 	/**
 	 * @brief Method for determine the orderService
 	 * @param orderService orderService
@@ -294,11 +321,13 @@ public class MyController {
 	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private OrderStatusService orderStatusService;
+
 	/**
 	 * @brief Method for get the value of the orderStatusService variable
 	 * @return OrderStatusService
@@ -306,6 +335,7 @@ public class MyController {
 	public OrderStatusService getOrderStatusService() {
 		return orderStatusService;
 	}
+
 	/**
 	 * @brief Method for determine the OrderStatusService
 	 * @param orderStatusService orderStatusService
@@ -313,11 +343,13 @@ public class MyController {
 	public void setOrderStatusService(OrderStatusService orderStatusService) {
 		this.orderStatusService = orderStatusService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private TaskService taskService;
+
 	/**
 	 * @brief Method for get the value of the taskService variable
 	 * @return TaskService
@@ -325,6 +357,7 @@ public class MyController {
 	public TaskService getTaskService() {
 		return taskService;
 	}
+
 	/**
 	 * @brief Method for determine the taskService
 	 * @param taskService taskService
@@ -332,11 +365,13 @@ public class MyController {
 	public void setTaskService(TaskService taskService) {
 		this.taskService = taskService;
 	}
+
 	/**
 	 * @brief Attributes
 	 */
 	@Autowired
 	private TaskStatusService taskStatusService;
+
 	/**
 	 * @brief Method for get the value of the taskStatusService variable
 	 * @return TaskStatusService
@@ -344,6 +379,7 @@ public class MyController {
 	public TaskStatusService getTaskStatusService() {
 		return taskStatusService;
 	}
+
 	/**
 	 * @brief Method for determine the taskStatusService
 	 * @param taskStatusService taskStatusService
@@ -351,17 +387,17 @@ public class MyController {
 	public void setTaskStatusService(TaskStatusService taskStatusService) {
 		this.taskStatusService = taskStatusService;
 	}
-	
-	 @RequestMapping(value="/404")
-	    public String error404(){
-	       // DO stuff here 
-	        return "404";
-	    }
+
+	@RequestMapping(value = "/404")
+	public String error404() {
+		// DO stuff here
+		return "404";
+	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homePage() {
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-		System.out.println(""+System.getProperty("user.dir"));
+		// System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		// System.out.println("" + System.getProperty("user.dir"));
 		return "home";
 	}
 
@@ -385,7 +421,7 @@ public class MyController {
 
 			if (session.getAttribute("user") != null) {
 				User user2 = (User) session.getAttribute("user");
-				System.out.println("username " + user2.getUsername());
+				// System.out.println("username " + user2.getUsername());
 			}
 			int role = user.getIdRole();
 			if (role == 3) {
@@ -396,7 +432,7 @@ public class MyController {
 			modelAndView.addObject("user", user);
 			// return modelAndView;
 		} else {
-			System.out.println();
+			// System.out.println();
 			modelAndView = new ModelAndView("notFound");
 		}
 
@@ -407,17 +443,16 @@ public class MyController {
 
 			o.setName(hmap.get(o.getProductType()).getName());
 			o.setDescription(hmap.get(o.getProductType()).getDescription());
-			System.out.println("Id Product " + o.getIdProduct());
-			System.out.println(" Product " + o.getName());
-			System.out.println(" Product " + o.getDescription());
+			// System.out.println("Id Product " + o.getIdProduct());
+			// System.out.println(" Product " + o.getName());
+			// System.out.println(" Product " + o.getDescription());
 			// en cada iteraci�n "o" se refiere a un objeto del arreglo para todos objetos
 			// en el arreglo
 		}
 		// Collections.sort(pr);
 		pr.sort(Comparator.comparing(Product::getProductType));
-		System.out.println("sorted");
+		// System.out.println("sorted");
 		modelAndView.addObject("products", pr);
-		///// HASTA AQUI
 
 		return modelAndView;
 	}
@@ -440,6 +475,12 @@ public class MyController {
 		return "register";
 	}
 
+	@RequestMapping(value = "/registerUser", method = RequestMethod.GET)
+	public String registerUserPage(Model model) {
+		model.addAttribute("user", new User());
+		return "registerUser";
+	}
+
 	@ModelAttribute
 	public void headerMessage(Model model) {
 		model.addAttribute("headerMessage", "Welcome");
@@ -455,15 +496,15 @@ public class MyController {
 
 			o.setName(hmap.get(o.getProductType()).getName());
 			o.setDescription(hmap.get(o.getProductType()).getDescription());
-			System.out.println("Id Product " + o.getIdProduct());
-			System.out.println(" Product " + o.getName());
-			System.out.println(" Product " + o.getDescription());
+			// System.out.println("Id Product " + o.getIdProduct());
+			// System.out.println(" Product " + o.getName());
+			// System.out.println(" Product " + o.getDescription());
 			// en cada iteraci�n "o" se refiere a un objeto del arreglo para todos objetos
 			// en el arreglo
 		}
 		// Collections.sort(pr);
 		pr.sort(Comparator.comparing(Product::getProductType));
-		System.out.println("sorted");
+		// System.out.println("sorted");
 		model.addAttribute("products", pr);
 		return "knowmore";
 	}
@@ -508,7 +549,7 @@ public class MyController {
 		Order order = new Order();
 		if (session.getAttribute("user") != null) {
 			User user2 = (User) session.getAttribute("user");
-			System.out.println("username " + user2.getUsername());
+			// System.out.println("username " + user2.getUsername());
 			order.setIdUser(user2.getIdUser());
 		} else {
 			order.setIdUser(4);
@@ -518,9 +559,9 @@ public class MyController {
 		order.setOrderDesc(data[1]);
 		getOrderService().createOrder(order);
 		int id = getOrderService().getLastId();
-		System.out.println("LAST ID " + id);
+		// System.out.println("LAST ID " + id);
 		// Order order= getOrderService().
-		System.out.println("PRUEBA   " + data[0]);
+		// System.out.println("PRUEBA " + data[0]);
 		// response.encodeRedirectURL("/SpringMVCFormValidationPruebas/selectProducts");
 		for (int i = 2; i < data.length; i++) {
 			Task task = new Task();
@@ -530,7 +571,7 @@ public class MyController {
 			task.setIdVehicle(0);
 			getTaskService().createTask(task);
 		}
-		
+
 	}
 
 	@RequestMapping(value = "/productSelection", method = RequestMethod.GET)
@@ -539,138 +580,24 @@ public class MyController {
 		HashMap<Integer, ProductType> hmap = getProductTypeService().getProductTypeMap();
 		ArrayList<Product> pr = getProductService().getProducts();
 		ArrayList<Position> pos = getPositionService().getPositionByPositionId(3);
-		System.out.println("------------------------------------------------POSITION LIST " + pos);
+		// System.out.println("------------------------------------------------POSITION
+		// LIST " + pos);
 		for (Product o : pr) {
 
 			o.setName(hmap.get(o.getProductType()).getName());
 			o.setDescription(hmap.get(o.getProductType()).getDescription());
-			System.out.println("Id Product " + o.getIdProduct());
-			System.out.println(" Product " + o.getName());
-			System.out.println(" Product " + o.getDescription());
+			// System.out.println("Id Product " + o.getIdProduct());
+			// System.out.println(" Product " + o.getName());
+			// System.out.println(" Product " + o.getDescription());
 			// en cada iteraci�n "o" se refiere a un objeto del arreglo para todos objetos
 			// en el arreglo
 		}
 		// Collections.sort(pr);
 		pr.sort(Comparator.comparing(Product::getProductType));
-		System.out.println("sorted");
+		// System.out.println("sorted");
 		model.addAttribute("products", pr);
 		model.addAttribute("positions", pos);
 		return "productSelection";
 	}
 
-	@RequestMapping(value = "/currentOrders", method = RequestMethod.GET)
-	public String currentOrders(Model model, HttpServletRequest request, HttpSession session,
-			HttpServletResponse response) throws IOException {
-		User user2 = (User) session.getAttribute("user");
-		GetJSON getJson = new GetJSON();
-		JSONArray json = getJson.getJSONFromQuery(
-				"SELECT\r\n" + "  user.USERNAME,\r\n" + "  `order`.ORDERDESC,\r\n" + "  taskstatus.STATUSNAME,\r\n"
-						+ "  producttype.NAME,\r\n" + "  `order`.DATE,\r\n" + "YEAR(`order`.DATE) AS YEAR\r\n"
-						+ "FROM task\r\n" + "  INNER JOIN `order`\r\n" + "    ON task.idORDER = `order`.idORDER\r\n"
-						+ "  INNER JOIN user\r\n" + "    ON `order`.idUSER = user.idUSER\r\n"
-						+ "  INNER JOIN taskstatus\r\n" + "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n"
-						+ "  INNER JOIN product\r\n" + "    ON task.idPRODUCT = product.idPRODUCT\r\n"
-						+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE\r\n"
-						+ " WHERE user.idUSER='" + user2.getIdUser() + "';");
-		System.out.println("JSON  " + json);
-		/*
-		 * ServletContext context =request.getServletContext(); String path =
-		 * context.getRealPath("/");
-		 * System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa " + path); try
-		 * (FileWriter file = new FileWriter(path+"resources\\jeje.json")) {
-		 * 
-		 * file.write(json.toString()); file.flush();
-		 * 
-		 * } catch (IOException e) { e.printStackTrace(); }
-		 */
-
-		// response.sendRedirect("currentOrders");
-
-		// return "{ \"data\" : " + json.toString() + "}";
-		session.setAttribute("dataCurrentOrders", json.toString());
-			
-		
-		return "currentOrders";
-	}
-
-	@RequestMapping(value = "/currentOrdersAll", method = RequestMethod.GET)
-	public String currenOrdersAll(Model model) {
-		// OPERATOR
-		GetJSON getJson = new GetJSON();
-		JSONArray jsonTask = getJson.getJSONFromQuery("SELECT\r\n" + "  user.USERNAME,\r\n" + "  `order`.ORDERDESC,\r\n"
-				+ "  taskstatus.STATUSDESC,\r\n" + "  producttype.NAME,\r\n" + "  YEAR(`order`.DATE) AS YEAR,\r\n"
-				+ "  `order`.DATE\r\n" + "FROM task\r\n" + "  INNER JOIN `order`\r\n"
-				+ "    ON task.idORDER = `order`.idORDER\r\n" + "  INNER JOIN user\r\n"
-				+ "    ON `order`.idUSER = user.idUSER\r\n" + "  INNER JOIN taskstatus\r\n"
-				+ "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n" + "  INNER JOIN product\r\n"
-				+ "    ON task.idPRODUCT = product.idPRODUCT\r\n" + "  INNER JOIN producttype\r\n"
-				+ "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE\r\n" + "WHERE task.idSTATUS!='3';");
-		JSONArray jsonVehicle = getJson
-				.getJSONFromQuery("SELECT\r\n" + "  `position`.POSNAME,\r\n" + "  vehiclestatus.STATUSNAME,\r\n"
-						+ "  vehicle.idVEHICLE\r\n" + "FROM vehicle\r\n" + "  INNER JOIN vehiclestatus\r\n"
-						+ "    ON vehicle.idVEHICLESTATUS = vehiclestatus.idVEHICLESTATUS\r\n"
-						+ "  INNER JOIN `position`\r\n" + "    ON vehicle.idPOSITION = `position`.idPOSITION;");
-		JSONArray jsonProduct = getJson.getJSONFromQuery("SELECT\r\n" + "  product.idPRODUCT,\r\n"
-				+ "  `position`.POSNAME,\r\n" + "  producttype.NAME\r\n" + "FROM product\r\n"
-				+ "  INNER JOIN `position`\r\n" + "    ON product.`POSITION` = `position`.idPOSITION\r\n"
-				+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE;");
-		System.out.println("JSON  " + jsonVehicle);
-		return "currentOrdersAll";
-	}
-
-	@RequestMapping(value = "/logistic", method = RequestMethod.GET)
-	public String logistic(Model model) {
-		// OPERATOR
-
-		return "logistic";
-	}
-
-	@RequestMapping(value = "/orderHistoryAll", method = RequestMethod.GET)
-	public String orderHistoryAll(Model model) {
-		GetJSON getJson = new GetJSON();
-
-		JSONArray json = getJson.getJSONFromQuery(
-				"SELECT\r\n" + "  user.USERNAME,\r\n" + "  `order`.ORDERDESC,\r\n" + "  taskstatus.STATUSDESC,\r\n"
-						+ "  producttype.NAME,\r\n" + "  YEAR(`order`.DATE) AS YEAR,\r\n" + "  `order`.DATE\r\n"
-						+ "FROM task\r\n" + "  INNER JOIN `order`\r\n" + "    ON task.idORDER = `order`.idORDER\r\n"
-						+ "  INNER JOIN user\r\n" + "    ON `order`.idUSER = user.idUSER\r\n"
-						+ "  INNER JOIN taskstatus\r\n" + "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n"
-						+ "  INNER JOIN product\r\n" + "    ON task.idPRODUCT = product.idPRODUCT\r\n"
-						+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE;");
-
-		System.out.println("JSON  " + json);
-		return "orderHistoryAll";
-	}
-
-	@RequestMapping(value = "/vehicleInfo", method = RequestMethod.GET)
-	public String vehicleInfo(Model model) {
-		// SELECT * FROM warehouse.vehicle;
-		GetJSON getJson = new GetJSON();
-		JSONArray jsonVehicle = getJson
-				.getJSONFromQuery("SELECT\r\n" + "  `position`.POSNAME,\r\n" + "  vehiclestatus.STATUSNAME,\r\n"
-						+ "  vehicle.idVEHICLE\r\n" + "FROM vehicle\r\n" + "  INNER JOIN vehiclestatus\r\n"
-						+ "    ON vehicle.idVEHICLESTATUS = vehiclestatus.idVEHICLESTATUS\r\n"
-						+ "  INNER JOIN `position`\r\n" + "    ON vehicle.idPOSITION = `position`.idPOSITION;");
-		JSONArray jsonVehicleTask = getJson.getJSONFromQuery("SELECT\r\n" + "  task.idVEHICLE,\r\n"
-				+ "  `order`.ORDERDESC,\r\n" + "  YEAR(`task`.FINISHDATE) AS YEAR,\r\n" + "  task.FINISHDATE,\r\n"
-				+ "  `position`.POSNAME\r\n" + "FROM task\r\n" + "  INNER JOIN `order`\r\n"
-				+ "    ON task.idORDER = `order`.idORDER\r\n" + "  INNER JOIN `position`\r\n"
-				+ "    ON `order`.DESTINO = `position`.idPOSITION;");
-		return "vehicleInfo";
-	}
-
-	@RequestMapping(value = "/workstationInfo", method = RequestMethod.GET)
-	public String workstationInfo(Model model) {
-		GetJSON getJson = new GetJSON();
-		JSONArray json = getJson
-				.getJSONFromQuery("SELECT\r\n" + "  product.idPRODUCT,\r\n" + "  product.`POSITION`,\r\n"
-						+ "  `position`.POSNAME,\r\n" + "  producttype.NAME\r\n" + "FROM product\r\n"
-						+ "  INNER JOIN `position`\r\n" + "    ON product.`POSITION` = `position`.idPOSITION\r\n"
-						+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE;");
-		System.out.println("JSON  " + json);
-		return "workstationInfo";
-	}
-	
-	
-	
 }

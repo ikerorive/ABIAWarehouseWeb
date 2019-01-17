@@ -1,5 +1,4 @@
 <div class="container" style="width: 100%">
-
 	<!--Años-->
 	<div id="chart-ring-year" style="width: 25%"></div>
 
@@ -10,9 +9,9 @@
 	<div id="chart-row-spenders" style="width: 20%"></div>
 
 	<!--Order-->
-	<div id="chart-hist-order" style="width: 30%"></div>
+	<div id="chart-hist-order" style="width: 20%"></div>
 
-	<div style="padding: 100px">
+	<div style="padding: 0px">
 		<div align="left" style="color: #ff8000">
 			<input id="last" class="btn" type="Button" value="Last"
 				onclick="javascript:last()" /> <input id="next" class="btn"
@@ -39,176 +38,18 @@
 				.rowChart("#chart-row-spenders");
 
 		var table = dc.dataTable('#table');
-
-		var spendData = [ {
-			Name : 'Mr A',
-			Year : 2011,
-			Productos : 'Calzetines',
-			Order : 'Primero',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2011,
-			Productos : 'Calzetines',
-			Order : 'Segundo',
-			Spent : '1'
-		}, {
-			Name : 'Mr C',
-			Year : 2011,
-			Productos : 'Pantalones',
-			Order : 'Tercero',
-			Spent : '1'
-		}, {
-			Name : 'Mr A',
-			Year : 2011,
-			Productos : 'Calzetines',
-			Order : 'Primero',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2011,
-			Productos : 'Calzetines',
-			Order : 'Segundo',
-			Spent : '1'
-		}, {
-			Name : 'Mr C',
-			Year : 2011,
-			Productos : 'Pantalones',
-			Order : 'Tercero',
-			Spent : '1'
-		}, {
-			Name : 'Mr A',
-			Year : 2011,
-			Productos : 'Calzetines',
-			Order : 'Primero',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2011,
-			Productos : 'Calzetines',
-			Order : 'Segundo',
-			Spent : '1'
-		}, {
-			Name : 'Mr C',
-			Year : 2011,
-			Productos : 'Pantalones',
-			Order : 'Tercero',
-			Spent : '1'
-		}, {
-			Name : 'Mr A',
-			Year : 2011,
-			Productos : 'Calzetines',
-			Order : 'Primero',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2011,
-			Productos : 'Calzetines',
-			Order : 'Segundo',
-			Spent : '1'
-		}, {
-			Name : 'Mr C',
-			Year : 2011,
-			Productos : 'Pantalones',
-			Order : 'Tercero',
-			Spent : '1'
-		}, {
-			Name : 'Mr A',
-			Year : 2012,
-			Productos : 'Pantalones',
-			Order : 'Cuarto',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2012,
-			Productos : 'Pantalones',
-			Order : 'Quinto',
-			Spent : '1'
-		}, {
-			Name : 'Mr A',
-			Year : 2012,
-			Productos : 'Pantalones',
-			Order : 'Cuarto',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2012,
-			Productos : 'Pantalones',
-			Order : 'Quinto',
-			Spent : '1'
-		}, {
-			Name : 'Mr A',
-			Year : 2012,
-			Productos : 'Pantalones',
-			Order : 'Cuarto',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2012,
-			Productos : 'Pantalones',
-			Order : 'Quinto',
-			Spent : '1'
-		}, {
-			Name : 'Mr A',
-			Year : 2012,
-			Productos : 'Pantalones',
-			Order : 'Cuarto',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2012,
-			Productos : 'Pantalones',
-			Order : 'Quinto',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2013,
-			Productos : 'Vaqueros',
-			Order : 'Sexto',
-			Spent : '1'
-		}, {
-			Name : 'Mr C',
-			Year : 2013,
-			Productos : 'Vaqueros',
-			Order : 'Septimo',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2013,
-			Productos : 'Vaqueros',
-			Order : 'Sexto',
-			Spent : '1'
-		}, {
-			Name : 'Mr C',
-			Year : 2013,
-			Productos : 'Vaqueros',
-			Order : 'Septimo',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2013,
-			Productos : 'Vaqueros',
-			Order : 'Sexto',
-			Spent : '1'
-		}, {
-			Name : 'Mr C',
-			Year : 2013,
-			Productos : 'Vaqueros',
-			Order : 'Septimo',
-			Spent : '1'
-		}, {
-			Name : 'Mr B',
-			Year : 2013,
-			Productos : 'Vaqueros',
-			Order : 'Sexto',
-			Spent : '1'
-		}, {
-			Name : 'Mr C',
-			Year : 2013,
-			Productos : 'Vaqueros',
-			Order : 'Septimo',
-			Spent : '1'
-		} ];
+		var spendData = [];
+		for (var i = 0; i < miArray.length; i += 1) {
+			var x = {
+				Name : miArray[i].USERNAME,
+				Year : miArray[i].YEAR,
+				Productos : miArray[i].NAME,
+				Order : miArray[i].ORDERDESC,
+				Spent : '1'
+			}
+			spendData.push(x);
+		}
+		console.log(spendData);
 
 		console.log("123");
 		// normalize/parse data
