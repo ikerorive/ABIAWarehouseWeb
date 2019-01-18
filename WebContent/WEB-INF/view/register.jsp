@@ -6,7 +6,7 @@
 	<!-- Role -->
 	<!--<form:input path="idRole" type="text" id="defaultRegisterFormName"
 		class="form-control mb-4" placeholder="Role" />-->
-	<p class="h4 mb-4">Sign up</p>
+	<p class="h4 mb-4">Register</p>
 	<!-- Username -->
 	<form:input path="username" type="text"
 		id="defaultRegisterFormFirstName" class="form-control  mb-4"

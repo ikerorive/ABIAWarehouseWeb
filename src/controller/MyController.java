@@ -499,39 +499,6 @@ public class MyController {
 		return "knowmore";
 	}
 
-	@RequestMapping(value = "/order", method = RequestMethod.GET)
-	public String orderPage(Model model) {
-		model.addAttribute("order", new Order());
-		return "order";
-	}
-
-	@RequestMapping(value = "/orderSuccess", method = RequestMethod.POST)
-	public ModelAndView orderSuccess(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
-			return new ModelAndView("order");
-		}
-
-		getOrderService().createOrder(order);
-		ModelAndView modelAndView = new ModelAndView("home");
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/task", method = RequestMethod.GET)
-	public String taskPage(Model model) {
-		model.addAttribute("task", new Task());
-		return "task";
-	}
-
-	@RequestMapping(value = "/taskSuccess", method = RequestMethod.POST)
-	public ModelAndView taskSuccess(@Valid @ModelAttribute("task") Task task, BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
-			return new ModelAndView("task");
-		}
-
-		getTaskService().createTask(task);
-		ModelAndView modelAndView = new ModelAndView("home");
-		return modelAndView;
-	}
 
 	@RequestMapping(value = "/selectProducts", method = RequestMethod.POST)
 	public void validateSymbol(WebRequest webRequest, Model model, HttpServletRequest request,
