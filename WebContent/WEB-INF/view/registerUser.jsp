@@ -25,8 +25,4 @@
 	<button class="btn btn-info my-4 btn-block peach-gradient"
 		type="submit" value="Confirm">Sign up</button>
 
-	<!-- Terms of service -->
-	<p>
-		By clicking <em>Sign up</em> you agree to our <a href=""
-			target="_blank">terms of service</a>
 </form:form>

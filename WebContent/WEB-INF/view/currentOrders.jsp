@@ -7,7 +7,7 @@
 
 
 	<div style="padding: 0px">
-		<div align="left" style="color: #ff8000">
+		<div  style="color: #ff8000">
 			<input id="last" class="btn" type="Button" value="Last"
 				onclick="javascript:last()" /> <input id="next" class="btn"
 				type="button" value="Next" onclick="javascript:next()" /> Showing <span
@@ -19,32 +19,31 @@
 
 	</div>
 
-	<script type="text/javascript" src="resources/js/d3.js"></script>
-	<script type="text/javascript" src="resources/js/crossfilter.js"></script>
-	<script type="text/javascript" src="resources/js/dc.js"></script>
-	<script type="text/javascript">
-		var data =<%=session.getAttribute("dataCurrentOrders")%>;
-		
+	<script src="resources/js/d3.js"></script>
+	<script src="resources/js/crossfilter.js"></script>
+	<script src="resources/js/dc.js"></script>
+	<script>
+		var data =
+	<%=session.getAttribute("dataCurrentOrders")%>
+		;
+
 		var yearRingChart = dc.pieChart("#chart-ring-year"), spendHistChart = dc
 				.barChart("#chart-hist-product").xAxisLabel('Products');
 
 		var table = dc.dataTable('#table');
 
-
-		var spendData=[];
+		var spendData = [];
 		for (var i = 0; i < data.length; i += 1) {
-			var x= {
-					Name : data[i].USERNAME,
-					Year : data[i].YEAR,
-					Productos : data[i].NAME,
-					Order : data[i].ORDERDESC,
-					Date : data[i].DATE,
-					Spent : '1'
-				}
+			var x = {
+				Name : data[i].USERNAME,
+				Year : data[i].YEAR,
+				Productos : data[i].NAME,
+				Order : data[i].ORDERDESC,
+				Date : data[i].DATE,
+				Spent : '1'
+			}
 			spendData.push(x);
 		}
-			
-
 
 		// normalize/parse data
 		spendData.forEach(function(d) {
@@ -58,7 +57,7 @@
 			return +d.Year;
 		}), spendDim = ndx.dimension(function(d) {//
 			return Math.floor(d.Spent);
-		}),proDim = ndx.dimension(function(d) {//
+		}), proDim = ndx.dimension(function(d) {//
 			return d.Productos;
 		}), spendPerYear = yearDim.group().reduceSum(function(d) {//
 			return +d.Spent;
@@ -69,8 +68,8 @@
 			return +d.Spent;
 		}),
 		//circulo
-		yearRingChart.width(150).dimension(yearDim).group(spendPerYear).innerRadius(30)
-				.controlsUseVisibility(true);
+		yearRingChart.width(150).dimension(yearDim).group(spendPerYear)
+				.innerRadius(30).controlsUseVisibility(true);
 
 		//barra vertical
 		spendHistChart.dimension(proDim).group(spenPerProduc).x(d3.scaleBand())
@@ -81,17 +80,15 @@
 			return d.value;
 		}).size(Infinity).sortBy(function(d) {
 			return +d.Spent;
-		}).showGroups(false).columns([ 'Name','Order',
-			 
-			{
+		}).showGroups(false).columns([ 'Name', 'Order',
+
+		{
 			label : 'Product',
 			format : function(d) {
-					return d.Productos;
-				}
-			},
-			'Date'
-			]).order(d3.ascending).on('preRender', update_offset).on('preRedraw',
-				update_offset).on('pretransition', display);
+				return d.Productos;
+			}
+		}, 'Date' ]).order(d3.ascending).on('preRender', update_offset).on(
+				'preRedraw', update_offset).on('pretransition', display);
 		var ofs = 0, pag = 5;
 
 		function update_offset() {

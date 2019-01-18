@@ -6,7 +6,7 @@
 	</div>
 
 	<div style="padding: 180px">
-		<div align="left" style="color: #ff8000">
+		<div style="color: #ff8000">
 			<input id="last" class="btn" type="Button" value="Last"
 				onclick="javascript:last()" /> <input id="next" class="btn"
 				type="button" value="Next" onclick="javascript:next()" /> Showing <span
@@ -18,27 +18,29 @@
 
 	</div>
 
-	<script type="text/javascript" src="resources/js/d3.js"></script>
-	<script type="text/javascript" src="resources/js/crossfilter.js"></script>
-	<script type="text/javascript" src="resources/js/dc.js"></script>
-	<script type="text/javascript">
-		var data =<%=session.getAttribute("dataworkstationInfo")%>;
-		
-		var  spendHistChart = dc.barChart("#chart-hist-product");//.xAxisLabel('Workstation');
+	<script src="resources/js/d3.js"></script>
+	<script src="resources/js/crossfilter.js"></script>
+	<script src="resources/js/dc.js"></script>
+	<script>
+		var data =
+	<%=session.getAttribute("dataworkstationInfo")%>
+		;
+
+		var spendHistChart = dc.barChart("#chart-hist-product");//.xAxisLabel('Workstation');
 
 		var table = dc.dataTable('#table');
 
-		var spendData=[];
+		var spendData = [];
 		for (var i = 0; i < data.length; i += 1) {
-			var x= {
-					Position : data[i].POSNAME,
-					Productos : data[i].NAME,
-					ID : data[i].idPRODUCT,
-					Spent : '1'
-				}
+			var x = {
+				Position : data[i].POSNAME,
+				Productos : data[i].NAME,
+				ID : data[i].idPRODUCT,
+				Spent : '1'
+			}
 			spendData.push(x);
 		}
-			
+
 		// normalize/parse data
 		spendData.forEach(function(d) {
 			d.Spent = d.Spent.match(/\d+/)[0];
@@ -50,10 +52,10 @@
 		}), posDim = ndx.dimension(function(d) {
 			return d.Position;
 		}), spendHist = spendDim.group().reduceCount();
-		 	spenPerPos = posDim.group().reduceSum(function(d) {
+		spenPerPos = posDim.group().reduceSum(function(d) {
 			return +d.Spent;
 		}),
-		
+
 		//barra vertical
 		spendHistChart.dimension(posDim).group(spenPerPos).x(d3.scaleBand())
 				.xUnits(dc.units.ordinal).elasticY(true).controlsUseVisibility(
@@ -63,17 +65,14 @@
 			return d.value;
 		}).size(Infinity).sortBy(function(d) {
 			return +d.Spent;
-		}).showGroups(false).columns(['ID',
-			{
+		}).showGroups(false).columns([ 'ID', {
 			label : 'Product',
 			format : function(d) {
-					return d.Productos;
-				}
-			},
-			'Position'
-			]).order(d3.ascending).on('preRender', update_offset).on('preRedraw',
-				update_offset).on('pretransition', display);
-		
+				return d.Productos;
+			}
+		}, 'Position' ]).order(d3.ascending).on('preRender', update_offset).on(
+				'preRedraw', update_offset).on('pretransition', display);
+
 		var ofs = 0, pag = 5;
 		function update_offset() {
 			var totFilteredRecs = ndx.groupAll().value();

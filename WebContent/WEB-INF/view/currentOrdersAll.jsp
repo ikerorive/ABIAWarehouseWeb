@@ -3,11 +3,11 @@
 	<table style="width: 100%">
 		<tr>
 			<td>
-				<table id="Table2" style="padding: 20px" border="1b" display:"inline-block">
+				<table id="Table2" >
 				</table>
 			</td>
 			<td>
-				<table id="Table3" style="padding: 20px" border="1b" display:"inline-block">
+				<table id="Table3">
 				</table>
 			</td>
 			<td>
@@ -18,8 +18,8 @@
 			</td>
 		</tr>
 	</table>
-	<div style="width: 100%" >
-		<div align="left" style="color: #ff8000">
+	<div style="width: 100%">
+		<div style="color: #ff8000">
 			<input id="last" class="btn" type="Button" value="Last"
 				onclick="javascript:last()" /> <input id="next" class="btn"
 				type="button" value="Next" onclick="javascript:next()" /> Showing <span
@@ -32,10 +32,10 @@
 	</div>
 
 
-	<script type="text/javascript" src="resources/js/d3.js"></script>
-	<script type="text/javascript" src="resources/js/crossfilter.js"></script>
-	<script type="text/javascript" src="resources/js/dc.js"></script>
-	<script type="text/javascript">
+	<script src="resources/js/d3.js"></script>
+	<script src="resources/js/crossfilter.js"></script>
+	<script src="resources/js/dc.js"></script>
+	<script>
 		var data2 =
 	<%=session.getAttribute("dataVehicle")%>
 		$("#Table2").append(
