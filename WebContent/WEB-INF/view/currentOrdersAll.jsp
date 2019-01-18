@@ -3,11 +3,11 @@
 	<table style="width: 100%">
 		<tr>
 			<td>
-				<table id="Table2" style="padding: 20px"" border="1"display:"inline-block">
+				<table id="Table2" style="padding: 20px" border="1"bdisplay:"inline-block">
 				</table>
 			</td>
 			<td>
-				<table id="Table3" style="padding: 20px" border="1"display:"inline-block">
+				<table id="Table3" style="padding: 20px" border="1b"display:"inline-block">
 				</table>
 			</td>
 			<td>
