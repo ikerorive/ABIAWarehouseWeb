@@ -81,24 +81,16 @@ public class GetJSON {
 	public JSONArray getJSONFromQuery(String query) {
 		JSONArray json = null;
 		try {
-			// create our mysql database connection
 			String myDriver = "org.gjt.mm.mysql.Driver";
 			String myUrl = "jdbc:mysql://localhost/warehouse";
 			Class.forName(myDriver);
 			Connection conn = DriverManager.getConnection(myUrl, "root", "");
 
-			// our SQL SELECT query.
-			// if you only need a few columns, specify them by name instead of using "*"
-
-			// create the java statement
 			Statement st = conn.createStatement();
 
-			// execute the query, and get a java resultset
 			ResultSet rs = st.executeQuery(query);
 			json = convert(rs);
-			System.out.println(json);
-			// iterate through the java resultset
-			System.out.println("resultset " + rs);
+
 			st.close();
 		} catch (Exception e) {
 			System.err.println("Got an exception! ");

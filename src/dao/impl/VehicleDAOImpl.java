@@ -50,7 +50,6 @@ public class VehicleDAOImpl implements VehicleDAO {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Vehicle.class);
 		detachedCriteria.add(Restrictions.eq("idVehicle", id));
 		List<Vehicle> findByCriteria = (List<Vehicle>) hibernateTemplate.findByCriteria(detachedCriteria);
-		System.out.println("FIND BY CRITERIA  "+ findByCriteria);
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria.get(0);
 		else

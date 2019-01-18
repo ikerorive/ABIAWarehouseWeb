@@ -115,24 +115,10 @@ public class MyControllerForCharts {
 						+ "  INNER JOIN taskstatus\r\n" + "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n"
 						+ "  INNER JOIN product\r\n" + "    ON task.idPRODUCT = product.idPRODUCT\r\n"
 						+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE\r\n"
-						+ " WHERE user.idUSER='" + user2.getIdUser() + "';");
-		// System.out.println("JSON " + json);
-		/*
-		 * ServletContext context =request.getServletContext(); String path =
-		 * context.getRealPath("/");
-		 * System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa " + path); try
-		 * (FileWriter file = new FileWriter(path+"resources\\jeje.json")) {
-		 * 
-		 * file.write(json.toString()); file.flush();
-		 * 
-		 * } catch (IOException e) { e.printStackTrace(); }
-		 */
+						+ " WHERE user.idUSER='" + user2.getIdUser() + "' ORDER BY `order`.DATE DESC;");
 
-		// response.sendRedirect("currentOrders");
-
-		// return "{ \"data\" : " + json.toString() + "}";
 		session.setAttribute("dataCurrentOrders", json.toString());
-		// System.out.println("current orders work");
+
 		return "currentOrders";
 	}
 
@@ -147,7 +133,7 @@ public class MyControllerForCharts {
 				+ "    ON `order`.idUSER = user.idUSER\r\n" + "  INNER JOIN taskstatus\r\n"
 				+ "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n" + "  INNER JOIN product\r\n"
 				+ "    ON task.idPRODUCT = product.idPRODUCT\r\n" + "  INNER JOIN producttype\r\n"
-				+ "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE\r\n" + "WHERE task.idSTATUS!='3';");
+				+ "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE\r\n" + "WHERE task.idSTATUS!='3' ORDER BY `order`.DATE DESC;");
 		session.setAttribute("dataTask", jsonTask.toString());
 		System.out.println("JSON  orderHistoryAll" + jsonTask);
 		JSONArray jsonVehicle = getJson
@@ -166,8 +152,6 @@ public class MyControllerForCharts {
 
 	@RequestMapping(value = "/logistic", method = RequestMethod.GET)
 	public String logistic(Model model) {
-		// OPERATOR
-
 		return "logistic";
 	}
 
@@ -182,7 +166,7 @@ public class MyControllerForCharts {
 						+ "  INNER JOIN user\r\n" + "    ON `order`.idUSER = user.idUSER\r\n"
 						+ "  INNER JOIN taskstatus\r\n" + "    ON task.idSTATUS = taskstatus.idTASKSTATUS\r\n"
 						+ "  INNER JOIN product\r\n" + "    ON task.idPRODUCT = product.idPRODUCT\r\n"
-						+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE;");
+						+ "  INNER JOIN producttype\r\n" + "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE  ORDER BY  user.USERNAME ASC, `order`.DATE DESC ;");
 		session.setAttribute("data", json.toString());
 		System.out.println("JSON  orderHistoryAll" + json);
 		return "orderHistoryAll";

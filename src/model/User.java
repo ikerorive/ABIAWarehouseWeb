@@ -74,7 +74,6 @@ public class User {
 	 * @return int
 	 */
 	public int getIdRole() {
-		System.out.println("idrole "+idRole);
 		return idRole;
 	}
 	/**
@@ -89,7 +88,6 @@ public class User {
 	 * @return String
 	 */
 	public String getUsername() {
-		System.out.println("getusername "+username);
 		return username;
 	}
 	/**
@@ -104,7 +102,6 @@ public class User {
 	 * @return String
 	 */
 	public String getPassword() {
-		System.out.println("password "+password);
 		return password;
 	}
 	/**

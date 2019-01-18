@@ -50,7 +50,6 @@ public class OrderStatusDAOImpl implements OrderStatusDAO {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(OrderStatus.class);
 		detachedCriteria.add(Restrictions.eq("idOrderStatus", id));
 		List<OrderStatus> findByCriteria = (List<OrderStatus>) hibernateTemplate.findByCriteria(detachedCriteria);
-		System.out.println("FIND BY CRITERIA  "+ findByCriteria);
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria.get(0);
 		else

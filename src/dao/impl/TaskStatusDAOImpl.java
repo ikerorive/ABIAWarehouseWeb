@@ -50,7 +50,7 @@ public class TaskStatusDAOImpl implements TaskStatusDAO {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(TaskStatus.class);
 		detachedCriteria.add(Restrictions.eq("idTaskStatus", id));
 		List<TaskStatus> findByCriteria = (List<TaskStatus>) hibernateTemplate.findByCriteria(detachedCriteria);
-		System.out.println("FIND BY CRITERIA  "+ findByCriteria);
+
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria.get(0);
 		else

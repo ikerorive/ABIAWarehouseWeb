@@ -23,7 +23,7 @@
 		<p class="mb-4 pb-2 px-md-5 mx-md-5">Everybody loves ABIA warehouse!</p>
 		<a class="btn peach-gradient"
 			href="/SpringMVCFormValidationPruebas/knowmore"><i
-			class="fas fa-clone left"></i>Know more</a>
+			class="fas fa-clone left"></i>Contact use</a>
 
 	</div>
 </div>

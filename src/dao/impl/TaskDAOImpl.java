@@ -59,7 +59,6 @@ public class TaskDAOImpl implements TaskDAO {
 		detachedCriteria.add(Restrictions.eq("idProduct", idProduct));
 		List<Task> findByCriteria = (List<Task>) hibernateTemplate.findByCriteria(detachedCriteria);
 
-		System.out.println("FIND BY CRITERIA  " + findByCriteria);
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria.get(0);
 		else
@@ -73,11 +72,6 @@ public class TaskDAOImpl implements TaskDAO {
 						+ task.getIdOrder() + "', '" + task.getIdProduct() + "', '" + task.getIdVehicle() + "', '"
 						+ task.getIdStatus() + "', '1970-01-01 00:00:00');");
 		query.executeUpdate();
-		// hibernateTemplate.save(task);
-
-		/*
-		 * 
-		 * if(id!=null) return true; return false;
-		 */return true;
+		return true;
 	}
 }

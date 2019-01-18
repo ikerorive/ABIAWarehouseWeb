@@ -54,7 +54,6 @@ public class ProductDAOImpl implements ProductDAO {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Product.class);
 		detachedCriteria.add(Restrictions.eq("idProduct", id));
 		List<Product> findByCriteria = (List<Product>) hibernateTemplate.findByCriteria(detachedCriteria);
-		System.out.println("FIND BY CRITERIA  " + findByCriteria);
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria.get(0);
 		else

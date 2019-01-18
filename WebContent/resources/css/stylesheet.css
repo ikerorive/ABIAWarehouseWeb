@@ -22,7 +22,13 @@ body {
 	background-attachment: fixed;
 }
 
+#next, #last {
+	color: black;
+}
 
+[id^=chart] text {
+	fill: white;
+}
 
 header {
 	grid-area: header;
@@ -107,7 +113,9 @@ footer {
 		display: flex;
 	}
 	.container * {
-		padding: 0;
-		margin: 0;
+		width:100%;
+	}
+	.container div {
+		padding:0;
 	}
 }

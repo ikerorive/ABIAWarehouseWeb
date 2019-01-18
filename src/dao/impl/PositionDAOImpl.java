@@ -56,7 +56,6 @@ public class PositionDAOImpl implements PositionDAO {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Position.class);
 		detachedCriteria.add(Restrictions.eq("idPosition", id));
 		List<Position> findByCriteria = (List<Position>) hibernateTemplate.findByCriteria(detachedCriteria);
-		System.out.println("FIND BY CRITERIA  " + findByCriteria);
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria.get(0);
 		else
@@ -68,7 +67,6 @@ public class PositionDAOImpl implements PositionDAO {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Position.class);
 		detachedCriteria.add(Restrictions.eq("idPostype", posId));
 		ArrayList<Position> findByCriteria = (ArrayList<Position>) hibernateTemplate.findByCriteria(detachedCriteria);
-		System.out.println("FIND BY CRITERIA  " + findByCriteria);
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria;
 		else

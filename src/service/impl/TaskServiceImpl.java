@@ -53,10 +53,6 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	public boolean createTask(Task task) {
-		System.out.println("getIdOrder " + task.getIdOrder());
-		System.out.println("getIdProduct " + task.getIdProduct());
-		System.out.println("getIdVehicle " + task.getIdVehicle());
-		System.out.println("getIdStatus " + task.getIdStatus());
 
 		boolean taskCreated = false;
 		boolean saveTask = getTaskDAO().addTask(task);

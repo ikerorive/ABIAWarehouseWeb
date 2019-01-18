@@ -388,21 +388,14 @@ public class MyController {
 		this.taskStatusService = taskStatusService;
 	}
 
-	@RequestMapping(value = "/404")
-	public String error404() {
-		// DO stuff here
-		return "404";
-	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homePage() {
-		// System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-		// System.out.println("" + System.getProperty("user.dir"));
 		return "home";
 	}
-	
+
 	@RequestMapping(value = "logOff", method = RequestMethod.GET)
-	public String logOff( HttpSession session) {
+	public String logOff(HttpSession session) {
 		session.setAttribute("user", null);
 		return "home";
 	}
@@ -427,7 +420,6 @@ public class MyController {
 
 			if (session.getAttribute("user") != null) {
 				User user2 = (User) session.getAttribute("user");
-				// System.out.println("username " + user2.getUsername());
 			}
 			int role = user.getIdRole();
 			if (role == 3) {
@@ -436,42 +428,38 @@ public class MyController {
 				modelAndView = new ModelAndView("welcomeOperator");
 			}
 			modelAndView.addObject("user", user);
-			// return modelAndView;
+
 		} else {
-			// System.out.println();
 			modelAndView = new ModelAndView("notFound");
 		}
 
-		//// DESDE AQUI PARA CARGAR DATOS DE PRODUCTOS
 		HashMap<Integer, ProductType> hmap = getProductTypeService().getProductTypeMap();
 		ArrayList<Product> pr = getProductService().getProducts();
 		for (Product o : pr) {
 
 			o.setName(hmap.get(o.getProductType()).getName());
 			o.setDescription(hmap.get(o.getProductType()).getDescription());
-			// System.out.println("Id Product " + o.getIdProduct());
-			// System.out.println(" Product " + o.getName());
-			// System.out.println(" Product " + o.getDescription());
-			// en cada iteraci�n "o" se refiere a un objeto del arreglo para todos objetos
-			// en el arreglo
+
 		}
-		// Collections.sort(pr);
+
 		pr.sort(Comparator.comparing(Product::getProductType));
-		// System.out.println("sorted");
+
 		modelAndView.addObject("products", pr);
 
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/registerSuccess", method = RequestMethod.POST)
-	public ModelAndView registerSuccess(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+	public ModelAndView registerSuccess(@Valid @ModelAttribute("user") User user, BindingResult bindingResult,
+			HttpSession session) {
 		if (bindingResult.hasErrors()) {
 			return new ModelAndView("register");
 		}
 
 		getUserService().registerUser(user);
+		session.setAttribute("user", user);
 		ModelAndView modelAndView = new ModelAndView("home");
-		// modelAndView.addObject("user", user);
+
 		return modelAndView;
 	}
 
@@ -502,15 +490,11 @@ public class MyController {
 
 			o.setName(hmap.get(o.getProductType()).getName());
 			o.setDescription(hmap.get(o.getProductType()).getDescription());
-			// System.out.println("Id Product " + o.getIdProduct());
-			// System.out.println(" Product " + o.getName());
-			// System.out.println(" Product " + o.getDescription());
-			// en cada iteraci�n "o" se refiere a un objeto del arreglo para todos objetos
-			// en el arreglo
+
 		}
-		// Collections.sort(pr);
+
 		pr.sort(Comparator.comparing(Product::getProductType));
-		// System.out.println("sorted");
+
 		model.addAttribute("products", pr);
 		return "knowmore";
 	}
@@ -556,8 +540,6 @@ public class MyController {
 		if (session.getAttribute("user") != null) {
 			User user2 = (User) session.getAttribute("user");
 
-			// System.out.println("username " + user2.getUsername());
-
 			order.setIdUser(user2.getIdUser());
 		} else {
 			order.setIdUser(4);
@@ -567,10 +549,6 @@ public class MyController {
 		order.setOrderDesc(data[1]);
 		getOrderService().createOrder(order);
 		int id = getOrderService().getLastId();
-		// System.out.println("LAST ID " + id);
-		// Order order= getOrderService().
-		// System.out.println("PRUEBA " + data[0]);
-		// response.encodeRedirectURL("/SpringMVCFormValidationPruebas/selectProducts");
 
 		for (int i = 2; i < data.length; i++) {
 			Task task = new Task();
@@ -585,36 +563,20 @@ public class MyController {
 
 	@RequestMapping(value = "/productSelection", method = RequestMethod.GET)
 	public String productSelection(Model model) {
-		// model.addAttribute("userCredential", new UserCredential());
 		HashMap<Integer, ProductType> hmap = getProductTypeService().getProductTypeMap();
 		ArrayList<Product> pr = getProductService().getProducts();
 		ArrayList<Position> pos = getPositionService().getPositionByPositionId(3);
-
-		// System.out.println("------------------------------------------------POSITION
-		// LIST " + pos);
 
 		for (Product o : pr) {
 
 			o.setName(hmap.get(o.getProductType()).getName());
 			o.setDescription(hmap.get(o.getProductType()).getDescription());
-
-			// System.out.println("Id Product " + o.getIdProduct());
-			// System.out.println(" Product " + o.getName());
-			// System.out.println(" Product " + o.getDescription());
-
-			// en cada iteraci�n "o" se refiere a un objeto del arreglo para todos objetos
-			// en el arreglo
 		}
-		// Collections.sort(pr);
 		pr.sort(Comparator.comparing(Product::getProductType));
-
-		// System.out.println("sorted");
 
 		model.addAttribute("products", pr);
 		model.addAttribute("positions", pos);
 		return "productSelection";
 	}
 
-
-	
 }

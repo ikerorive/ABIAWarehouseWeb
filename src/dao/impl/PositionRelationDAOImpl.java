@@ -50,7 +50,6 @@ public class PositionRelationDAOImpl implements PositionRelationDAO{
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(PositionRelation.class);
 		detachedCriteria.add(Restrictions.eq("idOrigen", id));
 		List<PositionRelation> findByCriteria = (List<PositionRelation>) hibernateTemplate.findByCriteria(detachedCriteria);
-		System.out.println("FIND BY CRITERIA  "+ findByCriteria);
 		if (findByCriteria != null && findByCriteria.size() > 0)
 			return findByCriteria.get(0);
 		else

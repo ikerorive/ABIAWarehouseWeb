@@ -3,11 +3,11 @@
 	<table style="width: 100%">
 		<tr>
 			<td>
-				<table id="Table2" style="padding: 20px" border="1"bdisplay:"inline-block">
+				<table id="Table2" style="padding: 20px" border="1b" display:"inline-block">
 				</table>
 			</td>
 			<td>
-				<table id="Table3" style="padding: 20px" border="1b"display:"inline-block">
+				<table id="Table3" style="padding: 20px" border="1b" display:"inline-block">
 				</table>
 			</td>
 			<td>
@@ -18,7 +18,7 @@
 			</td>
 		</tr>
 	</table>
-	<div style="width: 100%"; >
+	<div style="width: 100%" >
 		<div align="left" style="color: #ff8000">
 			<input id="last" class="btn" type="Button" value="Last"
 				onclick="javascript:last()" /> <input id="next" class="btn"
@@ -29,7 +29,6 @@
 		<!--tabla-->
 		<table id="table" class="table table-striped"></table>
 
-		</tr>
 	</div>
 
 
