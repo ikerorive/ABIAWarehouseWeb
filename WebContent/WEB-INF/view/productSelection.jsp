@@ -23,22 +23,25 @@
 			array[x] = checkedBoxes[x].id;
 		}
 
-		if(data1[0]!="" && data1[1]!=""){
-		var data = data1.concat(array);
-		console.log("DATA " + data);
-		$.ajax({
-			url : '/SpringMVCFormValidationPruebas/selectProducts',
-			type : "POST",
-			dataType : 'json',
-			data : "data=" + data,
-			complete : function(data) {
-				alert("Successful order");
-			}
+		if (data1[0] != "" && data1[1] != "") {
+			var data = data1.concat(array);
+			console.log("DATA " + data);
+			$.ajax({
+				url : '/SpringMVCFormValidationPruebas/selectProducts',
+				type : "POST",
+				dataType : 'json',
+				data : "data=" + data,
+				complete : function(data) {
+					alert("Successful order");
+					window.location.href = "/SpringMVCFormValidationPruebas/";
+				}
 
-		});
-		}else{
+			});
+		} else {
 			alert("To make an order you need to select a destiny and add a description");
 		}
+		
+
 	}
 </script>
 <p class="h4 mb-4 p-2">Select products</p>
@@ -66,7 +69,7 @@
 
 <form id="products" action="selectProducts">
 	<c:forEach items="${alist}" var="listItem">
-		<div  class="${listItem.name}">
+		<div class="${listItem.name}">
 			<div class="custom-control custom-checkbox">
 				<input type="checkbox" class="custom-control-input"
 					id="${listItem.idProduct}"> <label

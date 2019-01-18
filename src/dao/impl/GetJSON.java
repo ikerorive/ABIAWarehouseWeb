@@ -29,7 +29,11 @@ import java.sql.ResultSetMetaData;
  * @brief Class GetJSON
  */
 public class GetJSON {
-	
+	/**
+	 * @brief Method for converting resultSet to JSONArray
+	 * @param rs ResultSet
+	 * @return JSONArray
+	 */
 	public static JSONArray convert(ResultSet rs) throws SQLException, JSONException {
 		JSONArray json = new JSONArray();
 		ResultSetMetaData rsmd = rs.getMetaData();
@@ -77,7 +81,11 @@ public class GetJSON {
 
 		return json;
 	}
-
+	/**
+	 * @brief Method for getting a JSONArray from a query
+	 * @param query String with query
+	 * @return JSONArray
+	 */
 	public JSONArray getJSONFromQuery(String query) {
 		JSONArray json = null;
 		try {
