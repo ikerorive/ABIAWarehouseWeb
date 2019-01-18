@@ -149,6 +149,7 @@ public class MyControllerForCharts {
 				+ "    ON task.idPRODUCT = product.idPRODUCT\r\n" + "  INNER JOIN producttype\r\n"
 				+ "    ON product.PRODUCTTYPE = producttype.idPRODUCTTYPE\r\n" + "WHERE task.idSTATUS!='3';");
 		session.setAttribute("dataTask", jsonTask.toString());
+		System.out.println("JSON  orderHistoryAll" + jsonTask);
 		JSONArray jsonVehicle = getJson
 				.getJSONFromQuery("SELECT\r\n" + "  `position`.POSNAME,\r\n" + "  vehiclestatus.STATUSNAME,\r\n"
 						+ "  vehicle.idVEHICLE\r\n" + "FROM vehicle\r\n" + "  INNER JOIN vehiclestatus\r\n"
