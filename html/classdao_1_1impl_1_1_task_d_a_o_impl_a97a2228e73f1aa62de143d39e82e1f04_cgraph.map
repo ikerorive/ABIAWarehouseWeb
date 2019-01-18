@@ -1,0 +1,6 @@
+<map id="dao.impl.TaskDAOImpl.addTask" name="dao.impl.TaskDAOImpl.addTask">
+<area shape="rect" id="node2" href="$classmodel_1_1_task.html#ab4273dd7e3440ac571a5bf088d520dc1" title="Method for get the value of the idOrder variable. " alt="" coords="268,5,421,32"/>
+<area shape="rect" id="node3" href="$classmodel_1_1_task.html#a1d32f5d4940014e80d50afd87fde805e" title="Method for get the value of the idProduct variable. " alt="" coords="261,56,428,83"/>
+<area shape="rect" id="node4" href="$classmodel_1_1_task.html#aa590ca08cd0ffa4fa13ec2538b06dd46" title="Method for get the value of the idVehicle variable. " alt="" coords="263,107,427,133"/>
+<area shape="rect" id="node5" href="$classmodel_1_1_task.html#a8ace8b736c6ff9145f681decc811b9b3" title="Method for get the value of the idStatus variable. " alt="" coords="265,157,424,184"/>
+</map>

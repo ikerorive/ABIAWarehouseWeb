@@ -1,0 +1,7 @@
+<map id="dao.impl.GetJSON.getJSONFromQuery" name="dao.impl.GetJSON.getJSONFromQuery">
+<area shape="rect" id="node2" href="$classcontroller_1_1_my_controller_for_charts.html#af264b20d56cf7eb127b75d3e5ae40c32" title="controller.MyControllerFor\lCharts.currentOrders" alt="" coords="269,5,440,47"/>
+<area shape="rect" id="node3" href="$classcontroller_1_1_my_controller_for_charts.html#a19b6cedb3f486bb5185b04416d396ff6" title="controller.MyControllerFor\lCharts.currenOrdersAll" alt="" coords="269,71,440,112"/>
+<area shape="rect" id="node4" href="$classcontroller_1_1_my_controller_for_charts.html#aa7bfc477c3a80aa61524d8ce33fe2b54" title="controller.MyControllerFor\lCharts.orderHistoryAll" alt="" coords="269,136,440,177"/>
+<area shape="rect" id="node5" href="$classcontroller_1_1_my_controller_for_charts.html#a9b6425495eb302574a8f6f0a451edbd0" title="controller.MyControllerFor\lCharts.vehicleInfo" alt="" coords="269,201,440,243"/>
+<area shape="rect" id="node6" href="$classcontroller_1_1_my_controller_for_charts.html#a0cf4f146b7faf36fa1b401bc35467541" title="controller.MyControllerFor\lCharts.workstationInfo" alt="" coords="269,267,440,308"/>
+</map>

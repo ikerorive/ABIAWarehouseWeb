@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ABIAWeb: service.UserService Interface Reference</title>
+<title>WarehouseWeb: service.UserService Interface Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,8 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ABIAiconBLUE.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ABIAWeb
+   <div id="projectname">WarehouseWeb
+   &#160;<span id="projectnumber">0.1</span>
    </div>
   </td>
  </tr>
@@ -61,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>service</b></li><li class="navelem"><a class="el" href="interfaceservice_1_1_user_service.html">UserService</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceservice.html">service</a></li><li class="navelem"><a class="el" href="interfaceservice_1_1_user_service.html">UserService</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,27 +74,121 @@ $(function() {
 <div class="title">service.UserService Interface Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class <a class="el" href="interfaceservice_1_1_user_service.html" title="Class UserService. ">UserService</a>.  
+ <a href="interfaceservice_1_1_user_service.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for service.UserService:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="interfaceservice_1_1_user_service.png" usemap="#service.UserService_map" alt=""/>
-  <map id="service.UserService_map" name="service.UserService_map">
-<area href="classservice_1_1impl_1_1_user_service_impl.html" alt="service.impl.UserServiceImpl" shape="rect" coords="0,56,176,80"/>
+<div class="center"><img src="interfaceservice_1_1_user_service__inherit__graph.png" border="0" usemap="#service_8_user_service_inherit__map" alt="Inheritance graph"/></div>
+<map name="service_8_user_service_inherit__map" id="service_8_user_service_inherit__map">
+<area shape="rect" id="node2" href="classservice_1_1impl_1_1_user_service_impl.html" title="Class UserServiceImpl. " alt="" coords="5,80,192,107"/>
 </map>
- </div></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a34e74aa724e499073f3c3051e8ff8e42"><td class="memItemLeft" align="right" valign="top"><a id="a34e74aa724e499073f3c3051e8ff8e42"></a>
-abstract <a class="el" href="classmodel_1_1_user.html">User</a>&#160;</td><td class="memItemRight" valign="bottom"><b>validateUserCredential</b> (String username, String password)</td></tr>
+<tr class="memitem:a34e74aa724e499073f3c3051e8ff8e42"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="classmodel_1_1_user.html">User</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceservice_1_1_user_service.html#a34e74aa724e499073f3c3051e8ff8e42">validateUserCredential</a> (String username, String password)</td></tr>
+<tr class="memdesc:a34e74aa724e499073f3c3051e8ff8e42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that returns the user with the given username and password <br />
+  <a href="#a34e74aa724e499073f3c3051e8ff8e42">More...</a><br /></td></tr>
 <tr class="separator:a34e74aa724e499073f3c3051e8ff8e42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a111804c2062b3d6f948ef550051a5ad3"><td class="memItemLeft" align="right" valign="top"><a id="a111804c2062b3d6f948ef550051a5ad3"></a>
-abstract boolean&#160;</td><td class="memItemRight" valign="bottom"><b>registerUser</b> (<a class="el" href="classmodel_1_1_user.html">User</a> user)</td></tr>
+<tr class="memitem:a111804c2062b3d6f948ef550051a5ad3"><td class="memItemLeft" align="right" valign="top">abstract boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceservice_1_1_user_service.html#a111804c2062b3d6f948ef550051a5ad3">registerUser</a> (<a class="el" href="classmodel_1_1_user.html">User</a> user)</td></tr>
+<tr class="memdesc:a111804c2062b3d6f948ef550051a5ad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that save a new user in the database <br />
+  <a href="#a111804c2062b3d6f948ef550051a5ad3">More...</a><br /></td></tr>
 <tr class="separator:a111804c2062b3d6f948ef550051a5ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class <a class="el" href="interfaceservice_1_1_user_service.html" title="Class UserService. ">UserService</a>. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a111804c2062b3d6f948ef550051a5ad3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a111804c2062b3d6f948ef550051a5ad3">&#9670;&nbsp;</a></span>registerUser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract boolean service.UserService.registerUser </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmodel_1_1_user.html">User</a>&#160;</td>
+          <td class="paramname"><em>user</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">abstract</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Method that save a new user in the database <br />
+ </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user</td><td>a User </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>boolean </dd></dl>
+
+<p>Implemented in <a class="el" href="classservice_1_1impl_1_1_user_service_impl.html#a11d9956ff2936f4541b17d3dd5780ba4">service.impl.UserServiceImpl</a>.</p>
+
+</div>
+</div>
+<a id="a34e74aa724e499073f3c3051e8ff8e42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34e74aa724e499073f3c3051e8ff8e42">&#9670;&nbsp;</a></span>validateUserCredential()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract <a class="el" href="classmodel_1_1_user.html">User</a> service.UserService.validateUserCredential </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>username</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>password</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">abstract</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Method that returns the user with the given username and password <br />
+ </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">username</td><td>username </td></tr>
+    <tr><td class="paramname">password</td><td>password </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>User </dd></dl>
+
+<p>Implemented in <a class="el" href="classservice_1_1impl_1_1_user_service_impl.html#a13ad8f7d06c99cb7d2906fd8536ad37f">service.impl.UserServiceImpl</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
-<li>src/service/UserService.java</li>
+<li>src/service/<a class="el" href="_user_service_8java.html">UserService.java</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

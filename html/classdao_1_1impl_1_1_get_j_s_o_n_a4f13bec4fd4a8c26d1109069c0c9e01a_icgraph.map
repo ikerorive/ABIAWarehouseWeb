@@ -1,0 +1,8 @@
+<map id="dao.impl.GetJSON.convert" name="dao.impl.GetJSON.convert">
+<area shape="rect" id="node2" href="$classdao_1_1impl_1_1_get_j_s_o_n.html#a17e1060bace462d75b0109931c587905" title="Method for getting a JSONArray from a query. " alt="" coords="228,136,444,177"/>
+<area shape="rect" id="node3" href="$classcontroller_1_1_my_controller_for_charts.html#af264b20d56cf7eb127b75d3e5ae40c32" title="controller.MyControllerFor\lCharts.currentOrders" alt="" coords="492,5,663,47"/>
+<area shape="rect" id="node4" href="$classcontroller_1_1_my_controller_for_charts.html#a19b6cedb3f486bb5185b04416d396ff6" title="controller.MyControllerFor\lCharts.currenOrdersAll" alt="" coords="492,71,663,112"/>
+<area shape="rect" id="node5" href="$classcontroller_1_1_my_controller_for_charts.html#aa7bfc477c3a80aa61524d8ce33fe2b54" title="controller.MyControllerFor\lCharts.orderHistoryAll" alt="" coords="492,136,663,177"/>
+<area shape="rect" id="node6" href="$classcontroller_1_1_my_controller_for_charts.html#a9b6425495eb302574a8f6f0a451edbd0" title="controller.MyControllerFor\lCharts.vehicleInfo" alt="" coords="492,201,663,243"/>
+<area shape="rect" id="node7" href="$classcontroller_1_1_my_controller_for_charts.html#a0cf4f146b7faf36fa1b401bc35467541" title="controller.MyControllerFor\lCharts.workstationInfo" alt="" coords="492,267,663,308"/>
+</map>
